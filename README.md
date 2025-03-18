@@ -213,11 +213,11 @@ Featues: Π,Σ,Path,𝑘:𝑈,0_𝑘,1_𝑘,point_𝑘,𝐴^1:U,point:𝑘→�
 Use case: derives all structural theorems of A^1-Homotopy Theory—such as A^1-connectivity (X×A^1)≅π_n(A^1), contractibility
 of 𝐴^1, and unstable connectivity — while providing a foundation for stable A^1-homotopy via suspensions and motivic spheres.
 
-### Julius
+### Laurent
 
-Role: Dedekind Reals and Cuts.
-Features: ℝ, ℚ, ⊢ (𝐿, 𝑈) : ℝ, where 𝐿, 𝑈 : ℚ → Prop, ∀ 𝑞 < 𝑟 → 𝐿(𝑞) ∨ 𝑈(𝑟).
-Use case: Real Analysis.
+Role: Mathematical and Functional Analysis, Calculus.
+Features: ℝ, C, Nat, Boo, Forall, Exists, Set, Measure, Lebesgue. Seq, Inf, Sup, Lim.
+Use case: Real Analysis, Functional Analysis.
 
 ### Ernst 
 

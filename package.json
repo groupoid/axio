@@ -4,7 +4,7 @@
   "description": "FORMAL/1: Groupoid Infinity Formal System",
   "main": "",
   "scripts": {
-    "start": "node-sass ../groupoid.space/styles -o ./ && pug -O ./framework.js ./ ",
+    "start": "node-sass ../groupoid.space/styles -o ./ && pug -O ./framework.js index.pug ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

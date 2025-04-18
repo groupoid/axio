@@ -9,6 +9,14 @@ mixin tex(center=false, paragraph=true)
             'padding-bottom': '8px',
         } : null)!= tex(`${block}`)
 
+mixin tex2(center=false, paragraph=true)
+    p(style=center ? {
+        'text-align': 'center',
+        'display': 'block',
+        'padding-top': '8px',
+        'padding-bottom': '8px',
+    } : null)!= tex(`${block}`)
+
 mixin code
     code!= highlight(`${block}`)
 
@@ -34,7 +42,7 @@ html
         meta(name='msapplication-TileImage' content='https://anders.groupoid.space/images/ms-icon-144x144.png')
         meta(name='theme-color' content='#ffffff')
 
-        link(rel='stylesheet' href='https://groupoid.github.io/axiom.dev/main.css')
+        link(rel='stylesheet' href='https://anders.groupoid.space/main.css?v=1')
         link(rel='apple-touch-icon' sizes='57x57'   href='https://anders.groupoid.space/images/apple-icon-57x57.png')
         link(rel='apple-touch-icon' sizes='60x60'   href='https://anders.groupoid.space/images/apple-icon-60x60.png')
         link(rel='apple-touch-icon' sizes='72x72'   href='https://anders.groupoid.space/images/apple-icon-72x72.png')

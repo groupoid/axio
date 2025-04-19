@@ -53,13 +53,13 @@ block content
                 h2 Ядро
                 ul
                     li: a(href='https://groupoid.space/runtime/cps/') Інтерпретатор
-                    li: a(href='https://groupoid.space/runtime/apl/') Тензори
+                    li: a(href='https://groupoid.space/runtime/ftl/') Тензори
                     li: a(href='https://groupoid.space/runtime/intercore/') Планувальник
-                    li: a(href='https://anders.groupoid.space/foundations/modal/process/') Процеси
             .index__col
                 h2 Бібліотека
                 ul
                     li: a(href='https://groupoid.space/runtime/effects/') Протоколи
+                    li: a(href='https://anders.groupoid.space/foundations/modal/process/') Процеси
                     li: a(href='https://anders.groupoid.space/foundations/mltt/io/') IO
                     li: a(href='https://anders.groupoid.space/foundations/mltt/ioi/') IOI
 
@@ -81,6 +81,7 @@ block content
                 ul
                     li: a(href='https://groupoid.space/misc/library/') Математичні компоненти
                     li: a(href='https://groupoid.space/misc/course/') Курс по теорії типів
+                    li: a(href='https://groupoid.space/misc/internship/') Інтернатура
                     li: a(href='https://anders.groupoid.space/mathematics/homotopy/hopf/') Розшарування хопфа
                     li: a(href='https://groupoid.space/') Групоїд Інфініті
 
@@ -128,8 +129,10 @@ block content
             section
                 h1 Середовище виконання
             p.
-                Середовище виконання включає ядро операційної системи (LK),
-                інтерпретатор, тензори, планувальник і процеси екземплярів інтерпретаторів.
+                Середовище виконання включає ядро операційної системи апаратного
+                рівня <a href="https://tonpa.guru/stream/2025/2025-03-26%20LK.htm">LK</a>,
+                інтерпретатор, тензорні буфери з CAS курсорами, планувальник і
+                процеси екземплярів інтерпретаторів.
                 Синтаксичне дерево інтерпретатора підтримує ліниві відкладені обчислення та
                 спеціальні команди для управління процесами виконання. Програми виконуються як атомарні
                 потоки інструкцій на одному фізичному ядрі процесора, а SMP/AMP-планувальник

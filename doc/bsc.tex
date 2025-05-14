@@ -299,43 +299,48 @@ VOID
 із прикладів Microsoft Visual Studio .NET, модифікованій для PL/1:
 
 \begin{lstlisting}
-letter			::= "A-Za-z";
-digit 			::= "0-9";
-name 			::= letter { letter | digit };
-integer 		::= digit { digit };
-ident 			::= name | label;
-factor 			::= (ident | integer | "(" expr ")" );
-unary_factor 		::= ["+"|"-"] factor;
-term1 			::= ["*"|"/"] factor;
-term0 			::= factor { term1 };
-first_term 		::= unary_factor term1;
-math_expr 		::= first_term { ["+"|"-"] term0 }
-rel_expr 		::= math_expr ("=="|"!="|"<"|">"|">="|"<=") math_expr;
-not_factor 		::= ["!"] rel_expr;
-term_bool 		::= not_factor { ("&" | "&&") not_factor };
-bool_expr 		::= term_bool { ("|" | "^") term_bool };
-expr 			::= bool_expr;
-var 			::= ident;
-var_list 		::= var { "," var_list };
-assign_stmt 		::= var_list "=" expr;
-param 			::= "(" var_list ")";
-declare 		::= ( "dcl" | "declare" ) "(" var | param ")" { "(" integer ")" } type;
-type			::= "fixed"|"binary"|"float"|"decimal" ;
-if_stmt 		::= "if" expr "then" stmt [ "else" stmt;
-do_stmt 		::= "do" (null_stmt  smtm; | "while" expr null_stmt stmt
-                          | assign_stmt  "to" expt null_stmt stmt) "end" null_stmt
-rets_stmt		::= "returns" "(" type ")";
-proc_decl 		::= ident ":" proc ;
-proc 			::= param ["recursive"][ rets_stmt ] null_stmt stmt { stmt } "end" ident  null_stmt ;
-goto_stmt 		::= ("go to" | "goto" ) ( ident | integer ) null_stmt;
-ident_stmt 		::= (ident "=" expr| ident ":" stmt | ident { , ident } = expr) null_stmt;
-ret_stmt 		::= "return" [ expr ] ";";
-null_stmt 		::= ";";
-stmt 			::= (ret_stmt null_stmt | ident_stmt | do_stmt null_stmt | goto_stmt null_stmt
-                          | proc_decl null_stmt | decl_stmt null_stmt | if_stmt );
-program_stmt  		::= stmt { stmt };
+letter		::= "A-Za-z";
+digit 		::= "0-9";
+name 		::= letter { letter | digit };
+integer 	::= digit { digit };
+ident 		::= name | label;
+factor 		::= (ident | integer | "(" expr ")" );
+unary_factor 	::= ["+"|"-"] factor;
+term1 		::= ["*"|"/"] factor;
+term0 		::= factor { term1 };
+first_term 	::= unary_factor term1;
+math 		::= first_term { ["+"|"-"] term0 }
+rel_expr 	::= math ("=="|"!="|"<"|">"|">="|"<=") math;
+not_factor 	::= ["!"] rel_expr;
+term_bool 	::= not_factor { ("&" | "&&") not_factor };
+bool_expr 	::= term_bool { ("|" | "^") term_bool };
+expr 		::= bool_expr;
+var 		::= ident;
+var_list 	::= var { "," var_list };
+assign_stmt 	::= var_list "=" expr;
+param 		::= "(" var_list ")";
+declare 	::= ( "dcl" | "declare" ) "(" var | param ")"
+                    { "(" integer ")" } type;
+type		::= "fixed"|"binary"|"float"|"decimal" ;
+if_stmt 	::= "if" expr "then" stmt [ "else" stmt;
+do_stmt 	::= "do" (null_stmt  smtm;
+                  | "while" expr null_stmt stmt
+                  | assign_stmt  "to" expt null_stmt stmt)
+                    "end" null_stmt
+rets_stmt	::= "returns" "(" type ")";
+proc_decl 	::= ident ":" proc ;
+proc 		::= param ["recursive"] [ rets_stmt ] null_stmt
+                    stmt { stmt } "end" ident null_stmt ;
+goto_stmt 	::= ("go to"|"goto") (ident|integer) null_stmt;
+ident_stmt 	::= (ident "=" expr| ident ":" stmt
+                  | ident { , ident } = expr) null_stmt;
+ret_stmt 	::= "return" [ expr ] ";";
+null_stmt 	::= ";";
+stmt 		::= (ret_stmt null_stmt | ident_stmt | if_stmt
+                  | do_stmt null_stmt   | goto_stmt null_stmt
+                  | proc_decl null_stmt | decl_stmt null_stmt );
+program_stmt	::= stmt { stmt };
 \end{lstlisting}
-
 Завдяки виключенню лівої рекурсії, ця граматика фактично автоматично генерує
 правила для написання процедур рекурсивного спуску для розбору. Усі підпрограми
 рекурсивного спуску в модулі SYN складають основу синтаксично керованого

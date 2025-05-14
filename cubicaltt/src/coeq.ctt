@@ -14,10 +14,6 @@ coequInd (A B : U) (f g : A -> B) (C : coeq A B f g -> U) (ix : (b : B) -> C (in
    : (z : coeq A B f g) -> C z
    = split@((z : coeq A B f g) -> C z) with { inC x -> ix x ; glueC x @ i -> y x @ i }
 
-data colimit (A : nat -> U) (f : (n : nat) -> A n -> A (succ n))
-   = inc (n : nat) (x: A n)
-   | com (n : nat) (a: A n) <i> [ (i=0) -> inc (succ n) (f n a), (i=1) -> inc n a]
-
 data coeqP (A B: U) (p : A -> (b1 b2: B) * (_: Path B b1 b2) * (Path B b1 b2))
    = inP (b: B)
    | glueP (a:A) <i> [(i=0) -> inP (((p a).2.2.1) @ 0), (i=1) -> inP (((p a).2.2.2) @ 1) ]
@@ -27,3 +23,6 @@ data pushout (A B C: U) (f: A -> B) (g: A -> C)
    | inr (_: C)
    | push (a: A) <i> [ (i=0) -> inl (f a), (i=1) -> inr (g a) ]
 
+data colimit (A : nat -> U) (f : (n : nat) -> A n -> A (succ n))
+   = inc (n : nat) (x: A n)
+   | com (n : nat) (a: A n) <i> [ (i=0) -> inc (succ n) (f n a), (i=1) -> inc n a]

@@ -1,0 +1,397 @@
+\documentclass{memoir}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[ukrainian]{babel}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+% Налаштування стилю для коду
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    commentstyle=\itshape,
+    keywordstyle=\bfseries,
+    showstringspaces=false
+}
+
+\begin{document}
+
+\begin{center}
+    \vspace*{1cm}
+    {\Large \textbf{Компілятор PL/IL}}\\[0.5cm]
+    {\large Проектування та розробка}\\[1cm]
+    
+    {\normalsize Версія 2004.06.01}\\[0.3cm]
+    {\normalsize Максим Е. Сохацький (\texttt{mes@ua.fm})}\\
+    {\normalsize Олег В. Смірнов (\texttt{\_straycat@ukr.net})}\\[0.5cm]
+    
+    \vspace{0.5cm}
+    {\itshape Ітерація властива людині. Рекурсія – божественна.}\\[1cm]
+    
+    {\normalsize Київський Політехнічний Інститут}\\
+    {\normalsize 2004}
+\end{center}
+
+\newpage
+\tableofcontents
+
+\newpage
+
+\chapter{Вступ}
+\section{Поставлені цілі}
+Основне завдання, поставлене перед розробниками цього проєкту,
+полягало в реалізації мови програмування PL/1 для єдиної мовної
+середовища Microsoft Common Language Runtime (CLR), з підтримкою
+Common Intermediate Language (CIL) – об’єктно-орієнтованого стекового
+асемблера для віртуальної машини CLR. Єдина мовна інфраструктура (Common
+Language Infrastructure) разом із системою класів Microsoft .NET Framework
+є найсучаснішим способом створення застосунків для операційних систем Microsoft.
+
+\section{Єдине мовне середовище Microsoft}
+Завдяки Єдиній системі типів (Common Type System, CTS) CLR забезпечує можливість
+використовувати однаковий спосіб взаємодії застосунків, написаних різними мовами.
+Такі технології пізнього зв’язування та компонентні моделі, як COM і ActiveX,
+що використовують домовленості щодо структур об’єктів, більше не потрібні.
+На сьогодні існує майже повний спектр імперативних мов програмування,
+які використовують CLR як носій об’єктного коду: Pascal, C, Java, Python,
+Perl, Cobol, Fortran. Реалізації бракує лише однієї з найстаріших і
+найпотужніших мов – PL/1, яку автори цієї роботи вирішили відродити
+в об’єктно-орієнтованій парадигмі.
+
+\section{Об’єктно-орієнтований PL/1}
+PL/1 досі залишається однією з найпотужніших мов програмування завдяки своїй здатності підставляти константи, описані в програмі, як виконувану програму. Це одна з багатьох переваг PL/1, яка легко реалізується в середовищі CLR.
+
+\section{Особливості PL/IL}
+Компілятор PL/IL, який використовує CLR і .NET Framework як хост, має низку особливостей:
+\begin{itemize}
+    \item Компіляція EXE та DLL збірок CLR.
+    \item Використання класів .NET Framework.
+    \item Єдина система типів CTS.
+    \item Генерація лістингу програми на IL.
+    \item Використання Reflection для підставок.
+    \item Структурна обробка винятків.
+    \item Вбудований контроль типів.
+\end{itemize}
+Завдяки цим можливостям можна створювати навіть вебсервіси, використовуючи PL/IL. Крім того, можна використовувати збірки, написані іншими мовами, що підтримують CLI, наприклад C\# або Visual Basic .NET, через лінкування або динамічне завантаження. Діалект PL/IL максимально наближений до PL/M – оптимізованої версії PL/1 для мікроконтролерів.
+
+\section{Перспективи}
+На відміну від віртуальних машин Java, CLR має специфікацію на єдину систему типів, спільну для всіх мов CLI. Крім того, на відміну від Java, усі специфікації на ці технології затверджені ECMA, що гарантує сумісність майбутніх кросплатформних реалізацій CLR, таких як MONO.
+
+\chapter{Теоретичні відомості}
+\section{Структура компілятора}
+Основні етапи, які проходить компілятор, включають:
+\begin{itemize}
+    \item Лексичний аналіз.
+    \item Синтаксичний аналіз.
+    \item Контекстний аналіз.
+    \item Машинно-незалежний оптимізатор.
+    \item Генератор коду.
+    \item Оптимізатор коду.
+\end{itemize}
+Інформація, необхідна на етапах компіляції, класифікується так:
+\begin{itemize}
+    \item Вихідний текст програми.
+    \item Таблиця термінальних символів мови.
+    \item Лексична згортка.
+    \item Правила граматики.
+    \item Дерево виведення.
+    \item Абстрактна програма.
+    \item Проміжний код.
+    \item Об’єктний код.
+\end{itemize}
+
+\section{Теоретичні питання}
+Можна виділити такі теми для освоєння теорії побудови програмних систем:
+\begin{enumerate}
+    \item Лексичний аналіз.
+    \item Синтаксичний аналіз.
+    \item Синтаксично керована трансляція.
+    \item Система типів і середовище виконання.
+    \item Генерація проміжного коду.
+    \item Генерація об’єктного коду.
+\end{enumerate}
+
+\section{Основні методи синтаксичного аналізу}
+\subsection{Нисхідний аналіз}
+Усунувши з граматики ліву рекурсію, можна ефективно реалізувати аналіз методом рекурсивного спуску без відкатів. Також можна використовувати табличні методи аналізу без відкатів для граматик із усунутою лівою рекурсією. Автори обрали нисхідний аналіз, оскільки LL-граматика виглядає більш естетично. Метод рекурсивного спуску без відкатів полегшує розуміння компілятора іншими розробниками, підвищує ступінь спільної розробки та є більш гнучким і розширюваним порівняно з табличними методами.
+
+\subsection{Висхідний аналіз}
+Для висхідного аналізу існують алгоритми типу «перенесення-згортка», а також генератори аналізаторів LR і LALR граматик.
+
+\subsection{Метод рекурсивного спуску}
+Цей метод добре підходить для простих LL(1)-граматик, хоча може використовуватися і для синтаксичних аналізаторів із відкатами. Синтаксичний аналізатор будується так, що для кожного нетермінала визначається одна рекурсивна процедура. Правила граматики перетворюються для однозначного визначення альтернатив і цілеспрямованого виведення. Наприклад, якщо є правила:
+\[
+A \to \alpha \, t_1 \, \beta \mid \alpha \, t_2 \, \gamma \, ; \, t_1, t_2 \in \Sigma \, ; \, \alpha, \beta, \gamma - \text{довільні ланцюжки},
+\]
+вони перетворюються до виду:
+\[
+A \to \alpha \, ( \, t_1 \, \beta \mid t_2 \, \gamma \, ),
+\]
+де \( ( \dots ) \) – скобки факторизації.
+
+Правила виду:
+\[
+A \to \alpha \mid A \, t \, \beta,
+\]
+де \( t \in \Sigma \), \( \alpha, \beta \in (N \cup \Sigma)^* \), перетворюються до:
+\[
+A \to \alpha \, \{ \, t \, \beta \, \},
+\]
+де \( \{ \dots \} \) – рекурсивна частина.
+
+Правила виду:
+\[
+A \to \alpha \mid \alpha \, t \, \beta,
+\]
+записуються як:
+\[
+A \to \alpha \, [ \, t \, \beta \, ],
+\]
+де \( [ \dots ] \) – необов’язкова конструкція.
+
+Приклад граматики:
+\begin{align*}
+A_1 &\to A_2 \, := \, A_3 \mid \text{if} \, A_3 \, \text{then} \, A_1 \mid \text{if} \, A_3 \, \text{then} \, A_1 \, \text{else} \, A_1 \\
+A_2 &\to i \mid i \, ( \, A_3 \, ) \\
+A_3 &\to A_4 \mid A_3 \, + \, A_4 \\
+A_4 &\to A_5 \mid A_4 \, * \, A_5 \\
+A_5 &\to A_2 \mid ( \, A_3 \, )
+\end{align*}
+Для процедур правила переписуються так:
+\begin{align*}
+A_1 &\to A_2 \, := \, A_3 \mid \text{if} \, A_3 \, \text{then} \, A_1 \, [ \, \text{else} \, A_1 \, ] \\
+A_2 &\to i \, [ \, ( \, A_3 \, ) \, ] \\
+A_3 &\to A_4 \, \{ \, + \, A_4 \, \} \\
+A_4 &\to A_5 \, \{ \, * \, A_5 \, \} \\
+A_5 &\to A_2 \mid ( \, A_3 \, )
+\end{align*}
+
+Приклад процедури для \( A_1 \):
+\begin{lstlisting}
+int next;
+void A1() {
+    if (next == IF) {
+        scan();
+        A3();
+        if (next != THEN) error();
+        else {
+            scan();
+            A1();
+            if (next == ELSE) {
+                scan();
+                A1();
+            }
+        }
+    } else {
+        A2();
+        if (next != AS) error();
+        else {
+            scan();
+            A3();
+        }
+    }
+}
+\end{lstlisting}
+
+\chapter{Компілятор PL/IL}
+\section{Історія}
+PL/IL – це підмножина мови PL/1, створеної IBM, яка активно використовувалася в 60-х роках. У країнах колишнього СРСР ця мова застосовувалася в машинах ЄС ЕОМ, що було логічно, оскільки ЄС ЕОМ була аналогом обчислювальних комплексів IBM System/360. Символ «/» характерний для назв продуктів IBM, наприклад, System/360, ES/9000, RS/6000, AS/400, PS/2, OS/2, PL/1.
+
+Від часу створення PL/1 було реалізовано багато мов із повністю або частково сумісним синтаксисом. Компанія Intel розробила PL/M – підмножину PL/1 для мікроконтролерів, що відображено в «M» у назві. PL/IL є підмножиною PL/M, яка, у свою чергу, є підмножиною PL/1. Наразі підмножина PL/SQL використовується в системах управління базами даних Oracle. Багато компаній, що займаються підтримкою старих мейнфреймів IBM, пропонують компілятори PL/1 для нових процесорів.
+
+Як результуючий асемблер обрано об’єктну стекову машину Microsoft .NET CLR – Microsoft Intermediate Language (MS IL), що й дало назву «PL/IL».
+
+\section{Діаграма компілятора}
+\begin{figure}[h]
+    \centering
+    \fbox{\parbox{0.8\textwidth}{Рис. 1. Структура компілятора (зображення не включено)}}
+    \caption{Структура компілятора}
+\end{figure}
+
+\section{Алфавіт мови}
+Лексичний аналізатор LEX обробляє коментарі, числові константи, ідентифікатори та виконує пошук ідентифікаторів. Односимвольні термінали:
+\[
+\$, =, -, +, \*, /, ', :, ;, ., ,, (, ), \%, \&, ^, \#, |, !, >, <, \sim, `, \backslash, ], [, \}, \{, ", ?, \_
+\]
+Двосимвольні термінали:
+\[
+<=, **, >=, !=, ->, /*, */, !<, !>, ||, ..
+\]
+Операції-мнемоніки:
+\[
+\text{GT, LT, GE, LE, NG, NL, NE, EQU, CAT, PT, NOT, OR, AND, XOR, MOD, DIV, MUL, PLUS, MINUS}
+\]
+Ключові слова:
+\[
+\text{ASSIGN, BY, CALL, DECLARE, DCL, DO, ELSE, END, GO, GOTO, IF, INITIAL, LABEL, LITERALLY, OPTIONS, PROCEDURE, PROC, RECURSIVE, RETURNS, RETURN, THEN, TO, WHILE, CASE, BINARY, DECIMAL, FIXED, FLOAT, REAL, COMPLEX, VOID}
+\]
+
+\section{Граматика мови}
+Граматика без лівої рекурсії базується на граматиці мови MyC із прикладів Microsoft Visual Studio .NET, модифікованій для PL/1:
+
+\begin{lstlisting}
+letter			::= "A-Za-z";
+digit 			::= "0-9";
+name 			::= letter { letter | digit };
+integer 		::= digit { digit };
+ident 			::= name | label;
+factor 		::= (ident | integer | "(" expr ")" );
+unary_factor 	::= ["+"|"-"] factor;
+term1 			::= ["*"|"/"] factor;
+term0 			::= factor { term1 };
+first_term 		::= unary_factor term1;
+math_expr 		::= first_term { ["+"|"-"] term0 }
+rel_expr 		::= math_expr ("=="|"!="|"<"|">"|">="|"<=") 
+    math_expr;
+not_factor 		::= ["!"] rel_expr;
+term_bool 		::= not_factor { ("&" | "&&") not_factor };
+bool_expr 		::= term_bool { ("|" | "^") term_bool };
+expr 			::= bool_expr;
+var 			::= ident;
+var_list 		::= var { "," var_list };
+assign_stmt 		::= var_list "=" expr;
+param 			::= "(" var_list ")";
+declare 		::= ( "dcl" | "declare" ) "(" var |
+    param ")" { "(" integer ")" } type;
+type			::= "fixed"|"binary"|"float"|"decimal" ;
+if_stmt 		::= "if" expr "then" stmt [ "else" stmt;
+do_stmt 		::= "do" (
+null_stmt  smtm; |
+"while" expr null_stmt stmt |
+assign_stmt  "to" expt null_stmt stmt
+) "end" null_stmt
+	     rets_stmt		::= "returns" "(" type ")";
+proc_decl 		::= ident ":" proc ;
+proc 			::= param ["recursive"][ rets_stmt ]
+                       null_stmt stmt { stmt }
+    "end" ident  null_stmt ;
+goto_stmt 		::= ("go to" | "goto" ) ( ident | integer ) 
+    null_stmt;
+ident_stmt 		::= (ident "=" expr| ident ":" stmt
+    | ident { , ident } = expr) null_stmt;
+ret_stmt 		::= "return" [ expr ] ";";
+null_stmt 		::= ";";
+stmt 			::= (ret_stmt null_stmt | ident_stmt |
+do_stmt null_stmt | goto_stmt null_stmt | proc_decl null_stmt |
+decl_stmt null_stmt | if_stmt );
+program_stmt  	::= stmt { stmt };
+\end{lstlisting}
+
+(Далі граматика продовжується для змінних, присвоєнь, процедур тощо, як у вихідному документі.)
+
+\section{Опис мови}
+\subsection{Ідентифікатори користувача}
+Ідентифікатор обмежений довжиною 32 символи, повинен починатися з літери, може містити літери, цифри та знак долара, який ігнорується компілятором. Ідентифікатори нечутливі до регістру.
+
+\subsection{Зарезервовані слова}
+Зарезервовані слова завжди у верхньому регістрі:
+\[
+\text{ASSIGN, BY, CALL, DECLARE, DCL, DO, ELSE, END, GO, GOTO, IF, INITIAL, LABEL, LITERALLY, OPTIONS, PROCEDURE, PROC, RECURSIVE, RETURNS, RETURN, THEN, TO, WHILE, CASE}
+\]
+
+\subsection{Константи}
+Числові константи починаються з цифри і можуть мати специфікатори: O (восьмеричні), Q (восьмеричні), H (шістнадцяткові), D (десятичні), B (бінарні). Без специфікатора – десятковий режим. Комплексні константи та константи з плаваючою чи фіксованою комою не підтримуються.
+
+\subsection{Операції у виразах}
+Розділювачі: «(», «)». Арифметичні операції: \( +, -, \text{PLUS}, \text{MINUS}, *, /, \text{MOD} \). Операції відношень: \( <, >=, >, <=, =, != \). Булеві операції: \( \text{NOT}, \text{AND}, \text{OR}, \text{XOR} \).
+
+\subsection{Пріоритети операцій}
+\begin{enumerate}
+    \item \( *, /, \text{MOD} \)
+    \item \( +, -, \text{PLUS}, \text{MINUS} \)
+    \item \( <, <=, =, =>, >, != \)
+    \item \( \text{NOT} \)
+    \item \( \text{AND} \)
+    \item \( \text{OR}, \text{XOR} \)
+\end{enumerate}
+
+\subsection{Мовні конструкції}
+Приклади:
+\begin{lstlisting}
+IF ((4D > 5 * (-2AH) / (-5+7)) & (6 < 9)) THEN ;
+DO WHILE expression; { statement; } END;
+\end{lstlisting}
+
+\section{Емітер}
+Підсистема генерації коду EMT має модульну архітектуру. Під час контекстно-керованого емітінгу будується дерево виведення IAsm, яке використовується для генерації об’єктного коду.
+
+\section{Повідомлення компілятора}
+Приклади помилок:
+\begin{itemize}
+    \item PL0101: invalid typecast (float to int)
+    \item PL0201: invalid octal constant
+    \item PL0301: unhandled instruction type
+\end{itemize}
+
+\section{Автоматичне приведення скалярних типів}
+\begin{table}[h]
+    \centering
+    \caption{Приведення типів при цілочисельних операціях}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        & Int16 & Int32 & Int64 & Float & double \\
+        \hline
+        Int16 & Int16 & Int32 & Int64 & Float & double \\
+        Int32 & Int32 & Int64 & Int64 & Float & double \\
+        Int64 & Int64 & Int64 & Int64 & float & double \\
+        Float & float & float & float & Float & double \\
+        double & double & double & double & double & double \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Бібліотека вбудованих функцій}
+Приклади: \texttt{System.Console.WriteLine}, \texttt{System.Console.ReadLine}.
+
+\section{Асемблер}
+Список інструкцій CLI (з ECMA):
+\begin{lstlisting}
+0x00 nop
+0x01 break
+0x02 ldarg.0
+...
+\end{lstlisting}
+
+\chapter{Тестування}
+\section{Системи автоматичного тестування}
+Для перевірки стабільності використано систему NUNIT.
+
+\section{Розробка штурмових тестів}
+Штурмові тести розроблялися з особливою ретельністю. Приклади програм:
+\begin{lstlisting}
+Main: PROC;
+    DCL ( P1, P2, P3 ) FIXED;
+    P1 = 1Ah;
+    P2 = 1001b;
+    P3 = 150;
+    CALL PRINT_I(P1);
+    CALL PRINT_I(P2);
+    CALL PRINT_I(P3);
+END Main;
+\end{lstlisting}
+
+\chapter{Епілог}
+\section{Висновки}
+Реалізація компілятора за допомогою сучасних засобів розробки не становить труднощів. На Java чи C це було б менш привабливо.
+
+\section{Подяки}
+Дякуємо науковим керівникам та розробникам Microsoft за технічні засоби.
+
+\section{Додатки}
+\subsection{Література}
+\begin{enumerate}
+    \item Фролов Г.Д., Олюнін В.Ю. Практичний курс програмування ПЛ/1.
+    \item Ахо, Сеті, Ульман. Компілятори.
+    \item Дональд Кнут. Мистецтво програмування. 3 томи.
+    \item MSDN April 2003.
+\end{enumerate}
+
+\end{document}

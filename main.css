@@ -127,11 +127,11 @@ p {
   margin: auto;
   padding: 8px;
   text-align: left;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4; }
   @media (min-width: 768px) {
     p {
-      font-size: 22px; } }
+      font-size: 18px; } }
 
 p:hover {
   background: white; }
@@ -213,7 +213,7 @@ aside {
     white-space: pre; }
   @media (min-width: 768px) {
     .footer__copy {
-      font-size: 24px; } }
+      font-size: 16px; } }
 
 .semantics {
   text-align: center; }
@@ -245,10 +245,10 @@ aside {
   padding-left: 32px; }
   .status ol {
     line-height: 1.5;
-    font-size: 18px; }
+    font-size: 16px; }
     @media (min-width: 768px) {
       .status ol {
-        font-size: 22px; } }
+        font-size: 18px; } }
 
 .resources {
   max-width: 650px;
@@ -268,10 +268,10 @@ aside {
   .resources__list {
     padding-left: 32px;
     line-height: 1.5;
-    font-size: 18px; }
+    font-size: 16px; }
     @media (min-width: 768px) {
       .resources__list {
-        font-size: 22px; } }
+        font-size: 18px; } }
 
 .index {
   max-width: 900px;
@@ -365,7 +365,7 @@ aside {
       width: initial; }
     @media (min-width: 768px) {
       .macro__col {
-        font-size: 22px; } }
+        font-size: 16px; } }
 
 @media (min-width: 920px) {
   .langf {

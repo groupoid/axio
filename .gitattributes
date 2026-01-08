@@ -5,3 +5,4 @@
 *.sh linguist-detectable=false
 *.html linguist-detectable=false
 *.htm linguist-detectable=false
+*.pug linguist-detectable=false

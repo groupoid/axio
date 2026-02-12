@@ -282,6 +282,8 @@ reals, ZFC, large cardinals, and forcing — cover all known mathematical domain
 ```
 $ cp *.ttf ~/.local/share/fonts
 $ sudo apt install texlive-full
+$ sudo apt install texlive-lang-cyrillic
+$ sudo apt install cm-super
 $ sudo fc-cache -f
 $ fc-match Geometria
 $ make

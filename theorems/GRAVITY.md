@@ -109,7 +109,7 @@ Key elements:
 
 This "Urs universe" offers a computable, topological UFT foundation, aligning with the tree's quantum branches [Vol1].
 
-## 5. Structural TOC of Topic of Further Formal Research using HoTT Modal Proof Assistants
+## 5. Formal Research using HoTT Modal Proof Assistants
 
 For advancing computable UFTs, we propose a research agenda formalized in HoTT modal proof assistants (e.g., Agda-Cubical, Coq-HoTT with modalities). This leverages modal extensions for cohesion, supergeometry, and verification [Vol3], [Vol4]. The TOC structures topics hierarchically:
 

@@ -1,0 +1,22 @@
+.footer {
+    width: 100%;
+    padding: 15px;
+    background: #7F8C8D;
+    color: white;
+    text-align: center;
+
+    &__logo {
+        width: 50px;
+        margin: 20px;
+    }
+
+    &__copy {
+        font-size: 16px;
+        white-space: pre;
+    }
+    @media(min-width: 768px) {
+        &__copy {
+            font-size: 16px;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+.index {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__col {
+        white-space: nowrap;
+        padding: 15px 25px;
+        margin: 15px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border-color: rgba(38, 139, 210, 0.1);
+        }
+    }
+
+    a {
+        line-height: 1.5;
+        color: #888;
+        font-size: 24px;
+    }
+
+    a[href^="#"] {
+        color: #BBBBBB;
+    }
+
+    a:hover {
+        color: #3A98C8;
+    }
+
+    a[href^="#"]:hover {
+        color: #BBBBBB;
+    }
+
+    h2 {
+        font-size: 24px;
+        text-align: left;
+        color: #707070;
+        margin: 0 0 10px;
+        text-transform: uppercase;
+    }
+}

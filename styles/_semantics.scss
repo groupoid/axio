@@ -1,0 +1,25 @@
+.semantics {
+    text-align: center;
+
+    figure {
+        display: inline-block;
+        max-width: min-content;
+        font-size: 13px;
+        @media(min-width:800px) {
+            font-size: 16px;
+        }
+    }
+
+    h1 {
+        color: #7D8A96;
+        font-size: 32px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(0, 0 , 0,0.3);
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+
+    section {
+        margin-top: 40px;
+    }
+}

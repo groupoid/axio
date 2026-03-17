@@ -1,0 +1,27 @@
+.resources {
+
+    max-width: 650px;
+    margin: 32px auto 0;
+    text-align: left;
+    padding: 8px;
+
+    &__title {
+    display: inline-block;
+        margin-bottom: 10px;
+        color: #7D8A96;
+        font-size: 32px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(0, 0 , 0,0.3);
+        @media(min-width: 768px) {
+            font-size: 40px;
+        }
+    }
+    &__list {
+        padding-left: 32px;
+        line-height: 1.5;
+        font-size: 16px;
+        @media(min-width: 768px) {
+            font-size: 18px;
+        }
+    }
+}

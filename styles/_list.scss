@@ -1,0 +1,13 @@
+.list {
+    h1 {
+        color: #7D8A96;
+        font-size: 32px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(0, 0 , 0,0.3);
+        display: inline-block;
+        margin: 42px 8px 10px;
+        @media(min-width: 768px) {
+            font-size: 40px;
+        }
+    }
+}

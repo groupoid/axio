@@ -1,0 +1,47 @@
+code {
+    display: inline-block;
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    white-space: pre;
+    text-align: left;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #00259c;
+    background: white;
+    box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #e7e6e5;
+    @media (min-width: 768px) {
+        font-size: 17px;
+    }
+}
+
+pre {
+    white-space: normal;
+    max-width: 100%;
+    width: 650px;
+    padding: 12px;
+    margin: 8px auto;
+    text-align: left;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #00259c;
+    background: white;
+    box-shadow: 0 1px 4px #f1f0f0, inset 0 0 0 1px #e7e6e5;
+    @media (min-width: 768px) {
+        font-size: 17px;
+    }
+}
+
+.h__name {
+    color: #00259c;
+    font-weight: bold;
+}
+
+.h__keyword {
+    color: #ca30d4;
+}
+
+.h__symbol {
+    color: #9f9fa3;
+}

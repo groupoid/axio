@@ -4,22 +4,22 @@
   "description": "FORMAL/1: Groupoid Infinity Formal System",
   "main": "",
   "scripts": {
-    "start": "node-sass ../groupoid.space/styles -o ./ && pug -O ./framework.js index.pug ",
+    "build": "sass ./styles:./ && pug -O ./framework.js ./index.pug -o ./",
+    "start": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/groupoid/axiom.dev"
+    "url": "https://github.com/groupoid/axio/"
   },
   "author": "Namdak Tonpa",
   "license": "DHARMA",
   "preinstall": "npm i -g node-sass && npm i -g pug-cli",
   "devDependencies": {
     "mathjax-full": "^3.2.0",
-    "node-sass": "^7.0.1",
-    "npm": "^7.20.6",
+    "npm": "^8.12.1",
     "pug": "^3.0.2",
     "pug-cli": "^1.0.0-alpha6",
-    "sass": "^1.2.1"
+    "sass": "^1.52.2"
   }
 }

@@ -60,7 +60,9 @@ Grothendieck fibration of syntactic categories under Lawvere's functorial semant
 \tableofcontents
 \newpage
 
-\section{Categorical Foundations}
+\section{Type Systems for Working Mathematician}
+
+\subsection{The Prerequisites}
 
 \begin{definition}[Categories with Families (CwF)]
 A CwF consists of a category $\mathcal{C}$ of contexts and substitutions with a terminal object, equipped with a functor $Ty : \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$, a presheaf of terms $Tm : (\int Ty)^{\mathrm{op}} \to \mathbf{Set}$, and a context comprehension operation with projection morphisms.
@@ -89,7 +91,7 @@ morphisms.
 \noindent\makebox[\textwidth][c]{%
 \begin{tabular}{lll}
 \hline
-\textbf{Language} & \textbf{Semantic Category / Model} & \textbf{Application \& Physical/Mathematical Domain} \\
+\textbf{System} & \textbf{Semantic Category / Model} & \textbf{Application \& Physical/Mathematical Domain} \\
 \hline
 $O_\lambda$ & Cartesian Closed Category ($\mathbf{CCC}$) & Untyped $\lambda$-calculus (evaluation and interpretation) \\
 $O_\pi$ & Symmetric Monoidal Category & Process calculi (CCS, CSP, Milner's $\pi$-calculus) \\
@@ -116,7 +118,7 @@ Ulrik & $\mathbf{(\infty, 1)\text{-}Cat}$ (Riehl-Shulman STT) & Simplicial $(\in
 \end{table}
 
 \newpage
-\section{The Three Spines of the Language Lattice}
+\subsection{The Three Spines of the Language Lattice}
 The collection of formal internal languages does not admit a totally ordered hierarchy. Rather, the architecture factors into three principal spines. The first spine (\textbf{Frank}--\textbf{Christine}--\textbf{Laurent}) is dedicated to constructive inductive schemes and functional analysis. The central spine (\textbf{Henk}--\textbf{Per}--\textbf{Anders}--\textbf{Urs}) models univalent homotopy types and cohesive $\infty$-topoi. The third spine (\textbf{Dan}--\textbf{Mike}--\textbf{Ulrik}) models directed synthetic category theory and discrete operational presentations. As formalized in the commutative diagram below, the respective syntaxes are mutually disjoint; all inter-language translations are strictly mediated by functorial morphisms, including left adjoint lifts, reflective embeddings, and forgetful coreflections.
 
 \begin{center}
@@ -140,6 +142,43 @@ W-types (Per path) is a design decision motivated by purity, not a strict orderi
 \end{remark}
 
 \newpage
+\subsection{The Cosmic Cube Classification}
+The terminal object of the language lattice, the \textbf{Cosmic Cube}, classifies the various type theories by mapping the three spines to the axes of a three-dimensional coordinate system. The axes represent fundamental semantic properties of the systems:
+\begin{enumerate}
+    \item \textbf{Strictness Axis ($\Delta \leftrightarrow \nabla$):} Models the distinction between strict (presheaf-like, $\Delta$) and modal/cohesive/directed (sheaf-like, $\nabla$) semantics.
+    \item \textbf{Groupoidality Axis ($\mathbf{2} \leftrightarrow \mathbb{N}$):} Distinguishes 1-categorical/set-theoretic models ($\mathbf{2}$) from higher homotopy-theoretic / $\infty$-groupoid models ($\mathbb{N}$).
+    \item \textbf{Stability Axis ($\mathbf{1} \leftrightarrow \mathbb{H}$):} Contrasts standard cartesian logic/resource-insensitive type theory ($\mathbf{1}$) with stable/linear/quantum logic and spectra ($\mathbb{H}$).
+\end{enumerate}
+
+Specifically, the three spines of the Groupoid Infinity stack correspond to moving along the axes of this Cosmic Cube:
+\begin{itemize}
+    \item \textbf{Spine I (Set Analysis):} Maps to the \textbf{Strictness Axis ($\Delta \leftrightarrow \nabla$)}, exploring the transitions from strict constructive inductive systems (Frank, Christine) to modal and topological analysis (Laurent).
+    \item \textbf{Spine II (Super Homotopy):} Maps to the \textbf{Groupoidality Axis ($\mathbf{2} \leftrightarrow \mathbb{N}$)}, moving from set-theoretic base languages (Per) to univalent homotopy type theory and $\infty$-groupoids (Anders).
+    \item \textbf{Spine III (Infinity Category Theory):} Maps to the \textbf{Stability Axis ($\mathbf{1} \leftrightarrow \mathbb{H}$)}, formalizing stable category theory, chain complexes, operational presentations, and stable spectra (Dan, Mike, Ulrik).
+\end{itemize}
+
+Under this geometric classification, the vertices of the Cosmic Cube correspond to the following configurations:
+\begin{table}[ht!]
+\centering
+\caption{Vertices of the Cosmic Cube}
+\label{tab:cosmic_cube}
+\begin{tabular}{ccl}
+\hline
+\textbf{Configuration} & \textbf{Structure} & \textbf{Description \& Primary System} \\
+\hline
+$(\Delta, \mathbf{2}, \mathbf{1})$ & $\Pi\Sigma$ (MLTT-75) & Dependently typed $\lambda$-calculus --- Per \\
+$(\Delta, \mathbf{2}, \mathbb{H})$ & Linear $\Pi\Sigma$ & $\lambda$-calculus, resource-sensitive computation --- Urs \\
+$(\Delta, \mathbb{N}, \mathbf{1})$ & HoTT & Homotopy Type Theory --- Anders \\
+$(\Delta, \mathbb{N}, \mathbb{H})$ & Linear HoTT & Linear Homotopy Type Theory --- Urs \\
+$(\nabla, \mathbf{2}, \mathbf{1})$ & Modal MLTT & Modal Dependently Typed $\lambda$-calculus --- Anders \\
+$(\nabla, \mathbf{2}, \mathbb{H})$ & $\infty$-toposes & $\infty$-toposes, Quantum Field Theory (dirtt, stt) --- Dan \\
+$(\nabla, \mathbb{N}, \mathbf{1})$ & Modal HoTT & Synthetic Differential Geometry --- Anders \\
+$(\nabla, \mathbb{N}, \mathbb{H})$ & Modal Linear HoTT & Modal Linear Homotopy Type Theory --- Urs \\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
 \subsection{The Topoi Structure}
 To analyze the gradual expansion of language primitives, we construct a fine-grained lattice of semantic categories radiating from the category of dependent products ($\mathbf{\Pi}\text{-}\mathbf{Cat}$ (Henk)). The system expands in three cardinal directions (adding dependent sums to yield locally cartesian closed categories $\mathbf{LCCC}$, inductive algebras $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}$ (Frank), and bicartesian closed structures $\mathbf{BiCCC}$ (IPL)) before merging into rich categories of models such as $\mathbf{LCCC} + \mathbf{Ind}$ (Christine), $\mathbf{\Pi W}\text{-}\mathbf{Pretopos}$ (Per), $\infty\text{-}\mathbf{Grpd}$ (Anders), and cohesive $\infty$-topoi. On the right, the lattice incorporates the infinity category spine: operational algebra branch ($\mathbf{Pres}$ (Dan)), the directed 1-category branch ($\mathbf{1\text{-}Cat}$ (Mike)), and the simplicial $(\infty, 1)$-category branch ($\mathbf{(\infty, 1)\text{-}Cat}$ (Ulrik)). All cross-branch connections are detailed in the global map in Section 2.
 
@@ -160,7 +199,7 @@ The formal internal languages form a connected lattice structure across three sp
 \noindent\makebox[\textwidth][c]{\usebox{\diagbox}}
 
 \newpage
-\subsection{The Semantic Foundations: Structural, Cohesive, and Directed Modalities}
+\subsection{The Semantic Foundations}
 The lattice stratifies into structural, cohesive, linear, and directed semantics. The foundational correspondences between semantic models and their internal syntaxes progressively build up structure:
 
 \begin{itemize}
@@ -172,6 +211,7 @@ The lattice stratifies into structural, cohesive, linear, and directed semantics
 \end{itemize}
 
 \newpage
+\subsection{The Internal Languages}
 This establishes a rich hierarchy of correspondences:
 
 \begin{center}
@@ -192,7 +232,7 @@ This establishes a rich hierarchy of correspondences:
 \section{Spine I: Set Analysis}
 This spine represents the constructive/inductive spine of type theories and functional analysis. It is characterized by inductive algebraic constructions and real/functional analysis foundations.
 
-\subsection{Frank: Minimal CIC \cite{Pfenning89}}\footnote{\url{https://frank.groupoid.space}}
+\subsection{Frank: Minimal Inductive System \cite{Pfenning89}}\footnote{\url{https://frank.groupoid.space}}
 Extends Henk with strictly positive inductive schemes.
 \begin{table}[ht!]
 \centering
@@ -204,12 +244,12 @@ Extends Henk with strictly positive inductive schemes.
 \end{tabular}
 \end{table}
 
-\subsection{Christine: Full CIC (CwF/CwA) \cite{paulinmohring}}\footnote{\url{https://christine.groupoid.space}}
+\subsection{Christine: Calculus of Inductive Constructions \cite{paulinmohring}}\footnote{\url{https://christine.groupoid.space}}
 Complete Calculus of Inductive Constructions with $\Sigma$, Id, and Ind.
 \begin{table}[ht!]
 \centering
 \begin{tabular}{rl}
- cosmos :=&$\textbf{U}_j$ \\
+ cosmos :=&$\textbf{U}_j\ \| \textbf{Prop}$ \\
     var :=&$\textbf{var}\ name$ \\
      pi :=&$\Pi\ name\ E\ E\ |\ \lambda\ name\ E\ E\ |\ E\ E$ \\
      id :=&$\textbf{Id}\ E\ |\ \textbf{ref}\ E\ |\ \textbf{id$_J$}\ E$ \\
@@ -430,97 +470,6 @@ To construct a type theory for synthetic category theory, one might hope to inte
 \end{tabular}
 \end{table}
 
-\newpage
-\section{Cohomology of Programming Languages}
-Each language's syntax is analyzed \emph{individually} as a CW-complex.
-
-For a formal language $\mathcal{O}_x$, we associate a chain complex of abelian groups (free $\mathbb{Z}$-modules) $C_*(\mathcal{O}_x)$ constructed from the syntax and reduction/conversion semantics. This construction models the syntactic space as a cell complex (CW-complex) where paths and higher homotopies encode the computational rules.
-
-\begin{definition}[Syntactic CW-Complex]
-For a language $\mathcal{O}_x$ with term syntax $T$ generated by a signature $\Sigma$, the syntactic cell complex $C_*(\mathcal{O}_x)$ is defined in low dimensions by:
-\begin{itemize}
-    \item \textbf{0-cells
-    ($C_0(\mathcal{O}_x)$) }: The free $\mathbb{Z}$-module generated by the set of basic syntactic
-      constructors $c \in \Sigma$ (e.g., \texttt{Var}, \texttt{Pi}, \texttt{Lam}, \texttt{App} for Henk).
-      Any term $t \in T$ has an associated constructor-occurrence representation:
-    \[
-    [t] = \sum_{c \in \Sigma} \mathrm{count}(c, t) \cdot c \;\; \in C_0(\mathcal{O}_x)
-    \]
-    where $\mathrm{count}(c, t)$ is the number of times the constructor $c$ appears in the syntax tree of $t$.
-    \item \textbf{1-cells
-    ($C_1(\mathcal{O}_x)$)}: The free $\mathbb{Z}$-module generated by the rewriting and reduction rules
-    $r \in \mathcal{R}$ of the language (e.g., $\beta$-reductions, evaluation steps). Each $1$-cell $r : t \to t'$
-    represents a directed rewrite path from a redex term $t$ to a contractum term $t'$.
-    \item \textbf{2-cells
-    ($C_2(\mathcal{O}_x)$)}: The free $\mathbb{Z}$-module generated by equivalence relations, critical pairs,
-    confluence diagrams, and conversion equations (e.g., $\eta$-conversions, commuting conversions). A $2$-cell
-    $e$ represents a coherence condition or a closed loop of rewrite steps.
-    \item \textbf{Higher cells
-    ($C_k(\mathcal{O}_x)$ for $k \geq 3$)}: Coherence relations between equations, such as Mac Lane pentagon
-    relations, path-type univalence coherences (in Anders), or quadraticality constraints (in Mike).
-\end{itemize}
-\end{definition}
-
-\begin{definition}[Boundary Operators]
-The boundary operators $\partial_k : C_k(\mathcal{O}_x) \to C_{k-1}(\mathcal{O}_x)$ are defined as follows:
-\begin{enumerate}
-    \item The 1-boundary operator $\partial_1 : C_1(\mathcal{O}_x) \to C_0(\mathcal{O}_x)$ is the linear map determined by the net change in constructor counts caused by a rewrite rule $r : t \to t'$:
-    \[ \partial_1(r) = [t'] - [t] \]
-    \item The 2-boundary operator $\partial_2 : C_2(\mathcal{O}_x) \to C_1(\mathcal{O}_x)$ is determined by the boundary of confluence diagrams or conversion loops. If a 2-cell $e$ represents a confluence diagram from a term $s$ reducing to $s'$ via two different paths of rewrites $p_1 = (r_{1,1}, \dots, r_{1,m})$ and $p_2 = (r_{2,1}, \dots, r_{2,n})$, the boundary is:
-    \[ \partial_2(e) = \sum_{j=1}^m r_{1,j} - \sum_{k=1}^n r_{2,k} \]
-    Since both paths $p_1$ and $p_2$ start at $s$ and end at $s'$, the net constructor changes must match:
-    \[ \partial_1(p_1) = [s'] - [s] = \partial_1(p_2) \]
-    Thus:
-    \[ \partial_1(\partial_2(e)) = \partial_1(p_1) - \partial_1(p_2) = 0 \]
-    This proves that $\partial_1 \circ \partial_2 = 0$, establishing a valid chain complex.
-\end{enumerate}
-\end{definition}
-
-\begin{definition}[Syntactic Cohomology]
-Let $C_*(\mathcal{O}_x)$ be the syntactic chain complex of $\mathcal{O}_x$ and let $G$ be an abelian group of coefficients. The cochain complex $C^*(\mathcal{O}_x; G) = \mathrm{Hom}(C_*(\mathcal{O}_x), G)$ has coboundary operators $\delta^k : C^k(\mathcal{O}_x; G) \to C^{k+1}(\mathcal{O}_x; G)$ defined by $\delta^k(\phi) = \phi \circ \partial_{k+1}$.
-The syntactic cohomology groups are:
-\[ H^k(\mathcal{O}_x; G) = \ker(\delta^k) / \mathrm{im}(\delta^{k-1}) \]
-\end{definition}
-
-\subsection{Physical Interpretations of Cohomology Groups}
-The cohomology groups $H^k(\mathcal{O}_x; G)$ measure fundamental properties of the syntax and semantics of $\mathcal{O}_x$:
-\begin{itemize}
-    \item $H^0(\mathcal{O}_x; G)$: Measures the \emph{syntactic dimension} or independent constructor classes. A class in $H^0$ is a function $f : C_0 \to G$ such that for any rewrite $r : t \to t'$, $f([t]) = f([t'])$. Thus, $H^0$ captures invariants preserved under computation (such as type preservation or conserved weights of terms).
-    \item $H^1(\mathcal{O}_x; G)$: Measures \emph{normalization obstructions}. An element in $H^1$ is represented by a 1-cocycle (an assignment of weights to rewrites that sums to zero on closed loops) modulo those coming from constructor valuations. Non-trivial $H^1$ classes indicate non-confluent rewrites, cycles of reductions (non-termination), or irreversible compilation steps.
-    \item $H^2(\mathcal{O}_x; G)$: Measures \emph{coherence obstructions}. It captures the obstructions to filling confluence diagrams with higher-dimensional conversion cells. A non-trivial class in $H^2$ represents a critical pair (or confluence loop) that cannot be closed by conversions or equivalence cells, pointing to deep semantic mismatches or failures of univalence/coherence.
-\end{itemize}
-
-\newpage
-\subsection{Examples across the Spines}
-
-\begin{example}[Spines I/II: Strict \& Homotopical]
-\end{example}
-\begin{itemize}
-    \item \textbf{Henk
-    ($\mathcal{O}_\Pi$)}: The core type theory.
-    \[ C_0 = \{ \mathtt{Var}, \mathtt{Universe}, \mathtt{Pi}, \mathtt{Lam}, \mathtt{App} \} \]
-    The 1-cells are generated by $\beta$-reduction:
-    \[ r_\beta : \mathtt{App}(\mathtt{Lam}(x, A, t), u) \to t[u/x] \]
-    $\partial_1(r_\beta) = [t[u/x]] - ( \mathtt{App} + \mathtt{Lam} + [t] + [u] )$.
-    The 2-cells consist of $\eta$-conversions:
-    \[ e_\eta : \mathtt{Lam}(x, A, \mathtt{App}(t, x)) \equiv_\eta t \]
-    Since Henk is strongly normalizing and confluent (Church-Rosser), the higher cohomology $H^k(\mathcal{O}_\Pi; \mathbb{Z})$ for $k \geq 1$ is trivial, reflecting a contractible syntactic space.
-    \item \textbf{Anders
-    ($\mathcal{O}_{\mathrm{Anders}}$)}: Adds univalence and Glue types. The univalence axiom represents a path-space equivalence between isomorphic types. This introduces higher-dimensional coherences (Glue cells) acting as 3-cells, preventing non-trivial 2-dimensional obstructions.
-    \item \textbf{Urs
-    ($\mathcal{O}_{\mathrm{Urs}}$)}: Adds modalities ($\flat, \sharp$) and differential structures (forms, connections). The syntactic CW-complex of $\mathcal{O}_{\mathrm{Urs}}$ is enriched with topological and differential cells, yielding non-trivial $H^k$ corresponding to de Rham cohomology and Chern-Weil invariants of smooth/differential type structures.
-\end{itemize}
-
-\begin{example}[Spine III: Category Theory]
-\end{example}
-\begin{itemize}
-    \item \textbf{Dan
-    ($\mathcal{O}_{\mathrm{Dan}}$)}: Operational algebra. Here, term syntax encodes algebraic operations (e.g., face maps $\partial_i$, degeneracies $s_i$). The cell complex $C_*(\mathcal{O}_{\mathrm{Dan}})$ is isomorphic to the standard simplicial chain complex of the underlying category/algebraic presentation.
-    \item \textbf{Mike
-    ($\mathcal{O}_{\mathrm{Mike}}$)}: Directed category theory. 1-cells are non-reversible functors/morphisms, meaning paths are directed. The boundary operator $\partial_1$ tracks directed change. Quadraticality constraints act as 2-cells that model the non-commutative relation profiles of monoidal/directed types.
-    \item \textbf{Ulrik
-    ($\mathcal{O}_{\mathrm{Ulrik}}$)}: Simplicial $\infty$-categories. Generalizes Mike's 1-categories to directed simplicial spaces. The higher cells ($C_k$ for $k \geq 2$) represent the Segal completeness conditions and Rezk completeness conditions, ensuring that the directed paths compose coherently up to higher homotopies.
-\end{itemize}
 
 \newpage
 \section{Spectral Sequence of Language Categories}
@@ -660,6 +609,96 @@ To illustrate the conversions, Table~\ref{tab:mobius} compares the representatio
 \end{tabular}%
 }
 \end{table}
+
+\section{Cohomology of Programming Languages}
+Each language's syntax is analyzed \emph{individually} as a CW-complex.
+
+For a formal language $\mathcal{O}_x$, we associate a chain complex of abelian groups (free $\mathbb{Z}$-modules) $C_*(\mathcal{O}_x)$ constructed from the syntax and reduction/conversion semantics. This construction models the syntactic space as a cell complex (CW-complex) where paths and higher homotopies encode the computational rules.
+
+\begin{definition}[Syntactic CW-Complex]
+For a language $\mathcal{O}_x$ with term syntax $T$ generated by a signature $\Sigma$, the syntactic cell complex $C_*(\mathcal{O}_x)$ is defined in low dimensions by:
+\begin{itemize}
+    \item \textbf{0-cells
+    ($C_0(\mathcal{O}_x)$) }: The free $\mathbb{Z}$-module generated by the set of basic syntactic
+      constructors $c \in \Sigma$ (e.g., \texttt{Var}, \texttt{Pi}, \texttt{Lam}, \texttt{App} for Henk).
+      Any term $t \in T$ has an associated constructor-occurrence representation:
+    \[
+    [t] = \sum_{c \in \Sigma} \mathrm{count}(c, t) \cdot c \;\; \in C_0(\mathcal{O}_x)
+    \]
+    where $\mathrm{count}(c, t)$ is the number of times the constructor $c$ appears in the syntax tree of $t$.
+    \item \textbf{1-cells
+    ($C_1(\mathcal{O}_x)$)}: The free $\mathbb{Z}$-module generated by the rewriting and reduction rules
+    $r \in \mathcal{R}$ of the language (e.g., $\beta$-reductions, evaluation steps). Each $1$-cell $r : t \to t'$
+    represents a directed rewrite path from a redex term $t$ to a contractum term $t'$.
+    \item \textbf{2-cells
+    ($C_2(\mathcal{O}_x)$)}: The free $\mathbb{Z}$-module generated by equivalence relations, critical pairs,
+    confluence diagrams, and conversion equations (e.g., $\eta$-conversions, commuting conversions). A $2$-cell
+    $e$ represents a coherence condition or a closed loop of rewrite steps.
+    \item \textbf{Higher cells
+    ($C_k(\mathcal{O}_x)$ for $k \geq 3$)}: Coherence relations between equations, such as Mac Lane pentagon
+    relations, path-type univalence coherences (in Anders), or quadraticality constraints (in Mike).
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Boundary Operators]
+The boundary operators $\partial_k : C_k(\mathcal{O}_x) \to C_{k-1}(\mathcal{O}_x)$ are defined as follows:
+\begin{enumerate}
+    \item The 1-boundary operator $\partial_1 : C_1(\mathcal{O}_x) \to C_0(\mathcal{O}_x)$ is the linear map determined by the net change in constructor counts caused by a rewrite rule $r : t \to t'$:
+    \[ \partial_1(r) = [t'] - [t] \]
+    \item The 2-boundary operator $\partial_2 : C_2(\mathcal{O}_x) \to C_1(\mathcal{O}_x)$ is determined by the boundary of confluence diagrams or conversion loops. If a 2-cell $e$ represents a confluence diagram from a term $s$ reducing to $s'$ via two different paths of rewrites $p_1 = (r_{1,1}, \dots, r_{1,m})$ and $p_2 = (r_{2,1}, \dots, r_{2,n})$, the boundary is:
+    \[ \partial_2(e) = \sum_{j=1}^m r_{1,j} - \sum_{k=1}^n r_{2,k} \]
+    Since both paths $p_1$ and $p_2$ start at $s$ and end at $s'$, the net constructor changes must match:
+    \[ \partial_1(p_1) = [s'] - [s] = \partial_1(p_2) \]
+    Thus:
+    \[ \partial_1(\partial_2(e)) = \partial_1(p_1) - \partial_1(p_2) = 0 \]
+    This proves that $\partial_1 \circ \partial_2 = 0$, establishing a valid chain complex.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Syntactic Cohomology]
+Let $C_*(\mathcal{O}_x)$ be the syntactic chain complex of $\mathcal{O}_x$ and let $G$ be an abelian group of coefficients. The cochain complex $C^*(\mathcal{O}_x; G) = \mathrm{Hom}(C_*(\mathcal{O}_x), G)$ has coboundary operators $\delta^k : C^k(\mathcal{O}_x; G) \to C^{k+1}(\mathcal{O}_x; G)$ defined by $\delta^k(\phi) = \phi \circ \partial_{k+1}$.
+The syntactic cohomology groups are:
+\[ H^k(\mathcal{O}_x; G) = \ker(\delta^k) / \mathrm{im}(\delta^{k-1}) \]
+\end{definition}
+
+\subsection{Physical Interpretations of Cohomology Groups}
+The cohomology groups $H^k(\mathcal{O}_x; G)$ measure fundamental properties of the syntax and semantics of $\mathcal{O}_x$:
+\begin{itemize}
+    \item $H^0(\mathcal{O}_x; G)$: Measures the \emph{syntactic dimension} or independent constructor classes. A class in $H^0$ is a function $f : C_0 \to G$ such that for any rewrite $r : t \to t'$, $f([t]) = f([t'])$. Thus, $H^0$ captures invariants preserved under computation (such as type preservation or conserved weights of terms).
+    \item $H^1(\mathcal{O}_x; G)$: Measures \emph{normalization obstructions}. An element in $H^1$ is represented by a 1-cocycle (an assignment of weights to rewrites that sums to zero on closed loops) modulo those coming from constructor valuations. Non-trivial $H^1$ classes indicate non-confluent rewrites, cycles of reductions (non-termination), or irreversible compilation steps.
+    \item $H^2(\mathcal{O}_x; G)$: Measures \emph{coherence obstructions}. It captures the obstructions to filling confluence diagrams with higher-dimensional conversion cells. A non-trivial class in $H^2$ represents a critical pair (or confluence loop) that cannot be closed by conversions or equivalence cells, pointing to deep semantic mismatches or failures of univalence/coherence.
+\end{itemize}
+
+\subsection{Examples across the Spines}
+
+\begin{example}[Spines I/II: Strict \& Homotopical]
+\end{example}
+\begin{itemize}
+    \item \textbf{Henk
+    ($\mathcal{O}_\Pi$)}: The core type theory.
+    \[ C_0 = \{ \mathtt{Var}, \mathtt{Universe}, \mathtt{Pi}, \mathtt{Lam}, \mathtt{App} \} \]
+    The 1-cells are generated by $\beta$-reduction:
+    \[ r_\beta : \mathtt{App}(\mathtt{Lam}(x, A, t), u) \to t[u/x] \]
+    $\partial_1(r_\beta) = [t[u/x]] - ( \mathtt{App} + \mathtt{Lam} + [t] + [u] )$.
+    The 2-cells consist of $\eta$-conversions:
+    \[ e_\eta : \mathtt{Lam}(x, A, \mathtt{App}(t, x)) \equiv_\eta t \]
+    Since Henk is strongly normalizing and confluent (Church-Rosser), the higher cohomology $H^k(\mathcal{O}_\Pi; \mathbb{Z})$ for $k \geq 1$ is trivial, reflecting a contractible syntactic space.
+    \item \textbf{Anders
+    ($\mathcal{O}_{\mathrm{Anders}}$)}: Adds univalence and Glue types. The univalence axiom represents a path-space equivalence between isomorphic types. This introduces higher-dimensional coherences (Glue cells) acting as 3-cells, preventing non-trivial 2-dimensional obstructions.
+    \item \textbf{Urs
+    ($\mathcal{O}_{\mathrm{Urs}}$)}: Adds modalities ($\flat, \sharp$) and differential structures (forms, connections). The syntactic CW-complex of $\mathcal{O}_{\mathrm{Urs}}$ is enriched with topological and differential cells, yielding non-trivial $H^k$ corresponding to de Rham cohomology and Chern-Weil invariants of smooth/differential type structures.
+\end{itemize}
+
+\begin{example}[Spine III: Category Theory]
+\end{example}
+\begin{itemize}
+    \item \textbf{Dan
+    ($\mathcal{O}_{\mathrm{Dan}}$)}: Operational algebra. Here, term syntax encodes algebraic operations (e.g., face maps $\partial_i$, degeneracies $s_i$). The cell complex $C_*(\mathcal{O}_{\mathrm{Dan}})$ is isomorphic to the standard simplicial chain complex of the underlying category/algebraic presentation.
+    \item \textbf{Mike
+    ($\mathcal{O}_{\mathrm{Mike}}$)}: Directed category theory. 1-cells are non-reversible functors/morphisms, meaning paths are directed. The boundary operator $\partial_1$ tracks directed change. Quadraticality constraints act as 2-cells that model the non-commutative relation profiles of monoidal/directed types.
+    \item \textbf{Ulrik
+    ($\mathcal{O}_{\mathrm{Ulrik}}$)}: Simplicial $\infty$-categories. Generalizes Mike's 1-categories to directed simplicial spaces. The higher cells ($C_k$ for $k \geq 2$) represent the Segal completeness conditions and Rezk completeness conditions, ensuring that the directed paths compose coherently up to higher homotopies.
+\end{itemize}
 
 \section{Conclusion}
 

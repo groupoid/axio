@@ -28,9 +28,9 @@
   keepspaces=true
 }
 
-\title{AXIO/1:\\
-Internal Languages, Categorical Models, and the\\
-Spectral Lattice of Formal Systems}
+\title{Architecture of Mathematics:\\
+Internal Languages, Categorical Models, \\
+and the Spectral Lattice of Formal Systems}
 \author{Groupoid Infinity}
 \date{\today}
 
@@ -96,7 +96,8 @@ Frank & $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}$ & Minimal Calculus of 
 Christine ($O_\Sigma$) & $\mathbf{LCCC} + \mathbf{Ind}$ & Full CIC (MLTT-72 contextual completeness, dependent sums) \\
 Laurent & $\mathbf{Top} / \mathbf{Met}$ & Calculus and Functional Analysis (topological and metric spaces) \\
 Per ($O_W$) & $\mathbf{LCCC} + \mathbf{W}$ & Martin-L\"{o}f Type Theory MLTT-80 (inductive W-types) \\
-Anders ($O_I$) & $\infty\text{-}\mathbf{Grpd}$ / $\mathbf{HTS}$ (Cubical Sets) & Homotopy Type System CCHM (formal mathematics, univalence) \\
+Anders ($O_I$) & $\infty\text{-}\mathbf{Cat}$ & Cubical Type Theory with Path types, no HITs ($\infty$-categories) \\
+Anders\text{+} & $\infty\text{-}\mathbf{Topos}$ & Cubical Type Theory with HITs (lightweight core, univalence) \\
 \hline
 Felix ($O_{\dashv}$) & $\mathbf{Cohesive}\ \infty\text{-}\mathbf{Topos}$ & Modal HoTT (synthetic differential supergeometry, flat/sharp) \\
 Jack & $\mathbf{Diff}\ \infty\text{-}\mathbf{Topos}$ & Stable homotopy (spectra, differential forms, K-theory) \\
@@ -160,6 +161,31 @@ The formal internal languages form a connected lattice structure across three sp
 \end{lrbox}
 \noindent\makebox[\textwidth][c]{\usebox{\diagbox}}
 
+\newpage
+\subsection{The Semantic Foundations: Structural, Cohesive, and Directed Modalities}
+The lattice stratifies into structural, cohesive, linear, and directed semantics. The foundational correspondences between semantic models and their internal syntaxes progressively build up structure:
+
+\begin{itemize}
+    \item \textbf{Structural Core:} At the base, Locally Cartesian Closed Categories ($\mathbf{LCCC}$) provide the semantics for $\mathbf{MLTT}$, the pure structural type theory. Upgrading the semantics to $\infty$-categories adds globular path equality, yielding Cubical Type Theory with Path types but without Higher Inductive Types (HITs). Finally, a full $\infty$-topos models Cubical Type Theory with HITs, which maintains a very lightweight core and syntax.
+    \item \textbf{Cohesive Modalities:} Cohesive Type Theory (Felix) is developed specifically to model modalities such as connectedness, compactness, and infinitesimal shapes. Differential Cohesive Type Theory acts as the internal language for Differential Cohesive $\infty$-topoi, adding extra structure to $\infty$-topoi just as $\infty$-categories add path equality to LCCCs. These are typically modeled in the base library via undefined axioms (see \texttt{cohesivett}).
+    \item \textbf{Linear/Tensor Modalities:} Symmetric Monoidal Categories ($\mathbf{SMC}$) supply the semantics for resource-sensitive and directed computations. Here, Process Calculus and Interaction Nets (Lafont) act as the internal language, representing modality types with special comonadic \emph{spawn} arrows that hide the underlying run-time implementation.
+    \item \textbf{Directed and Simplicial Topoi:} Moving toward spatial and temporal operational algebras, presheaf categories ($\mathbf{Pres}$) provide the semantics for Guarded Type Theory (Dan). Incorporating strict directional structures leads to $\mathbf{1\text{-}Cat}$, acting as the semantics for Directed Type Theory (Mike). Finally, scaling to higher dimensions, $\mathbf{(\infty, 1)\text{-}Cat}$ serves as the model for Simplicial Type Theory (Ulrik / Riehl-Shulman STT), extending directed paths with a Segal-like directed interval.
+\end{itemize}
+
+This establishes a rich hierarchy of correspondences:
+
+\begin{center}
+\begin{tikzcd}[row sep=large, column sep=huge]
+\mathbf{LCCC} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{MLTT} \\
+\infty\text{-}\mathbf{Cat} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Cubical\ (Paths,\ no\ HITs)} \\
+\infty\text{-}\mathbf{Topos} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Cubical\ (with\ HITs)} \\
+\mathbf{Cohesive}\ \infty\text{-}\mathbf{Topos} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Cohesive\ HoTT} \\
+\mathbf{SMC} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Process\ Calculus\ /\ Interaction\ Nets} \\
+\mathbf{Pres} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Guarded\ Type\ Theory\ (Dan)} \\
+\mathbf{1\text{-}Cat} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Directed\ Type\ Theory\ (Mike)} \\
+\mathbf{(\infty,1)\text{-}Cat} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Simplicial\ Type\ Theory\ (Ulrik)}
+\end{tikzcd}
+\end{center}
 
 \newpage
 \section{Spine I: Set Analysis}

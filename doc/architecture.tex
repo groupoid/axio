@@ -89,7 +89,7 @@ morphisms.
 \noindent\makebox[\textwidth][c]{%
 \begin{tabular}{lll}
 \hline
-\textbf{Language / Primitive} & \textbf{Semantic Category / Model} & \textbf{Application \& Physical/Mathematical Domain} \\
+\textbf{Language} & \textbf{Semantic Category / Model} & \textbf{Application \& Physical/Mathematical Domain} \\
 \hline
 $O_\lambda$ & Cartesian Closed Category ($\mathbf{CCC}$) & Untyped $\lambda$-calculus (evaluation and interpretation) \\
 $O_\pi$ & Symmetric Monoidal Category & Process calculi (CCS, CSP, Milner's $\pi$-calculus) \\
@@ -128,8 +128,8 @@ themselves are disjoint.
 \begin{center}
 \begin{tikzcd}[row sep=large, column sep=large]
 & \mathbf{Lambda\ Cube} \ar[d] & \\
-& \mathbf{Henk} \ar[d, "\text{+$\Sigma$,Id,W}"] \ar[dl, bend right=15, "\text{extract}"'] \ar[dr, bend left=15, "\text{extract}"] & \\
-\mathbf{Frank} \ar[d, "\text{+$\Sigma$,Id}"'] & \mathbf{Per} \ar[d] \ar[l, "\text{+Ind}"] \ar[r, bend left=15, "\text{extract}"] & \mathbf{Dan} \ar[d, dashed, "\text{Lift}"] \\
+& \mathbf{Henk} \ar[d, "\text{+0,1,2,W}"] \ar[dl, bend right=15, "\text{Ind}"'] \ar[dr, bend left=15, "\text{extract}"] & \\
+\mathbf{Frank} \ar[d, "\text{+Id,Fix}"'] & \mathbf{Per} \ar[d] \ar[l, "\text{W $\rightarrow$ Ind}"] \ar[r, bend left=15, "\text{extract}"] & \mathbf{Dan} \ar[d, dashed, "\text{Lift}"] \\
 \mathbf{Christine} \ar[d, "\text{Analysis}"'] \ar[ur, dotted, <->, "\simeq"] \ar[r] & \mathbf{Anders} \ar[d, "\text{Modal}"] \ar[r, dashed, bend left=15, "\text{Forget}"] & \mathbf{Mike} \ar[d, dashed, "\text{Free}"] \\
 \mathbf{Laurent} \ar[r, "\text{Smooth}"] \ar[dr, bend right=15, "\text{Forms}"'] & \mathbf{Jack} \ar[d, "\text{Diff}"] & \mathbf{Ulrik} \ar[ul, dashed, "\text{Core}"'] \ar[l, red, bend left=15, "\text{STT}"] \ar[dl, red, bend left=15, "\text{STT}"] \\
 & \mathbf{Urs} \ar[d, "\text{Quantum}"] & \\
@@ -198,7 +198,7 @@ This establishes a rich hierarchy of correspondences:
 \section{Spine I: Set Analysis}
 This spine represents the constructive/inductive spine of type theories and functional analysis. It is characterized by inductive algebraic constructions and real/functional analysis foundations.
 
-\subsection{Frank: Minimal CIC \cite{Pfenning89}}
+\subsection{Frank: Minimal CIC \cite{Pfenning89}}\footnote{\url{https://frank.groupoid.space}}
 Extends Henk with strictly positive inductive schemes.
 \begin{table}[ht!]
 \centering
@@ -210,7 +210,7 @@ Extends Henk with strictly positive inductive schemes.
 \end{tabular}
 \end{table}
 
-\subsection{Christine: Full CIC (CwF/CwA) \cite{paulinmohring}}
+\subsection{Christine: Full CIC (CwF/CwA) \cite{paulinmohring}}\footnote{\url{https://christine.groupoid.space}}
 Complete Calculus of Inductive Constructions with $\Sigma$, Id, and Ind.
 \begin{table}[ht!]
 \centering
@@ -224,7 +224,7 @@ Complete Calculus of Inductive Constructions with $\Sigma$, Id, and Ind.
 \end{tabular}
 \end{table}
 
-\subsection{Laurent: Calculus and Functional Analysis \cite{laurent05semantics}}
+\subsection{Laurent: Calculus and Functional Analysis \cite{laurent05semantics}}\footnote{\url{https://laurent.groupoid.space}}
 Laurent formalizes classical real and functional analysis, distribution theory, and measure theory. It provides first-class support for reals, complex numbers, measures, limits, and integration.
 \begin{table}[ht!]
 \centering
@@ -245,7 +245,7 @@ Laurent formalizes classical real and functional analysis, distribution theory, 
 \section{Spine II: Super Homotopy Type Theory}
 This spine represents the central path of homotopical, cubical, and cohesive type systems, transitioning from pure dependent products to higher-dimensional geometry.
 
-\subsection{Henk: Pure Type Systems (PTS) \cite{Henk93}}
+\subsection{Henk: Pure Type Systems (PTS) \cite{Henk93}}\footnote{\url{https://henk.groupoid.space}}
 The initial object in LCC categories. Contains only $\Pi$ and universes.
 \begin{table}[ht!]
 \centering
@@ -256,7 +256,7 @@ The initial object in LCC categories. Contains only $\Pi$ and universes.
 \end{tabular}
 \end{table}
 
-\subsection{Per: Martin-L\"of Type Theory (MLTT-80) \cite{Lof84}}
+\subsection{Per: Martin-L\"of Type Theory (MLTT-80) \cite{Lof84}}\footnote{\url{https://per.groupoid.space}}
 MLTT-80 with W-types, base types 0, 1, 2, and cubical primitives.
 \begin{table}[ht!]
 \centering
@@ -274,7 +274,7 @@ MLTT-80 with W-types, base types 0, 1, 2, and cubical primitives.
 \end{table}
 
 \newpage
-\subsection{Anders: Cubical HoTT \cite{cchm}}
+\subsection{Anders: Cubical HoTT \cite{cchm}}\footnote{\url{https://anders.groupoid.space}}
 Semantically motivated by Coquand's Groupoid-Valued Presheaf models (where the Grothendieck construction models context extensions), Anders implements the CCHM cubical structure with Path, Glue, and higher inductive types (Coequ, Disc).
 \begin{table}[ht!]
 \centering
@@ -299,9 +299,7 @@ Semantically motivated by Coquand's Groupoid-Valued Presheaf models (where the G
 \end{tabular}
 \end{table}
 
-\subsection{Urs: The Family of Layered Sublanguages}
-Urs is not a single monolithic type system, but rather a family of three
-layered sublanguages where each layer builds on top of the syntax, modalities, and constructors of the previous one:
+\subsection{Urs: The Family of Layered Sublanguages}\footnote{\url{https://urs.groupoid.space}}
 
 \begin{remark}[The 3-Layer Architecture]
 The sublanguages represent a progressive structure for formalizing mathematical and
@@ -322,7 +320,7 @@ Each sublanguage culminates in a system tailored to formalize superpoints
 \end{remark}
 
 \newpage
-\subsubsection{Felix (Layer I) \cite{schreibershulman12cohesive}}
+\subsubsection{Felix (Layer I) \cite{schreibershulman12cohesive}}\footnote{\url{https://felix.groupoid.space}}
 Extends the homotopy core with graded universes, tensors, group actions, and cohesive modalities ($\flat$, $\sharp$, $\Im$) for synthetic supergeometry.
 \begin{table}[ht!]
 \centering
@@ -336,7 +334,7 @@ Extends the homotopy core with graded universes, tensors, group actions, and coh
 \end{tabular}
 \end{table}
 
-\subsubsection{Jack (Layer II) \cite{schreiber13differential}}
+\subsubsection{Jack (Layer II) \cite{schreiber13differential}}\footnote{\url{https://jack.groupoid.space}}
 Extends cohesion with stable homotopy (spectra, suspensions, wedges) and differential cohomology (forms, connections, and differential K-theory).
 \begin{table}[ht!]
 \centering
@@ -347,7 +345,7 @@ Extends cohesion with stable homotopy (spectra, suspensions, wedges) and differe
 \end{tabular}
 \end{table}
 
-\subsubsection{Urs (Layer III)}
+\subsubsection{Urs (Layer III)}\footnote{\url{https://urs.groupoid.space}}
 The top layer, adding configuration spaces, braids, and linear resource types ($!A$) for Urs programming.
 \begin{table}[ht!]
 \centering
@@ -369,7 +367,7 @@ $\Pi$ in STT supply the $\infty$-categorical framework that Urs's Layer I
 \section{Spine III: Infinity Category Theory}
 This spine encompasses operational algebra and directed category theories, dealing with presentations of algebraic shapes and directed categorical structures.
 
-\subsection{Dan: Operational Algebra \cite{birkedal2011first}}
+\subsection{Dan: Operational Algebra \cite{birkedal2011first}}\footnote{\url{https://dan.groupoid.space}}
 Dan operates on a completely different level: it manipulates algebraic
 presentations (groups, simplicial sets, chain complexes) operationally.
 Its term language has no dependent types, no universes, and no $\Pi$/$\Sigma$.
@@ -393,7 +391,7 @@ maps, and boundary operators.
 \end{tabular}
 \end{table}
 
-\subsection{Mike: Directed 1-Category Type Theory \cite{Shulman15}}
+\subsection{Mike: Directed 1-Category Type Theory \cite{Shulman15}}\footnote{\url{https://mike.groupoid.space}}
 A \emph{linear} type theory with a bidirectional type checker enforcing
 quadraticality (each category variable occurs exactly once covariantly and
 once contravariantly).
@@ -412,7 +410,7 @@ once contravariantly).
 \end{table}
 
 \newpage
-\subsection{Ulrik: Simplicial \texorpdfstring{$\infty$}{Infinity}-Categories \cite{riehl2017type}}
+\subsection{Ulrik: Simplicial \texorpdfstring{$\infty$}{Infinity}-Categories \cite{riehl2017type}}\footnote{\url{https://ulrik.groupoid.space}}
 Extends Mike's foundation with directed interval $\mathbb{I}$, shape
 inclusions ($\varphi \subseteq \psi$), extension types, modal $\Pi$, and
 twisted arrow categories ($A^{\mathrm{tw}}$).

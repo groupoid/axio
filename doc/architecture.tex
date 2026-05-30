@@ -39,7 +39,7 @@ and the Spectral Lattice of Formal Systems}
 \maketitle
 
 \begin{abstract}
-In this article, we investigate the conjecture that no single formal language can serve as a universal
+In this article, we investigate the conjecture that no single formal language can serve effectively as a universal
 foundation for the entirety of mathematics, proposing instead that mathematics is best served by a
 system of specialized languages connected by functorial transports. We analyze the Groupoid Infinity
 stack of formal languages as a \emph{lattice} of internal languages, rather than a linear tower.
@@ -49,10 +49,11 @@ and quantum spectra (Henk--Per--Anders--Urs), and an \emph{infinity category the
 Due to their divergent semantic and syntactic structures, attempting to unify them into a single monolithic
 abstract syntax tree (AST) is often impractical and conceptually strained. We demonstrate how these separate
 domains interact functorially --- for instance, simplicial type theory (Ulrik/STT) provides the
-directed-homotopy backbone for Urs's 3-layer architecture. Finally, we construct syntactic CW-complexes
-and chain complexes for each language individually, define their cohomology groups,
-and assemble a spectral sequence over the full lattice of language categories, providing
-a rigorous mathematical framework for this multi-language foundation.
+directed-homotopy backbone for Urs's 3-layer architecture. Finally, we propose a cohomological perspective
+on language semantics: by associating syntactic CW-complexes and chain complexes to individual languages,
+one might define their cohomology groups and assemble a spectral sequence over the full lattice
+of language categories, outlining a conceptual mathematical framework that formalizes this ecosystem as a
+Grothendieck fibration of syntactic categories under Lawvere's functorial semantics.
 \end{abstract}
 
 \newpage
@@ -118,8 +119,8 @@ Ulrik & $\mathbf{(\infty, 1)\text{-}Cat}$ (Riehl-Shulman STT) & Simplicial $(\in
 \section{The Three Spines of the Language Lattice}
 The Groupoid Infinity stack does \emph{not} form a linear tower. It decomposes
 into three distinct vertical columns: a constructive/inductive spine on the left
-(\textbf{Frank}--\textbf{Christine}--\textbf{Laurent}), a homotopical/cohesive spine in the center
-(\textbf{Henk}--\textbf{Per}--\textbf{Anders}--\textbf{Urs}), and an operational/directed branch
+(\textbf{Frank}--\textbf{Christine}--\textbf{Laurent}), a homotopical and cohesive spine in the center
+(\textbf{Henk}--\textbf{Per}--\textbf{Anders}--\textbf{Urs}), and an operational directed branch
 on the right (\textbf{Dan}--\textbf{Mike}--\textbf{Ulrik}). The relationships between columns
 are functorial (lifts, free constructions, forgetful maps, smooth completions) but the syntaxes
 themselves are disjoint.
@@ -170,11 +171,13 @@ The lattice stratifies into structural, cohesive, linear, and directed semantics
 
 \begin{itemize}
     \item \textbf{Structural Core:} At the base, Locally Cartesian Closed Categories ($\mathbf{LCCC}$) provide the semantics for $\mathbf{MLTT}$, the pure structural type theory. Upgrading the semantics to $\infty$-categories adds globular path equality, yielding Cubical Type Theory with Path types but without Higher Inductive Types (HITs). Finally, a full $\infty$-topos models Cubical Type Theory with HITs, which maintains a very lightweight core and syntax.
+    \item \textbf{Homotopical Presheaves:} Bridging the gap from strict 1-categories to full $\infty$-categories, Thierry Coquand's Groupoid-Valued Presheaf models ($\mathbf{Grpd}\text{-}\mathbf{PSh}$) provide a concrete constructive semantics for univalence, where dependent types are interpreted via the \emph{Grothendieck Construction}. This establishes the semantic foundation for Cubical Type Theory.
     \item \textbf{Cohesive Modalities:} Cohesive Type Theory (Felix) is developed specifically to model modalities such as connectedness, compactness, and infinitesimal shapes. Differential Cohesive Type Theory acts as the internal language for Differential Cohesive $\infty$-topoi, adding extra structure to $\infty$-topoi just as $\infty$-categories add path equality to LCCCs. These are typically modeled in the base library via undefined axioms (see \texttt{cohesivett}).
     \item \textbf{Linear/Tensor Modalities:} Symmetric Monoidal Categories ($\mathbf{SMC}$) supply the semantics for resource-sensitive and directed computations. Here, Process Calculus and Interaction Nets (Lafont) act as the internal language, representing modality types with special comonadic \emph{spawn} arrows that hide the underlying run-time implementation.
     \item \textbf{Directed and Simplicial Topoi:} Moving toward spatial and temporal operational algebras, presheaf categories ($\mathbf{Pres}$) provide the semantics for Guarded Type Theory (Dan). Incorporating strict directional structures leads to $\mathbf{1\text{-}Cat}$, acting as the semantics for Directed Type Theory (Mike). Finally, scaling to higher dimensions, $\mathbf{(\infty, 1)\text{-}Cat}$ serves as the model for Simplicial Type Theory (Ulrik / Riehl-Shulman STT), extending directed paths with a Segal-like directed interval.
 \end{itemize}
 
+\newpage
 This establishes a rich hierarchy of correspondences:
 
 \begin{center}
@@ -272,8 +275,7 @@ MLTT-80 with W-types, base types 0, 1, 2, and cubical primitives.
 
 \newpage
 \subsection{Anders: Cubical HoTT}
-CCHM cubical structure with Path, Glue, and
-higher inductive types (Coequ, Disc).
+Semantically motivated by Coquand's Groupoid-Valued Presheaf models (where the Grothendieck construction models context extensions), Anders implements the CCHM cubical structure with Path, Glue, and higher inductive types (Coequ, Disc).
 \begin{table}[ht!]
 \centering
 \begin{tabular}{rl}

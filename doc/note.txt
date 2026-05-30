@@ -16,10 +16,12 @@ and quantum spectra (Henk–Per–Anders–Urs), and an infinity category theory
 (Dan–Mike–Ulrik). Due to their divergent semantic and syntactic structures,
 attempting to unify them into a single monolithic abstract syntax tree (AST) is
 often impractical and conceptually strained. We demonstrate how these separate
-domains interact functorially, construct syntactic CW-complexes and chain complexes
-for each language individually, define their cohomology groups, and assemble a
-spectral sequence over the full lattice of language categories, providing a
-rigorous mathematical framework for this multi-language foundation.
+domains interact functorially. Finally, we propose a cohomological perspective
+on language semantics: by associating syntactic CW-complexes and chain complexes
+to individual languages, one might define their cohomology groups and assemble a
+spectral sequence over the full lattice of language categories, outlining a
+conceptual mathematical framework that formalizes this ecosystem as a Grothendieck
+fibration of syntactic categories under Lawvere's functorial semantics.
 
 ================================================================================
 1. Categorical Foundations
@@ -139,7 +141,7 @@ The lattice stratifies into structural, cohesive, linear, and directed semantics
 
 This establishes a rich hierarchy of correspondences:
 
-     [LCCC]               <──────(Internal Language)──────> [MLTT]
+     [LCCC]                <──────(Internal Language)──────> [MLTT]
      [PiW-Pretopos]        <──────(Internal Language)──────> [MLTT-80 (W-types)]
      [oo-Cat]             <──────(Internal Language)──────> [Cubical (Paths, no HITs)]
      [oo-Topos]           <──────(Internal Language)──────> [Cubical (with HITs)]
@@ -225,6 +227,8 @@ type exp =
   | EW of exp * (ident * exp) | ESup of exp * exp | EIndW of exp * exp * exp
 
 4.3 Anders: Cubical HoTT
+Semantically motivated by Coquand's Groupoid-Valued Presheaf models (where the
+Grothendieck construction models context extensions), Anders implements the
 CCHM cubical structure with Path, Glue, and HITs (Coequ, Disc).
 
 type value =

@@ -59,15 +59,12 @@ define their cohomology groups, and assemble a spectral sequence over the full l
 \section{Categorical Foundations}
 
 \begin{definition}[Categories with Families (CwF)]
-A CwF is a category $\mathcal{C}$ of contexts and substitutions equipped with
-presheaves $Ty, Tm : \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$ and a
-representable natural transformation $p : Tm \to Ty$ satisfying context
-comprehension via pullback squares.
+A CwF consists of a category $\mathcal{C}$ of contexts and substitutions with a terminal object, equipped with a functor $Ty : \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$, a presheaf of terms $Tm : (\int Ty)^{\mathrm{op}} \to \mathbf{Set}$, and a context comprehension operation with projection morphisms.
 \end{definition}
 
 \begin{definition}[Natural Models]
 Following Awodey, a natural model is a category $\mathcal{C}$ with a terminal
-object $\mathbf{1}$ and a representable natural transformation $p : Tm \to Ty$.
+object $\mathbf{1}$ and a representable natural transformation $p : Tm \to Ty$ between presheaves.
 Pullbacks of $p$ along Yoneda provide context extension and substitution.
 \end{definition}
 
@@ -147,6 +144,7 @@ W-types (Per path) is a design decision, not a strict ordering.
 To analyze the gradual expansion of language primitives, we construct a fine-grained lattice of semantic categories radiating from the category of dependent products ($\mathbf{\Pi}\text{-}\mathbf{Cat}$ (Henk)). The system expands in three cardinal directions (adding dependent sums to yield locally cartesian closed categories $\mathbf{LCCC}$, inductive algebras $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}$ (Frank), and bicartesian closed structures $\mathbf{BiCCC}$ (IPL)) before merging into rich categories of models such as $\mathbf{LCCC} + \mathbf{Ind}$ (Christine), $\mathbf{LCCC} + \mathbf{W}$ (Per), $\infty\text{-}\mathbf{Grpd}$ (Anders), and cohesive $\infty$-topoi. On the right, the lattice incorporates the operational algebra branch ($\mathbf{Pres}$ (Dan)), the directed 1-category branch ($\mathbf{1\text{-}Cat}$ (Mike)), and the simplicial $(\infty, 1)$-category branch ($\mathbf{(\infty, 1)\text{-}Cat}$ (Ulrik)). All cross-branch connections are detailed in the global map in Section 2.
 
 \begin{theorem}[Universal Primitive Lattice]
+The formal internal languages form a connected lattice structure across three spines, linked by the modal, synthetic, and directed structural morphisms shown below:
 \end{theorem}
 
 \begin{lrbox}{\diagbox}
@@ -234,11 +232,6 @@ MLTT-80 with W-types, base types 0, 1, 2, and cubical primitives.
      pi :=&$\Pi\ name\ E\ E\ |\ \lambda\ name\ E\ E\ |\ E\ E$ \\
   sigma :=&$\Sigma\ name\ E\ E\ |\ (E,E)\ |\ E.1\ |\ E.2\ |\ E.name$ \\
      id :=&$\textbf{Id}\ E\ |\ \textbf{ref}\ E\ |\ \textbf{id$_J$}\ E$ \\
-   path :=&$\textbf{Path}\ E\ |\ E^i\ |\ E\ @\ E$ \\
-      I :=&$\textbf{I}\ |\ 0\ |\ 1\ |\ E\ \bigvee\ E\ |\ E\ \bigwedge\ E\ |\ \neg E$ \\
-   part :=&$\textbf{Partial}\ E\ E\ |\ \textbf{[}\ (E=I) \rightarrow E, ...\ \textbf{]}$ \\
-    sub :=&$\textbf{inc}\ E\ |\ \textbf{ouc}\ E\ |\ E\ \textbf{[}\ I\ \mapsto\ E\ \textbf{]}$ \\
-    kan :=&$\textbf{transp}\ E\ E\ |\ \textbf{hcomp}\ E$ \\
       0 :=&$\textbf{0}\ |\ \textbf{ind$_0$}\ \textrm{E}\ \textrm{E}\ \textrm{E}$ \\
       1 :=&$\textbf{1}\ |\ \star\ |\ \textbf{ind$_1$}\ \textrm{E}\ \textrm{E}\ \textrm{E}$ \\
       2 :=&$\textbf{2}\ |\ 0_2\ |\ 1_2\ |\ \textbf{ind$_2$}\ \textrm{E}\ \textrm{E}\ \textrm{E}$ \\
@@ -246,16 +239,17 @@ MLTT-80 with W-types, base types 0, 1, 2, and cubical primitives.
 \end{tabular}
 \end{table}
 
-\subsection{Anders: Modal Cubical HoTT}
-CCHM cubical structure with Path, Glue, shape modality ($\Im$), and
-higher inductive types (Coequ, Disc, Im, Fla).
+\newpage
+\subsection{Anders: Cubical HoTT}
+CCHM cubical structure with Path, Glue, and
+higher inductive types (Coequ, Disc).
 \begin{table}[ht!]
 \centering
 \begin{tabular}{rl}
  cosmos :=&$\textbf{U}_j \ |\ \textbf{V}_k$ \\
     var :=&$\textbf{var}\ name\ |\ \textbf{hole}$ \\
      pi :=&$\Pi\ name\ E\ E\ |\ \lambda\ name\ E\ E\ |\ E\ E$ \\
-  sigma :=&$\Sigma\ name\ E\ E\ |\ (E,E)\ |\ E.1\ |\ E.2$ \\
+   sigma :=&$\Sigma\ name\ E\ E\ |\ (E,E)\ |\ E.1\ |\ E.2$ \\
       0 :=&$\textbf{0}\ |\ \textbf{ind$_0$}\ \textrm{E}\ \textrm{E}\ \textrm{E}$ \\
       1 :=&$\textbf{1}\ |\ \star\ |\ \textbf{ind$_1$}\ \textrm{E}\ \textrm{E}\ \textrm{E}$ \\
       2 :=&$\textbf{2}\ |\ 0_2\ |\ 1_2\ |\ \textbf{ind$_2$}\ \textrm{E}\ \textrm{E}\ \textrm{E}$ \\
@@ -267,40 +261,14 @@ higher inductive types (Coequ, Disc, Im, Fla).
     sub :=&$\textbf{inc}\ E\ |\ \textbf{ouc}\ E\ |\ E\ \textbf{[}\ I\ \mapsto\ E\ \textbf{]}$ \\
     kan :=&$\textbf{transp}\ E\ E\ |\ \textbf{hcomp}\ E$ \\
    glue :=&$\textbf{Glue}\ E\ |\ \textbf{glue}\ E\ |\ \textbf{unglue}\ E\ E$ \\
-     Im :=&$\textbf{Im}\ \mathrm{E}\ |\ \textbf{Inf}\ \mathrm{E}\ |\ \textbf{Join}\ \mathrm{E}\ |\ \textbf{ind$_{Im}$}\ \mathrm{E}\ \mathrm{E}$ \\
-   Flat :=&$\flat\ \mathrm{E}\ |\ \textbf{unit}_{\flat}\ \mathrm{E}\ |\ \textbf{counit}_{\flat}\ \mathrm{E}\ |\ \textbf{ind}_{\flat}\ \mathrm{E}\ \mathrm{E}$ \\
   coequ :=&$\textbf{coequ}\ \mathrm{E}\ |\ \iota_2\ |\ \textbf{resp}\ |\ \textbf{ind}_{coequ}$ \\
    disc :=&$\textbf{disc}\ \mathrm{E}\ |\ \textbf{base}\ |\ \textbf{hub}\ |\ \textbf{spoke}\ |\ \textbf{ind}_{disc}$ \\
 \end{tabular}
 \end{table}
 
-\newpage
 \subsection{Urs: The Family of Layered Sublanguages}
 Urs is not a single monolithic type system, but rather a family of three
 layered sublanguages where each layer builds on top of the syntax, modalities, and constructors of the previous one:
-
-\begin{center}
-\resizebox{0.95\textwidth}{!}{%
-\begin{tabular}{|c|l|l|}
-\hline
-\textbf{Sublanguage} & \textbf{Modules} & \textbf{Primitives} \\
-\hline
-\textbf{I. Felix} & \texttt{graded, flat, sharp, bose,} &
-    Bose/Fermi grades, $\flat$, $\sharp$, \\
- & \texttt{fermi, tensor, smth, supsmth} &
-    $A \otimes B$, SmthSet, SupSmthSet \\
-\hline
-\textbf{II. Jack} & \texttt{spectra, grpd, form,} &
-    Spectrum, Susp, Grpd, $\Omega^n(X)$, \\
- & \texttt{ku, diff, diffku} &
-    $KU^{\tau}_G$, $d$, DiffKU \\
-\hline
-\textbf{III. Urs} & \texttt{conf, braid, qubit, linear} &
-    Config$^n$, Braid$_n$, Qubit, $!A$ \\
-\hline
-\end{tabular}%
-}
-\end{center}
 
 \begin{remark}[The 3-Layer Architecture]
 The sublanguages represent a progressive structure for formalizing mathematical and
@@ -410,12 +378,13 @@ once contravariantly).
 \end{tabular}
 \end{table}
 
+\newpage
 \subsection{Ulrik: Simplicial \texorpdfstring{$\infty$}{Infinity}-Categories}
 Extends Mike's foundation with directed interval $\mathbb{I}$, shape
 inclusions ($\varphi \subseteq \psi$), extension types, modal $\Pi$, and
 twisted arrow categories ($A^{\mathrm{tw}}$).
 
-To construct a type theory for synthetic category theory, one might hope to interpret type theory in the category of categories ($\infty$-categories or otherwise) to ensure that types realize categories. However, the category $\mathbf{Cat}$ of small categories is too poorly behaved to form a model of Martin-Löf Type Theory (MLTT). Instead, Riehl and Shulman (2017) embed $\mathbf{Cat}$ as a reflective subcategory in the category of ($\infty$-)presheaves on the simplex category $\widehat{\Delta}$, which is sufficiently rich to model HoTT. Simplicial Type Theory (STT) then axiomatizes a portion of $\widehat{\Delta}$ to isolate $\mathbf{Cat}$ as a reflective subuniverse Within the type theory.
+To construct a type theory for synthetic category theory, one might hope to interpret type theory in the category of categories ($\infty$-categories or otherwise) to ensure that types realize categories. However, the category of small categories is too poorly behaved to form a model of Martin-Löf Type Theory (MLTT). Instead, Riehl and Shulman (2017) use the category of bisimplicial sets (simplicial spaces) to model synthetic $(\infty, 1)$-categories via Rezk spaces. Simplicial Type Theory (STT) axiomatizes this framework using a directed interval and shapes, allowing one to isolate $(\infty, 1)$-categories as a reflective subuniverse of types within the theory.
 
 \begin{table}[ht!]
 \centering
@@ -498,7 +467,7 @@ The cohomology groups $H^k(\mathcal{O}_x; G)$ measure fundamental properties of 
 \newpage
 \subsection{Examples across the Spines}
 
-\begin{example}[Spines I/II: Stricy \& Homotopical]
+\begin{example}[Spines I/II: Strict \& Homotopical]
 \end{example}
 \begin{itemize}
     \item \textbf{Henk
@@ -631,8 +600,8 @@ The primary conversions, their statuses, and associated information losses are d
 
 \newpage
 
-\subsubsection{Deep Dive: The Lift Functor (\texorpdfstring{
-$\mathbf{Dan} \to \mathbf{Ulrik}$}{Dan -> Ulrik})}
+\subsubsection{Deep Dive: The Lift Functor
+(\texorpdfstring{$\mathbf{Dan} \to \mathbf{Ulrik}$}{Dan -> Ulrik})}
 
 The \textbf{Lift} functor acts as a semantical compilation bridge that transports combinatorial presentations from
 the operational layer $\mathbf{Dan}$ to the directed synthetic type theories of $\mathbf{Mike}$ and $\mathbf{Ulrik}$.

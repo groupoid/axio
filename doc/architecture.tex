@@ -120,7 +120,7 @@ Ulrik & $\mathbf{(\infty, 1)\text{-}Cat}$ (Riehl-Shulman STT) & Simplicial $(\in
 The Groupoid Infinity stack does \emph{not} form a linear tower. It decomposes
 into three distinct vertical columns: a constructive/inductive spine on the left
 (\textbf{Frank}--\textbf{Christine}--\textbf{Laurent}), a homotopical and cohesive spine in the center
-(\textbf{Henk}--\textbf{Per}--\textbf{Anders}--\textbf{Urs}), and an operational directed branch
+(\textbf{Henk}--\textbf{Per}--\textbf{Anders}--\textbf{Urs}), and an operational directed Spine
 on the right (\textbf{Dan}--\textbf{Mike}--\textbf{Ulrik}). The relationships between columns
 are functorial (lifts, free constructions, forgetful maps, smooth completions) but the syntaxes
 themselves are disjoint.
@@ -147,7 +147,7 @@ W-types (Per path) is a design decision, not a strict ordering.
 
 \newpage
 \subsection{The Topoi Structure}
-To analyze the gradual expansion of language primitives, we construct a fine-grained lattice of semantic categories radiating from the category of dependent products ($\mathbf{\Pi}\text{-}\mathbf{Cat}$ (Henk)). The system expands in three cardinal directions (adding dependent sums to yield locally cartesian closed categories $\mathbf{LCCC}$, inductive algebras $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}$ (Frank), and bicartesian closed structures $\mathbf{BiCCC}$ (IPL)) before merging into rich categories of models such as $\mathbf{LCCC} + \mathbf{Ind}$ (Christine), $\mathbf{\Pi W}\text{-}\mathbf{Pretopos}$ (Per), $\infty\text{-}\mathbf{Grpd}$ (Anders), and cohesive $\infty$-topoi. On the right, the lattice incorporates the operational algebra branch ($\mathbf{Pres}$ (Dan)), the directed 1-category branch ($\mathbf{1\text{-}Cat}$ (Mike)), and the simplicial $(\infty, 1)$-category branch ($\mathbf{(\infty, 1)\text{-}Cat}$ (Ulrik)). All cross-branch connections are detailed in the global map in Section 2.
+To analyze the gradual expansion of language primitives, we construct a fine-grained lattice of semantic categories radiating from the category of dependent products ($\mathbf{\Pi}\text{-}\mathbf{Cat}$ (Henk)). The system expands in three cardinal directions (adding dependent sums to yield locally cartesian closed categories $\mathbf{LCCC}$, inductive algebras $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}$ (Frank), and bicartesian closed structures $\mathbf{BiCCC}$ (IPL)) before merging into rich categories of models such as $\mathbf{LCCC} + \mathbf{Ind}$ (Christine), $\mathbf{\Pi W}\text{-}\mathbf{Pretopos}$ (Per), $\infty\text{-}\mathbf{Grpd}$ (Anders), and cohesive $\infty$-topoi. On the right, the lattice incorporates the infinity category spine: operational algebra branch ($\mathbf{Pres}$ (Dan)), the directed 1-category branch ($\mathbf{1\text{-}Cat}$ (Mike)), and the simplicial $(\infty, 1)$-category branch ($\mathbf{(\infty, 1)\text{-}Cat}$ (Ulrik)). All cross-branch connections are detailed in the global map in Section 2.
 
 \begin{theorem}[Universal Primitive Lattice]
 The formal internal languages form a connected lattice structure across three spines, linked by the modal, synthetic, and directed structural morphisms shown below:
@@ -170,11 +170,11 @@ The formal internal languages form a connected lattice structure across three sp
 The lattice stratifies into structural, cohesive, linear, and directed semantics. The foundational correspondences between semantic models and their internal syntaxes progressively build up structure:
 
 \begin{itemize}
-    \item \textbf{Structural Core:} At the base, Locally Cartesian Closed Categories ($\mathbf{LCCC}$) provide the semantics for $\mathbf{MLTT}$, the pure structural type theory. Upgrading the semantics to $\infty$-categories adds globular path equality, yielding Cubical Type Theory with Path types but without Higher Inductive Types (HITs). Finally, a full $\infty$-topos models Cubical Type Theory with HITs, which maintains a very lightweight core and syntax.
-    \item \textbf{Homotopical Presheaves:} Bridging the gap from strict 1-categories to full $\infty$-categories, Thierry Coquand's Groupoid-Valued Presheaf models ($\mathbf{Grpd}\text{-}\mathbf{PSh}$) provide a concrete constructive semantics for univalence, where dependent types are interpreted via the \emph{Grothendieck Construction}. This establishes the semantic foundation for Cubical Type Theory.
-    \item \textbf{Cohesive Modalities:} Cohesive Type Theory (Felix) is developed specifically to model modalities such as connectedness, compactness, and infinitesimal shapes. Differential Cohesive Type Theory acts as the internal language for Differential Cohesive $\infty$-topoi, adding extra structure to $\infty$-topoi just as $\infty$-categories add path equality to LCCCs. These are typically modeled in the base library via undefined axioms (see \texttt{cohesivett}).
+    \item \textbf{Structural Core:} At the base, Locally Cartesian Closed Categories ($\mathbf{LCCC}$) provide the semantics for $\mathbf{MLTT}$, the pure structural type theory \cite{Lof84}. Upgrading the semantics to $\infty$-categories adds globular path equality, yielding Cubical Type Theory with Path types but without Higher Inductive Types (HITs) \cite{cchm}. Finally, a full $\infty$-topos models Cubical Type Theory with HITs, which maintains a very lightweight core and syntax.
+    \item \textbf{Homotopical Presheaves:} Bridging the gap from strict 1-categories to full $\infty$-categories, Thierry Coquand's Groupoid-Valued Presheaf models ($\mathbf{Grpd}\text{-}\mathbf{PSh}$) \cite{Coq88} provide a concrete constructive semantics for univalence, where dependent types are interpreted via the \emph{Grothendieck Construction}. This establishes the semantic foundation for Cubical Type Theory.
+    \item \textbf{Cohesive Modalities:} Cohesive Type Theory (Felix) \cite{schreibershulman12cohesive} is developed specifically to model modalities such as connectedness, compactness, and infinitesimal shapes. Differential Cohesive Type Theory acts as the internal language for Differential Cohesive $\infty$-topoi \cite{schreiber13differential}, adding extra structure to $\infty$-topoi just as $\infty$-categories add path equality to LCCCs. These are typically modeled in the base library via undefined axioms (see \texttt{cohesivett}).
     \item \textbf{Linear/Tensor Modalities:} Symmetric Monoidal Categories ($\mathbf{SMC}$) supply the semantics for resource-sensitive and directed computations. Here, Process Calculus and Interaction Nets (Lafont) act as the internal language, representing modality types with special comonadic \emph{spawn} arrows that hide the underlying run-time implementation.
-    \item \textbf{Directed and Simplicial Topoi:} Moving toward spatial and temporal operational algebras, presheaf categories ($\mathbf{Pres}$) provide the semantics for Guarded Type Theory (Dan). Incorporating strict directional structures leads to $\mathbf{1\text{-}Cat}$, acting as the semantics for Directed Type Theory (Mike). Finally, scaling to higher dimensions, $\mathbf{(\infty, 1)\text{-}Cat}$ serves as the model for Simplicial Type Theory (Ulrik / Riehl-Shulman STT), extending directed paths with a Segal-like directed interval.
+    \item \textbf{Directed and Simplicial Topoi:} Moving toward spatial and temporal operational algebras, presheaf categories ($\mathbf{Pres}$) provide the semantics for Guarded Type Theory (Dan) \cite{birkedal2011first}. Incorporating strict directional structures leads to $\mathbf{1\text{-}Cat}$, acting as the semantics for Directed Type Theory (Mike) \cite{Shulman15}. Finally, scaling to higher dimensions, $\mathbf{(\infty, 1)\text{-}Cat}$ serves as the model for Simplicial Type Theory (Ulrik / Riehl-Shulman STT) \cite{riehl2017type}, extending directed paths with a Segal-like directed interval.
 \end{itemize}
 
 \newpage
@@ -196,9 +196,9 @@ This establishes a rich hierarchy of correspondences:
 
 \newpage
 \section{Spine I: Set Analysis}
-This branch represents the constructive/inductive spine of type theories and functional analysis. It is characterized by inductive algebraic constructions and real/functional analysis foundations.
+This spine represents the constructive/inductive spine of type theories and functional analysis. It is characterized by inductive algebraic constructions and real/functional analysis foundations.
 
-\subsection{Frank: Minimal CIC}
+\subsection{Frank: Minimal CIC \cite{Pfenning89}}
 Extends Henk with strictly positive inductive schemes.
 \begin{table}[ht!]
 \centering
@@ -210,7 +210,7 @@ Extends Henk with strictly positive inductive schemes.
 \end{tabular}
 \end{table}
 
-\subsection{Christine: Full CIC (CwF/CwA)}
+\subsection{Christine: Full CIC (CwF/CwA) \cite{paulinmohring}}
 Complete Calculus of Inductive Constructions with $\Sigma$, Id, and Ind.
 \begin{table}[ht!]
 \centering
@@ -224,7 +224,7 @@ Complete Calculus of Inductive Constructions with $\Sigma$, Id, and Ind.
 \end{tabular}
 \end{table}
 
-\subsection{Laurent: Calculus and Functional Analysis}
+\subsection{Laurent: Calculus and Functional Analysis \cite{laurent05semantics}}
 Laurent formalizes classical real and functional analysis, distribution theory, and measure theory. It provides first-class support for reals, complex numbers, measures, limits, and integration.
 \begin{table}[ht!]
 \centering
@@ -243,9 +243,9 @@ Laurent formalizes classical real and functional analysis, distribution theory, 
 
 \newpage
 \section{Spine II: Super Homotopy Type Theory}
-This branch represents the central path of homotopical, cubical, and cohesive type systems, transitioning from pure dependent products to higher-dimensional geometry.
+This spine represents the central path of homotopical, cubical, and cohesive type systems, transitioning from pure dependent products to higher-dimensional geometry.
 
-\subsection{Henk: Pure Type Systems (PTS)}
+\subsection{Henk: Pure Type Systems (PTS) \cite{Henk93}}
 The initial object in LCC categories. Contains only $\Pi$ and universes.
 \begin{table}[ht!]
 \centering
@@ -256,7 +256,7 @@ The initial object in LCC categories. Contains only $\Pi$ and universes.
 \end{tabular}
 \end{table}
 
-\subsection{Per: Martin-L\"of Type Theory (MLTT-80)}
+\subsection{Per: Martin-L\"of Type Theory (MLTT-80) \cite{Lof84}}
 MLTT-80 with W-types, base types 0, 1, 2, and cubical primitives.
 \begin{table}[ht!]
 \centering
@@ -274,7 +274,7 @@ MLTT-80 with W-types, base types 0, 1, 2, and cubical primitives.
 \end{table}
 
 \newpage
-\subsection{Anders: Cubical HoTT}
+\subsection{Anders: Cubical HoTT \cite{cchm}}
 Semantically motivated by Coquand's Groupoid-Valued Presheaf models (where the Grothendieck construction models context extensions), Anders implements the CCHM cubical structure with Path, Glue, and higher inductive types (Coequ, Disc).
 \begin{table}[ht!]
 \centering
@@ -322,7 +322,7 @@ Each sublanguage culminates in a system tailored to formalize superpoints
 \end{remark}
 
 \newpage
-\subsubsection{Felix (Layer I)}
+\subsubsection{Felix (Layer I) \cite{schreibershulman12cohesive}}
 Extends the homotopy core with graded universes, tensors, group actions, and cohesive modalities ($\flat$, $\sharp$, $\Im$) for synthetic supergeometry.
 \begin{table}[ht!]
 \centering
@@ -336,7 +336,7 @@ Extends the homotopy core with graded universes, tensors, group actions, and coh
 \end{tabular}
 \end{table}
 
-\subsubsection{Jack (Layer II)}
+\subsubsection{Jack (Layer II) \cite{schreiber13differential}}
 Extends cohesion with stable homotopy (spectra, suspensions, wedges) and differential cohomology (forms, connections, and differential K-theory).
 \begin{table}[ht!]
 \centering
@@ -367,9 +367,9 @@ $\Pi$ in STT supply the $\infty$-categorical framework that Urs's Layer I
 
 \newpage
 \section{Spine III: Infinity Category Theory}
-This branch encompasses operational algebra and directed category theories, dealing with presentations of algebraic shapes and directed categorical structures.
+This spine encompasses operational algebra and directed category theories, dealing with presentations of algebraic shapes and directed categorical structures.
 
-\subsection{Dan: Operational Algebra}
+\subsection{Dan: Operational Algebra \cite{birkedal2011first}}
 Dan operates on a completely different level: it manipulates algebraic
 presentations (groups, simplicial sets, chain complexes) operationally.
 Its term language has no dependent types, no universes, and no $\Pi$/$\Sigma$.
@@ -393,7 +393,7 @@ maps, and boundary operators.
 \end{tabular}
 \end{table}
 
-\subsection{Mike: Directed 1-Category Type Theory}
+\subsection{Mike: Directed 1-Category Type Theory \cite{Shulman15}}
 A \emph{linear} type theory with a bidirectional type checker enforcing
 quadraticality (each category variable occurs exactly once covariantly and
 once contravariantly).
@@ -412,12 +412,12 @@ once contravariantly).
 \end{table}
 
 \newpage
-\subsection{Ulrik: Simplicial \texorpdfstring{$\infty$}{Infinity}-Categories}
+\subsection{Ulrik: Simplicial \texorpdfstring{$\infty$}{Infinity}-Categories \cite{riehl2017type}}
 Extends Mike's foundation with directed interval $\mathbb{I}$, shape
 inclusions ($\varphi \subseteq \psi$), extension types, modal $\Pi$, and
 twisted arrow categories ($A^{\mathrm{tw}}$).
 
-To construct a type theory for synthetic category theory, one might hope to interpret type theory in the category of categories ($\infty$-categories or otherwise) to ensure that types realize categories. However, the category of small categories is too poorly behaved to form a model of Martin-Löf Type Theory (MLTT). Instead, Riehl and Shulman (2017) use the category of bisimplicial sets (simplicial spaces) to model synthetic $(\infty, 1)$-categories via Rezk spaces. Simplicial Type Theory (STT) axiomatizes this framework using a directed interval and shapes, allowing one to isolate $(\infty, 1)$-categories as a reflective subuniverse of types within the theory.
+To construct a type theory for synthetic category theory, one might hope to interpret type theory in the category of categories ($\infty$-categories or otherwise) to ensure that types realize categories. However, the category of small categories is too poorly behaved to form a model of Martin-Löf Type Theory (MLTT). Instead, Riehl and Shulman (2017) \cite{riehl2017type} use the category of bisimplicial sets (simplicial spaces) to model synthetic $(\infty, 1)$-categories via Rezk spaces. Simplicial Type Theory (STT) axiomatizes this framework using a directed interval and shapes, allowing one to isolate $(\infty, 1)$-categories as a reflective subuniverse of types within the theory.
 
 \begin{table}[ht!]
 \centering
@@ -680,4 +680,90 @@ To illustrate the conversions, Table~\ref{tab:mobius} compares the representatio
 }
 \end{table}
 
+\section{Conclusion}
+
+A recurring ambition in the development of higher-dimensional type theories is the pursuit of a singular, comprehensive foundational language---a formal system capable of expressing discrete combinatorial presentations, directed synthetic category theory, and univalent cohesive geometry simultaneously. However, as demonstrated by the categorical obstructions documented in this article, we conclude that \emph{no natural unified foundation is viable}. Any attempt to internalize this entire hierarchy into a single categorical semantics would inevitably require rigidification into strict bicategories, tricategories, or infinitely coherent higher-categorical structures. Such a global strictification is highly non-natural and introduces prohibitive complexity. Instead, the mathematical reality of higher-dimensional formalisms naturally forms a \emph{functorial mesh of transports}.
+
+The obstructions to a unified foundation are deeply rooted in the underlying geometry of the respective topoi. For example, consider the embedding of Simplicial Type Theory (\textbf{Ulrik}) into Cubical HoTT (\textbf{Anders}). The directed interval $\mathbb{I}^{\to}$ and its associated Segal and Rezk completeness conditions depend fundamentally on an asymmetrical, directed path space. When attempting to interpret this within the symmetric, invertible cubical paths of \textbf{Anders}, one is forced to invoke the \textbf{Core} functor. This functor aggressively truncates the directed $\infty$-category, extracting only its maximal $\infty$-groupoid of isomorphisms. The directed geometric structure is irreversibly collapsed by this essential geometric morphism.
+
+Similarly, the transition from discrete algebraic presentations (\textbf{Dan}) to synthetic homotopy theories cannot be accomplished via internal deformation. The combinatorial algebra of face maps, degeneracy maps, and strict boundary operators resides in a category devoid of continuous path spaces or univalent universes. To interpret these discrete generators within the synthetic structures of \textbf{Mike} or \textbf{Ulrik}, one must employ the \textbf{Lift} functor to fully realize them as categorical objects. There exists no continuous adjunction from this rigid, discrete combinatorial layer into the cohesive $\infty$-topoi of \textbf{Felix} or the linear configuration spaces of \textbf{Urs}.
+
+Ultimately, the architecture of modern higher-dimensional mathematics is irreducibly pluralistic. The ``Groupoid Infinity'' stack acknowledges this by treating specialized theories not as fragments of a missing monolith, but as distinct objects in a category of formal languages. By relying on a functorial mesh of geometric morphisms, discrete embeddings, and modal coreflections, we achieve a robust and mathematically rigorous ecosystem whose compositional power far exceeds that of any artificially strictified unified theory.
+
+\begin{thebibliography}{CCHM17}
+
+\bibitem[AKS15]{Shulman15}
+Benedikt Ahrens, Krzysztof Kapulkin, and Michael Shulman.
+\newblock Univalent categories and the rezk completion.
+\newblock In Maria del~Mar Gonz{\'a}lez, Paul~C. Yang, Nicola Gambino, and
+  Joachim Kock, editors, {\em Extended Abstracts Fall 2013}, pages 75--76,
+  Cham, 2015. Springer International Publishing.
+
+\bibitem[Bar92]{Henk93}
+H.~P. Barendregt.
+\newblock Lambda calculi with types.
+\newblock In S.~Abramsky, Dov~M. Gabbay, and S.~E. Maibaum, editors, {\em
+  Handbook of Logic in Computer Science (Vol. 2)}, pages 117--309, New York,
+  NY, USA, 1992. Oxford University Press, Inc.
+
+\bibitem[BMSS11]{birkedal2011first}
+Lars Birkedal, Rasmus~Ejlers Mogelberg, Jan Schwinghammer, and Kristian
+  Stovring.
+\newblock First steps in synthetic guarded domain theory: step-indexing in the
+  topos of trees.
+\newblock In {\em 2011 IEEE 26th Annual Symposium on Logic in Computer
+  Science}, pages 55--64. IEEE, 2011.
+
+\bibitem[CCHM17]{cchm}
+Cyril Cohen, Thierry Coquand, Simon Huber, and Anders M{\"{o}}rtberg.
+\newblock Cubical type theory: {A} constructive interpretation of the
+  univalence axiom.
+\newblock {\em {FLAP}}, 4(10):3127--3170, 2017.
+
+\bibitem[CH88]{Coq88}
+Thierry Coquand and Gerard Huet.
+\newblock The calculus of constructions.
+\newblock In {\em Information and Computation}, pages 95--120, Duluth, MN, USA,
+  1988. Academic Press, Inc.
+
+\bibitem[Lau05]{laurent05semantics}
+Olivier Laurent.
+\newblock Syntax vs. semantics: a polarized approach.
+\newblock {\em Theoetical. Computer Science}, 343(1-2):177--206, 2005.
+
+\bibitem[MLS84]{Lof84}
+P.~Martin-L{\"o}f and G.~Sambin.
+\newblock {\em Intuitionistic type theory}.
+\newblock Studies in proof theory. Bibliopolis, 1984.
+
+\bibitem[Pau93]{paulinmohring}
+Christine Paulin{-}Mohring.
+\newblock Inductive definitions in the system {C}oq --- rules and properties.
+\newblock In {\em Typed Lambda Calculi and Applications, International
+  Conference on Typed Lambda Calculi and Applications, {TLCA} '93, Utrecht, The
+  Netherlands, March 16-18, 1993, Proceedings}, pages 328--345, 1993.
+
+\bibitem[PP89]{Pfenning89}
+Frank Pfenning and Christine Paulin{-}Mohring.
+\newblock Inductively defined types in the calculus of constructions.
+\newblock In {\em Mathematical Foundations of Programming Semantics, 5th
+  International Conference, Tulane University, New Orleans, Louisiana, USA,
+  March 29 - April 1, 1989, Proceedings}, pages 209--228, 1989.
+
+\bibitem[RS17]{riehl2017type}
+Emily Riehl and Michael Shulman.
+\newblock A type theory for synthetic $\infty$-categories.
+\newblock {\em arXiv preprint arXiv:1705.07442}, 2017.
+
+\bibitem[Sch13]{schreiber13differential}
+Urs Schreiber.
+\newblock {Differential cohomology in a cohesive infinity-topos}.
+\newblock 2013.
+
+\bibitem[SS12]{schreibershulman12cohesive}
+Urs Schreiber and Michael Shulman.
+\newblock Quantum gauge field theory in cohesive homotopy type theory.
+\newblock In {\em Workshop on Quantum Physics and Logic}, 2012.
+
+\end{thebibliography}
 \end{document}

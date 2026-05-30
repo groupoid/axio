@@ -165,7 +165,7 @@ The lattice stratifies into structural, cohesive, linear, and directed semantics
 
 \begin{itemize}
     \item \textbf{Structural Core:} At the base, Locally Cartesian Closed Categories ($\mathbf{LCCC}$) provide the semantics for $\mathbf{MLTT}$, the pure structural type theory \cite{Lof84}. Upgrading the semantics to $\infty$-categories adds globular path equality, yielding Cubical Type Theory with Path types but without Higher Inductive Types (HITs) \cite{cchm}. Finally, a full $\infty$-topos models Cubical Type Theory with HITs, which maintains a very lightweight core and syntax.
-    \item \textbf{Homotopical Presheaves:} Bridging the gap from strict 1-categories to full $\infty$-categories, Thierry Coquand's Groupoid-Valued Presheaf models ($\mathbf{Grpd}\text{-}\mathbf{PSh}$) \cite{Coq88} provide a concrete constructive semantics for univalence, where dependent types are interpreted via the \emph{Grothendieck Construction}. This establishes the semantic foundation for Cubical Type Theory.
+    \item \textbf{Homotopical Presheaves:} Bridging the gap from strict 1-categories to full $\infty$-categories, Thierry Coquand's Groupoid-Valued Presheaf and sheaf models ($\mathbf{Grpd}\text{-}\mathbf{PSh}$) \cite{coquand2021constructive} (with higher sheaf extensions \cite{Coq88}) provide a concrete constructive semantics for univalence, where dependent types are interpreted via the \emph{Grothendieck Construction}. This establishes the semantic foundation for Cubical Type Theory.
     \item \textbf{Cohesive Modalities:} Cohesive Type Theory (Felix) \cite{schreibershulman12cohesive} is developed specifically to model modalities such as connectedness, compactness, and infinitesimal shapes. Differential Cohesive Type Theory acts as the internal language for Differential Cohesive $\infty$-topoi \cite{schreiber13differential}, adding extra structure to $\infty$-topoi just as $\infty$-categories add path equality to LCCCs. These are typically modeled in the base library via undefined axioms (see \texttt{cohesivett}).
     \item \textbf{Linear/Tensor Modalities:} Symmetric Monoidal Categories ($\mathbf{SMC}$) supply the semantics for resource-sensitive and directed computations. Here, Process Calculus and Interaction Nets (Lafont) act as the internal language, representing modality types with special comonadic \emph{spawn} arrows that hide the underlying run-time implementation.
     \item \textbf{Directed and Simplicial Topoi:} Moving toward spatial and temporal operational algebras, presheaf categories ($\mathbf{Pres}$) provide the semantics for Guarded Type Theory (Dan) \cite{birkedal2011first}. Incorporating strict directional structures leads to $\mathbf{1\text{-}Cat}$, acting as the semantics for Directed Type Theory (Mike) \cite{Shulman15}. Finally, scaling to higher dimensions, $\mathbf{(\infty, 1)\text{-}Cat}$ serves as the model for Simplicial Type Theory (Ulrik / Riehl-Shulman STT) \cite{riehl2017type, gratzer2025yoneda}, extending directed paths with a Segal-like directed interval.
@@ -269,7 +269,7 @@ MLTT-80 with W-types, base types 0, 1, 2, and cubical primitives.
 
 \newpage
 \subsection{Anders: Cubical HoTT \cite{cchm}}\footnote{\url{https://anders.groupoid.space}}
-Semantically motivated by Coquand's Groupoid-Valued Presheaf models (where the Grothendieck construction models context extensions), Anders implements the CCHM cubical structure with Path, Glue, and higher inductive types (Coequ, Disc).
+Semantically motivated by Coquand's Groupoid-Valued Presheaf and sheaf models \cite{coquand2021constructive} (where the Grothendieck construction models context extensions), Anders implements the CCHM cubical structure with Path, Glue, and higher inductive types (Coequ, Disc).
 \begin{table}[ht!]
 \centering
 \begin{tabular}{rl}
@@ -543,18 +543,19 @@ where the relative complex $F_p / F_{p-1}$ isolates the ``new'' syntactic primit
 \textbf{$p$} & \textbf{Language} & \textbf{Branch} & \textbf{Primitives added}
 & \textbf{$|C_0|$} \\
 \hline
-0 & Henk & CTT & $\Pi$, $U^n$ & 5 \\
-1 & Frank & CTT & + Ind & 8 \\
-2a & Christine & CTT & + $\Sigma$, Id & 14 \\
-2b & Per & CTT & + $\Sigma$, Id, W, 0, 1, 2 & 26 \\
-3 & Anders & CTT & + Path, I, Glue, HComp, HIT & 40+ \\
-4a & Felix & CTT/Modal & + $\flat$, $\sharp$, $\Im$, $\otimes$, Plot & 10 \\
-4b & Jack & CTT/Modal & + Spectra, Susp, Grpd, Forms, DiffKU & 12 \\
-4c & Urs & CTT/Modal & + Qubit, Linear, Config, Braid & 7 \\
+0  & Henk       & Set Theory      & $\Pi$, $U^n$ & 5 \\
+1  & Frank      & Set Theory      & + Ind & 8 \\
+2a & Christine  & Set Theory      & + Id, Fix & 14 \\
+2b & Per        & Set Theory      & + $\Sigma$, Id, W, 0, 1, 2 & 26 \\
 \hline
---- & Dan & Algebra & Groups, Simplices, Chains, Boundaries & 20 \\
---- & Mike & Directed & Hom, $\otimes$, $\int$, $\prod$, $\multimap$ & 13 \\
---- & Ulrik & Directed & + $\mathbb{I}^{\to}$, Ext, Tw, $\leq$ & 25 \\
+3  & Anders     & Homotopy Theory & + Path, I, Glue, HComp, HIT & 40+ \\
+4a & Felix      & Homotopy Theory & + $\flat$, $\sharp$, $\Im$, $\otimes$, Plot & 10 \\
+4b & Jack       & Homotopy Theory & + Spectra, Susp, Grpd, Forms, DiffKU & 12 \\
+4c & Urs        & Homotopy Theory & + Qubit, Linear, Config, Braid & 7 \\
+\hline
+--- & Dan       & Category Theory & Groups, Simplices, Chains, Boundaries & 20 \\
+--- & Mike      & Category Theory & Hom, $\otimes$, $\int$, $\prod$, $\multimap$ & 13 \\
+--- & Ulrik     & Category Theory & + $\mathbb{I}^{\to}$, Ext, Tw, $\leq$ & 25 \\
 \hline
 \end{tabular}%
 }
@@ -739,11 +740,15 @@ Cyril Cohen, Thierry Coquand, Simon Huber, and Anders M{\"{o}}rtberg.
   univalence axiom.
 \newblock {\em {FLAP}}, 4(10):3127--3170, 2017.
 
-\bibitem[CH88]{Coq88}
-Thierry Coquand and Gerard Huet.
-\newblock The calculus of constructions.
-\newblock In {\em Information and Computation}, pages 95--120, Duluth, MN, USA,
-  1988. Academic Press, Inc.
+\bibitem[CHS26]{Coq88}
+Thierry Coquand, Jonas H{\"{o}}fer, and Christian Sattler.
+\newblock Constructive higher sheaf models with applications to synthetic mathematics.
+\newblock Extended version, \url{https://arxiv.org/pdf/2605.15126}, 2026.
+
+\bibitem[CRS21]{coquand2021constructive}
+Thierry Coquand, Fabian Ruch, and Christian Sattler.
+\newblock Constructive sheaf models of type theory.
+\newblock {\em Mathematical Structures in Computer Science}, 31(9):979--1002, 2021.
 
 \bibitem[Sch50]{schwartz50distributions}
 Laurent Schwartz.

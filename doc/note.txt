@@ -5,15 +5,21 @@
 Groupoid Infinity
 
 Abstract:
-We analyze the Groupoid Infinity stack of formal languages as a LATTICE of
-internal languages, not a linear tower. The languages fall into three distinct
-branches: a constructive type theory spine (Henk–Frank–Christine/Per–Anders–Urs),
-an operational algebra branch (Dan), and a directed category theory branch
-(Mike–Ulrik). These branches are connected by functorial relationships but their
-syntactic term structures are fundamentally incompatible and cannot be unified
-into a single AST. We construct syntactic CW-complexes and chain complexes for
-each language individually, define their cohomology groups, and assemble a
-spectral sequence over the full lattice of language categories.
+In this article, we investigate the conjecture that no single formal language can
+serve as a universal foundation for the entirety of mathematics, proposing instead
+that mathematics is best served by a system of specialized languages connected by
+functorial transports. We analyze the Groupoid Infinity stack of formal languages
+as a LATTICE of internal languages, rather than a linear tower. The languages fall
+into three distinct branches: a constructive type theory and set analysis spine
+(Henk–Frank–Christine), a super homotopy spine extending to differential cohesion
+and quantum spectra (Henk–Per–Anders–Urs), and an infinity category theory spine
+(Dan–Mike–Ulrik). Because their semantic and syntactic structures are fundamentally
+incompatible, they cannot be unified into a single abstract syntax tree (AST).
+We demonstrate how these separate domains interact functorially, construct syntactic
+CW-complexes and chain complexes for each language individually, define their
+cohomology groups, and assemble a spectral sequence over the full lattice of
+language categories, providing a rigorous mathematical framework for this
+multi-language foundation.
 
 ================================================================================
 1. Categorical Foundations

@@ -39,17 +39,7 @@ and the Spectral Lattice of Formal Systems}
 \maketitle
 
 \begin{abstract}
-We analyze the Groupoid Infinity stack of formal languages as a \emph{lattice} of
-internal languages, not a linear tower. The languages fall into three distinct
-branches: a \emph{constructive type theory and set analysis} spine (Henk--Frank--Christine),
-an Homotopy Type Theory and Super Differential Smooth Quantum Spectra \emph{super homotopy} spine (Henk--Per--Anders--Urs),
-and a \emph{infinity category theory} spine (Dan--Mike--Ulrik). These spines are connected by functorial relationships
-but their syntactic term structures are fundamentally incompatible and should not be
-unified into a single AST. In particular, simplicial type theory (Ulrik/STT)
-is connected to Urs via directed-homotopy foundations, providing the simplicial
-backbone for its 3-layer architecture: Super-Smooth, Differential K-Theory, and Quantum Linear types.
-We construct syntactic CW-complexes and chain complexes for each language individually,
-define their cohomology groups, and assemble a spectral sequence over the full lattice of language categories.
+In this article, we investigate the conjecture that no single formal language can serve as a universal foundation for the entirety of mathematics, proposing instead that mathematics is best served by a system of specialized languages connected by functorial transports. We analyze the Groupoid Infinity stack of formal languages as a \emph{lattice} of internal languages, rather than a linear tower. The languages fall into three distinct branches: a \emph{constructive type theory and set analysis} spine (Henk--Frank--Christine), a \emph{super homotopy} spine extending to differential cohesion and quantum spectra (Henk--Per--Anders--Urs), and an \emph{infinity category theory} spine (Dan--Mike--Ulrik). Because their semantic and syntactic structures are fundamentally incompatible, they cannot be unified into a single abstract syntax tree (AST). We demonstrate how these separate domains interact functorially---for instance, simplicial type theory (Ulrik/STT) provides the directed-homotopy backbone for Urs's 3-layer architecture. Finally, we construct syntactic CW-complexes and chain complexes for each language individually, define their cohomology groups, and assemble a spectral sequence over the full lattice of language categories, providing a rigorous mathematical framework for this multi-language foundation.
 \end{abstract}
 
 \newpage
@@ -127,9 +117,9 @@ themselves are disjoint.
 & \mathbf{Henk} \ar[d, "\text{+$\Sigma$,Id,W}"] \ar[dl, bend right=15, "\text{extract}"'] \ar[dr, bend left=15, "\text{extract}"] & \\
 \mathbf{Frank} \ar[d, "\text{+$\Sigma$,Id}"'] & \mathbf{Per} \ar[d] \ar[l, "\text{+Ind}"] \ar[r, bend left=15, "\text{extract}"] & \mathbf{Dan} \ar[d, dashed, "\text{Lift}"] \\
 \mathbf{Christine} \ar[d, "\text{Analysis}"'] \ar[ur, dotted, <->, "\simeq"] \ar[r] & \mathbf{Anders} \ar[d, "\text{Modal}"] \ar[r, dashed, bend left=15, "\text{Forget}"] & \mathbf{Mike} \ar[d, dashed, "\text{Free}"] \\
-\mathbf{Laurent} \ar[r, "\text{Smooth}"] \ar[dr, bend right=15, "\text{Forms}"'] & \mathbf{Felix} \ar[d, "\text{Diff}"] & \mathbf{Ulrik} \ar[ul, dashed, "\text{Core}"'] \ar[l, red, bend left=15, "\text{STT}"] \ar[dl, red, bend left=15, "\text{STT}"] \\
-& \mathbf{Jack} \ar[d, "\text{Urs}"] & \\
-& \mathbf{Urs}\ \text{(Cosmic Cube)} & 
+\mathbf{Laurent} \ar[r, "\text{Smooth}"] \ar[dr, bend right=15, "\text{Forms}"'] & \mathbf{Jack} \ar[d, "\text{Diff}"] & \mathbf{Ulrik} \ar[ul, dashed, "\text{Core}"'] \ar[l, red, bend left=15, "\text{STT}"] \ar[dl, red, bend left=15, "\text{STT}"] \\
+& \mathbf{Urs} \ar[d, "\text{Quantum}"] & \\
+& \mathbf{Cosmic\ Cube} &
 \end{tikzcd}
 \end{center}
 

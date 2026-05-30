@@ -117,13 +117,7 @@ Ulrik & $\mathbf{(\infty, 1)\text{-}Cat}$ (Riehl-Shulman STT) & Simplicial $(\in
 
 \newpage
 \section{The Three Spines of the Language Lattice}
-The Groupoid Infinity stack does \emph{not} form a linear tower. It decomposes
-into three distinct vertical columns: a constructive/inductive spine on the left
-(\textbf{Frank}--\textbf{Christine}--\textbf{Laurent}), a homotopical and cohesive spine in the center
-(\textbf{Henk}--\textbf{Per}--\textbf{Anders}--\textbf{Urs}), and an operational directed Spine
-on the right (\textbf{Dan}--\textbf{Mike}--\textbf{Ulrik}). The relationships between columns
-are functorial (lifts, free constructions, forgetful maps, smooth completions) but the syntaxes
-themselves are disjoint.
+The collection of formal internal languages does not admit a totally ordered hierarchy. Rather, the architecture factors into three principal spines. The first spine (\textbf{Frank}--\textbf{Christine}--\textbf{Laurent}) is dedicated to constructive inductive schemes and functional analysis. The central spine (\textbf{Henk}--\textbf{Per}--\textbf{Anders}--\textbf{Urs}) models univalent homotopy types and cohesive $\infty$-topoi. The third spine (\textbf{Dan}--\textbf{Mike}--\textbf{Ulrik}) models directed synthetic category theory and discrete operational presentations. As formalized in the commutative diagram below, the respective syntaxes are mutually disjoint; all inter-language translations are strictly mediated by functorial morphisms, including left adjoint lifts, reflective embeddings, and forgetful coreflections.
 
 \begin{center}
 \begin{tikzcd}[row sep=large, column sep=large]
@@ -138,11 +132,11 @@ themselves are disjoint.
 \end{center}
 
 \begin{remark}[Christine $\simeq$ Per]
-Christine (full CIC with $\Sigma$, Id, Ind, Prop) and Per (MLTT-80 with
-$\Sigma$, Id, W, 0, 1, 2) are at a comparable level of expressiveness. Both
-serve as the foundation for Anders and can be considered interchangeable
-base systems. The choice between inductive schemes (Frank/Christine path) and
-W-types (Per path) is a design decision, not a strict ordering.
+Christine (full CIC with Id, Ind, Fix, Prop) and Per (MLTT-80 with
+$\Sigma$, Id, W, 0, 1, 2) are at a comparable level of expressiveness. Per
+serves as the foundation for Anders but can be considered interchangeable
+base systems (Ind for modeling general HIT as in cubicaltt). The choice between inductive schemes (Frank/Christine path) and
+W-types (Per path) is a design decision motivated by purity, not a strict ordering.
 \end{remark}
 
 \newpage
@@ -174,7 +168,7 @@ The lattice stratifies into structural, cohesive, linear, and directed semantics
     \item \textbf{Homotopical Presheaves:} Bridging the gap from strict 1-categories to full $\infty$-categories, Thierry Coquand's Groupoid-Valued Presheaf models ($\mathbf{Grpd}\text{-}\mathbf{PSh}$) \cite{Coq88} provide a concrete constructive semantics for univalence, where dependent types are interpreted via the \emph{Grothendieck Construction}. This establishes the semantic foundation for Cubical Type Theory.
     \item \textbf{Cohesive Modalities:} Cohesive Type Theory (Felix) \cite{schreibershulman12cohesive} is developed specifically to model modalities such as connectedness, compactness, and infinitesimal shapes. Differential Cohesive Type Theory acts as the internal language for Differential Cohesive $\infty$-topoi \cite{schreiber13differential}, adding extra structure to $\infty$-topoi just as $\infty$-categories add path equality to LCCCs. These are typically modeled in the base library via undefined axioms (see \texttt{cohesivett}).
     \item \textbf{Linear/Tensor Modalities:} Symmetric Monoidal Categories ($\mathbf{SMC}$) supply the semantics for resource-sensitive and directed computations. Here, Process Calculus and Interaction Nets (Lafont) act as the internal language, representing modality types with special comonadic \emph{spawn} arrows that hide the underlying run-time implementation.
-    \item \textbf{Directed and Simplicial Topoi:} Moving toward spatial and temporal operational algebras, presheaf categories ($\mathbf{Pres}$) provide the semantics for Guarded Type Theory (Dan) \cite{birkedal2011first}. Incorporating strict directional structures leads to $\mathbf{1\text{-}Cat}$, acting as the semantics for Directed Type Theory (Mike) \cite{Shulman15}. Finally, scaling to higher dimensions, $\mathbf{(\infty, 1)\text{-}Cat}$ serves as the model for Simplicial Type Theory (Ulrik / Riehl-Shulman STT) \cite{riehl2017type}, extending directed paths with a Segal-like directed interval.
+    \item \textbf{Directed and Simplicial Topoi:} Moving toward spatial and temporal operational algebras, presheaf categories ($\mathbf{Pres}$) provide the semantics for Guarded Type Theory (Dan) \cite{birkedal2011first}. Incorporating strict directional structures leads to $\mathbf{1\text{-}Cat}$, acting as the semantics for Directed Type Theory (Mike) \cite{Shulman15}. Finally, scaling to higher dimensions, $\mathbf{(\infty, 1)\text{-}Cat}$ serves as the model for Simplicial Type Theory (Ulrik / Riehl-Shulman STT) \cite{riehl2017type, gratzer2025yoneda}, extending directed paths with a Segal-like directed interval.
 \end{itemize}
 
 \newpage
@@ -224,7 +218,7 @@ Complete Calculus of Inductive Constructions with $\Sigma$, Id, and Ind.
 \end{tabular}
 \end{table}
 
-\subsection{Laurent: Calculus and Functional Analysis \cite{laurent05semantics}}\footnote{\url{https://laurent.groupoid.space}}
+\subsection{Laurent: Calculus and Functional Analysis \cite{schwartz50distributions}}\footnote{\url{https://laurent.groupoid.space}}
 Laurent formalizes classical real and functional analysis, distribution theory, and measure theory. It provides first-class support for reals, complex numbers, measures, limits, and integration.
 \begin{table}[ht!]
 \centering
@@ -345,7 +339,7 @@ Extends cohesion with stable homotopy (spectra, suspensions, wedges) and differe
 \end{tabular}
 \end{table}
 
-\subsubsection{Urs (Layer III)}\footnote{\url{https://urs.groupoid.space}}
+\subsubsection{Urs (Layer III) \cite{sati2022anyonic, sati2022topological, sati2023anyonicdefect}}\footnote{\url{https://urs.groupoid.space}}
 The top layer, adding configuration spaces, braids, and linear resource types ($!A$) for Urs programming.
 \begin{table}[ht!]
 \centering
@@ -398,24 +392,26 @@ once contravariantly).
 \begin{table}[ht!]
 \centering
 \begin{tabular}{rl}
-     cat :=&$\textbf{var}\ name\ |\ \textbf{op}\ C\ |\ C\ \times\ C$ \\
-    type :=&$\textbf{Hom}_C\ E\ E\ |\ E\ \otimes\ E\ |\ \int^{C}\ name\ E\ |\ \int_{C}\ name\ E$ \\
-         &$E\ \multimap\ E\ |\ name\ \textrm{args}$ \\
-    term :=&$\textbf{id}\ E\ |\ \textbf{id}_J\ E\ |\ \textbf{id}_{J,cov}\ E\ |\ \textbf{id}_{J,contra}\ E$ \\
-         &$E\ \otimes\ E\ |\ \textbf{let}\ name\ \otimes\ name\ \mathbf{=}\ E\ \textbf{in}\ E$ \\
-         &$\mathbf{coend\_in}\ name\ name\ name\ E\ |\ \textbf{let}\ \mathbf{coend\_in}\ name\ name\ \mathbf{=}\ E\ \textbf{in}\ E$ \\
-         &$\mathbf{end\_in}\ name\ E\ |\ \textbf{let}\ \mathbf{end\_in}\ name\ name\ name\ \mathbf{=}\ E\ \textbf{in}\ E$ \\
-         &$\lambda\ name\ E\ |\ E\ E\ |\ \textbf{var}\ name$ \\
+     var :=&$\textbf{var}\ name\ |\ name\ \textrm{args}$ \\
+      op :=&$\textbf{op}\ E$ \\
+    prod :=&$E\ \times\ E$ \\
+     hom :=&$\textbf{Hom}_E\ E\ E$ \\
+  tensor :=&$E\ \otimes\ E$ \\
+      pi :=&$E\ \multimap\ E\ |\ \lambda\ name\ E\ |\ E\ E$ \\
+   coend :=&$\int^{E}\ name\ E\ |\ \mathbf{coend}\ name\ name\ name\ E$ \\
+     end :=&$\int_{E}\ name\ E\ |\ \mathbf{end}\ name\ E$ \\
+      id :=&$\textbf{id}\ E$ \\
+     idJ :=&$\textbf{id}_J\ E\ |\ \textbf{id}_{J,cov}\ E\ |\ \textbf{id}_{J,contra}\ E$ \\
 \end{tabular}
 \end{table}
 
 \newpage
-\subsection{Ulrik: Simplicial \texorpdfstring{$\infty$}{Infinity}-Categories \cite{riehl2017type}}\footnote{\url{https://ulrik.groupoid.space}}
+\subsection{Ulrik: Simplicial \texorpdfstring{$\infty$}{Infinity}-Categories \cite{riehl2017type, gratzer2025yoneda}}\footnote{\url{https://ulrik.groupoid.space}}
 Extends Mike's foundation with directed interval $\mathbb{I}$, shape
 inclusions ($\varphi \subseteq \psi$), extension types, modal $\Pi$, and
 twisted arrow categories ($A^{\mathrm{tw}}$).
 
-To construct a type theory for synthetic category theory, one might hope to interpret type theory in the category of categories ($\infty$-categories or otherwise) to ensure that types realize categories. However, the category of small categories is too poorly behaved to form a model of Martin-Löf Type Theory (MLTT). Instead, Riehl and Shulman (2017) \cite{riehl2017type} use the category of bisimplicial sets (simplicial spaces) to model synthetic $(\infty, 1)$-categories via Rezk spaces. Simplicial Type Theory (STT) axiomatizes this framework using a directed interval and shapes, allowing one to isolate $(\infty, 1)$-categories as a reflective subuniverse of types within the theory.
+To construct a type theory for synthetic category theory, one might hope to interpret type theory in the category of categories ($\infty$-categories or otherwise) to ensure that types realize categories. However, the category of small categories is too poorly behaved to form a model of Martin-Löf Type Theory (MLTT). Instead, Riehl and Shulman (2017) \cite{riehl2017type} use the category of bisimplicial sets (simplicial spaces) to model synthetic $(\infty, 1)$-categories via Rezk spaces, enabling further formalizations such as the Yoneda lemma and presheaf categories \cite{gratzer2025yoneda}. Simplicial Type Theory (STT) axiomatizes this framework using a directed interval and shapes, allowing one to isolate $(\infty, 1)$-categories as a reflective subuniverse of types within the theory.
 
 \begin{table}[ht!]
 \centering
@@ -429,7 +425,7 @@ To construct a type theory for synthetic category theory, one might hope to inte
    part :=&$\textbf{Partial}\ E\ E\ |\ \textbf{[}\ (E=I) \rightarrow E, ...\ \textbf{]}$ \\
     ext :=&$\textbf{Ext}\ E\ E\ E$ \\
  modalpi :=&$\Pi\ \textrm{shape}\ E\ E\ |\ \lambda\ \textrm{shape}\ E\ |\ E\ E$ \\
-     tw :=&$\textbf{Tw}\ E\ |\ \textbf{tw\_p0}\ E\ |\ \textbf{tw\_p1}\ E$ \\
+     tw :=&$\textbf{Tw}\ E\ |\ \textbf{tw}_{p0}\ E\ |\ \textbf{tw}_{p1}\ E$ \\
     ops :=&$E\ \vee\ E\ |\ E\ \wedge\ E\ |\ \neg E$ \\
      idJ :=&$\textbf{id$_J$}\ E\ |\ \textbf{id$_{J,cov}$}\ E\ |\ \textbf{id$_{J,contra}$}\ E$ \\
 \end{tabular}
@@ -724,10 +720,10 @@ Thierry Coquand and Gerard Huet.
 \newblock In {\em Information and Computation}, pages 95--120, Duluth, MN, USA,
   1988. Academic Press, Inc.
 
-\bibitem[Lau05]{laurent05semantics}
-Olivier Laurent.
-\newblock Syntax vs. semantics: a polarized approach.
-\newblock {\em Theoetical. Computer Science}, 343(1-2):177--206, 2005.
+\bibitem[Sch50]{schwartz50distributions}
+Laurent Schwartz.
+\newblock {\em Th{\'e}orie des distributions}.
+\newblock Hermann, Paris, 1950.
 
 \bibitem[MLS84]{Lof84}
 P.~Martin-L{\"o}f and G.~Sambin.
@@ -748,6 +744,11 @@ Frank Pfenning and Christine Paulin{-}Mohring.
   International Conference, Tulane University, New Orleans, Louisiana, USA,
   March 29 - April 1, 1989, Proceedings}, pages 209--228, 1989.
 
+\bibitem[GWB25]{gratzer2025yoneda}
+Daniel Gratzer, Jonathan Weinberger, and Ulrik Buchholtz.
+\newblock The Yoneda embedding in simplicial type theory.
+\newblock Ukrainian Translation: \url{https://groupoid.space/friends/ulrik/yoneda-simplicialtt-ua.pdf}, 2025.
+
 \bibitem[RS17]{riehl2017type}
 Emily Riehl and Michael Shulman.
 \newblock A type theory for synthetic $\infty$-categories.
@@ -762,6 +763,21 @@ Urs Schreiber.
 Urs Schreiber and Michael Shulman.
 \newblock Quantum gauge field theory in cohesive homotopy type theory.
 \newblock In {\em Workshop on Quantum Physics and Logic}, 2012.
+
+\bibitem[SS22a]{sati2022anyonic}
+Hisham Sati and Urs Schreiber.
+\newblock Anyonic topological order in twisted equivariant differential (TED) K-theory.
+\newblock {\em arXiv preprint arXiv:2206.13563}, 2022.
+
+\bibitem[SS22b]{sati2022topological}
+Hisham Sati and Urs Schreiber.
+\newblock Topological quantum programming in TED-K.
+\newblock {\em arXiv preprint arXiv:2209.08331}, 2022.
+
+\bibitem[SS23]{sati2023anyonicdefect}
+Hisham Sati and Urs Schreiber.
+\newblock Anyonic defect branes and conformal blocks in twisted equivariant differential (TED) K-theory.
+\newblock {\em Reviews in Mathematical Physics}, 35(08):2350024, 2023.
 
 \end{thebibliography}
 \end{document}

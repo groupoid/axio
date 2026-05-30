@@ -80,7 +80,7 @@ The category of languages $\mathcal{L}$ has formal languages as objects and
 syntactic functors (compilers, type checkers, normalizers, extractors) as
 morphisms.
 
-\section{The Three Branches of the Language Lattice}
+\section{The Three Spines of the Language Lattice}
 The Groupoid Infinity stack does \emph{not} form a linear tower. It decomposes
 into three distinct vertical columns: a constructive/inductive spine on the left
 (\textbf{Frank}--\textbf{Christine}--\textbf{Laurent}), a homotopical/cohesive spine in the center
@@ -108,7 +108,7 @@ base systems. The choice between inductive schemes (Frank/Christine path) and
 W-types (Per path) is a design decision, not a strict ordering.
 \end{remark}
 
-\subsection{The Fine-Grained Primitive Lattice}
+\subsection{The Topoi Structure}
 To analyze the gradual expansion of language primitives, we construct a fine-grained lattice of semantic categories radiating from the category of dependent products ($\mathbf{\Pi}\text{-}\mathbf{Cat}$ (Henk)). The system expands in four cardinal directions (adding dependent sums to yield locally cartesian closed categories $\mathbf{LCCC}$, inductive algebras $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}$ (Frank), path objects for identity types $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Path}$, and bicartesian closed structures $\mathbf{BiCCC}$ (IPL)) before merging into rich categories of models such as $\mathbf{LCCC} + \mathbf{Ind}$ (Christine), $\mathbf{LCCC} + \mathbf{W}$ (Per), $\infty\text{-}\mathbf{Grpd}$ (Anders), and cohesive $\infty$-topoi. On the right, the lattice incorporates the operational algebra branch ($\mathbf{Pres}$ (Dan)), the directed 1-category branch ($\mathbf{1\text{-}Cat}$ (Mike)), and the simplicial $(\infty, 1)$-category branch ($\mathbf{(\infty, 1)\text{-}Cat}$ (Ulrik)). All cross-branch connections are detailed in the global map in Section 2.
 
 \begin{theorem}[Universal Primitive Lattice]
@@ -126,7 +126,7 @@ The categories of models for the Groupoid Infinity language stack form a planar,
 \end{theorem}
 
 \newpage
-\section{Branch I: Set Analysis}
+\section{Spine I: Set Analysis}
 This branch represents the constructive/inductive spine of type theories and functional analysis. It is characterized by inductive algebraic constructions and real/functional analysis foundations.
 
 \subsection{Frank: Minimal CIC}
@@ -170,7 +170,7 @@ type exp_laurent =
 \end{lstlisting}
 
 \newpage
-\section{Branch II: Super Homotopy Type Theory}
+\section{Spine II: Super Homotopy Type Theory}
 This branch represents the central path of homotopical, cubical, and cohesive type systems, transitioning from pure dependent products to higher-dimensional geometry.
 
 \subsection{Henk: Pure Type Systems (PTS)}
@@ -318,7 +318,7 @@ $\Pi$ in STT supply the $\infty$-categorical framework that Urs's Layer I
 \end{remark}
 
 \newpage
-\section{Branch III: Infinity Category Theory}
+\section{Spine III: Infinity Category Theory}
 This branch encompasses operational algebra and directed category theories, dealing with presentations of algebraic shapes and directed categorical structures.
 
 \subsection{Dan: Operational Algebra}

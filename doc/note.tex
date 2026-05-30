@@ -27,7 +27,7 @@
   keepspaces=true
 }
 
-\title{Groupoid Infinity:\\
+\title{AXIO/1:\\
 Internal Languages, Categorical Models, and the\\
 Spectral Lattice of Formal Systems}
 \author{Groupoid Infinity}
@@ -40,16 +40,15 @@ Spectral Lattice of Formal Systems}
 \begin{abstract}
 We analyze the Groupoid Infinity stack of formal languages as a \emph{lattice} of
 internal languages, not a linear tower. The languages fall into three distinct
-branches: a \emph{constructive type theory} spine (Henk--Frank--Christine/Per--Anders--Urs),
-an \emph{operational algebra} branch (Dan), and a \emph{directed category theory}
-branch (Mike--Ulrik). These branches are connected by functorial relationships
-but their syntactic term structures are fundamentally incompatible and cannot be
-unified into a single AST\@. In particular, simplicial type theory (Ulrik/STT)
+branches: a \emph{constructive type theory and set analysis} spine (Henk--Frank--Christine),
+an Homotopy Type Theory and Super Differential Smooth Quantum Spectra \emph{super homotopy} spine (Henk--Per--Anders--Urs),
+and a \emph{infinity category theory} spine (Dan--Mike--Ulrik). These spines are connected by functorial relationships
+but their syntactic term structures are fundamentally incompatible and should not be
+unified into a single AST. In particular, simplicial type theory (Ulrik/STT)
 is connected to Urs via directed-homotopy foundations, providing the simplicial
-backbone for its 4-layer architecture: Homotopy, Super-Smooth, Differential
-K-Theory, and Quantum Linear types. We construct syntactic CW-complexes and chain
-complexes for each language individually, define their cohomology groups, and
-assemble a spectral sequence over the full lattice of language categories.
+backbone for its 3-layer architecture: Super-Smooth, Differential K-Theory, and Quantum Linear types.
+We construct syntactic CW-complexes and chain complexes for each language individually,
+define their cohomology groups, and assemble a spectral sequence over the full lattice of language categories.
 \end{abstract}
 
 \newpage
@@ -95,9 +94,9 @@ themselves are disjoint.
 & \mathbf{Henk} \ar[d, "\text{+$\Sigma$,Id,W}"] & \\
 \mathbf{Frank} \ar[d, "\text{+$\Sigma$,Id}"'] & \mathbf{Per} \ar[d] \ar[l, "\text{+Ind}"] & \mathbf{Dan} \ar[d, dashed, "\text{Lift}"] \\
 \mathbf{Christine} \ar[d, "\text{Analysis}"'] \ar[ur, dotted, <->, "\simeq"] \ar[r] & \mathbf{Anders} \ar[d, "\text{Modal}"] \ar[r, dashed, bend left=15, "\text{Forget}"] & \mathbf{Mike} \ar[d, dashed, "\text{Free}"] \\
-\mathbf{Laurent} \ar[r, "\text{Smooth}"] & \mathbf{Urs.SupSmth} \ar[d, "\text{Diff}"] & \mathbf{Ulrik} \ar[ul, dashed, "\text{Core}"'] \ar[l, red, bend left=15, "\text{STT}"] \\
-& \mathbf{Urs.DiffK} \ar[d, "\text{Quantum}"] & \\
-& \mathbf{Urs.Quantum} & 
+\mathbf{Laurent} \ar[r, "\text{Smooth}"] & \mathbf{Felix} \ar[d, "\text{Diff}"] & \mathbf{Ulrik} \ar[ul, dashed, "\text{Core}"'] \ar[l, red, bend left=15, "\text{STT}"] \\
+& \mathbf{Jack} \ar[d, "\text{Urs}"] & \\
+& \mathbf{Urs} & 
 \end{tikzcd}
 \end{center}
 
@@ -116,18 +115,18 @@ To analyze the gradual expansion of language primitives, we construct a fine-gra
 The categories of models for the Groupoid Infinity language stack form a planar, coherent lattice of categories radiating from the category of dependent products $\mathbf{\Pi}\text{-}\mathbf{Cat}$ (Henk), extending in four cardinal directions (dependent sums, inductive types, path objects, and bicartesian closed structures), and completing in cohesive and directed higher categories:
 \begin{center}
 \scriptsize
-\begin{tikzcd}[row sep=large, column sep=0.35em]
+\begin{tikzcd}[row sep=large, column sep=0.0em]
 & & \mathbf{LCCC} + \mathbf{W}\ \text{(Per)} & \mathbf{LCCC} \ar[l, dashed] & \mathbf{Pres}\ \text{(Dan)} \ar[d, dashed, "\text{Lift}"] \\
 \infty\text{-}\mathbf{Grpd}\ \text{(Anders)} & \mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Path} \ar[l, dashed] & \mathbf{\Pi}\text{-}\mathbf{Cat}\ \text{(Henk)} \ar[ur] \ar[dr] \ar[l] \ar[r] & \mathbf{BiCCC}\ \text{(IPL)} \ar[r, dashed] & \mathbf{1\text{-}Cat}\ \text{(Mike)} \ar[d, dashed, "\text{Free}"] \\
-\mathbf{Cohesive}\ \infty\text{-}\mathbf{Topos}\ \text{(Urs.SupSmth)} \ar[u, leftarrow, "\text{Modal}"'] & & \mathbf{LCCC} + \mathbf{Ind}\ \text{(Christine)} & \mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}\ \text{(Frank)} \ar[l, dashed] & \mathbf{(\infty, 1)\text{-}Cat}\ \text{(Ulrik)} \\
-\mathbf{Diff}\ \infty\text{-}\mathbf{Topos}\ \text{(Urs.DiffK)} \ar[u, leftarrow, "\text{Diff}"'] & & & & \\
-\mathbf{Quantum}\ \infty\text{-}\mathbf{Topos}\ \text{(Urs.Quantum)} \ar[u, leftarrow, "\text{Quantum}"'] & & & &
+\mathbf{Cohesive}\ \infty\text{-}\mathbf{Topos}\ \text{(Felix)} \ar[u, leftarrow, "\text{Modal}"'] & & \mathbf{LCCC} + \mathbf{Ind}\ \text{(Christine)} & \mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}\ \text{(Frank)} \ar[l, dashed] & \mathbf{(\infty, 1)\text{-}Cat}\ \text{(Ulrik)} \\
+\mathbf{Diff}\ \infty\text{-}\mathbf{Topos}\ \text{(Jack)} \ar[u, leftarrow, "\text{Diff}"'] & & & & \\
+\mathbf{Urs}\ \infty\text{-}\mathbf{Topos}\ \text{(Urs)} \ar[u, leftarrow, "\text{Urs}"'] & & & &
 \end{tikzcd}
 \end{center}
 \end{theorem}
 
 \newpage
-\section{Branch I: Inductive Type Theory and Analysis}
+\section{Branch I: Set Analysis}
 This branch represents the constructive/inductive spine of type theories and functional analysis. It is characterized by inductive algebraic constructions and real/functional analysis foundations.
 
 \subsection{Frank: Minimal CIC}
@@ -171,7 +170,7 @@ type exp_laurent =
 \end{lstlisting}
 
 \newpage
-\section{Branch II: Homotopical and Cohesive Spine}
+\section{Branch II: Super Homotopy Type Theory}
 This branch represents the central path of homotopical, cubical, and cohesive type systems, transitioning from pure dependent products to higher-dimensional geometry.
 
 \subsection{Henk: Pure Type Systems (PTS)}
@@ -240,17 +239,17 @@ layered sublanguages where each layer builds on top of the syntax, modalities, a
 \hline
 \textbf{Sublanguage} & \textbf{Modules} & \textbf{Primitives} \\
 \hline
-\textbf{I. Urs.SupSmth} & \texttt{graded, flat, sharp, bose,} &
+\textbf{I. Felix} & \texttt{graded, flat, sharp, bose,} &
     Bose/Fermi grades, $\flat$, $\sharp$, \\
  & \texttt{fermi, tensor, smth, supsmth} &
     $A \otimes B$, SmthSet, SupSmthSet \\
 \hline
-\textbf{II. Urs.DiffK} & \texttt{spectra, grpd, form,} &
+\textbf{II. Jack} & \texttt{spectra, grpd, form,} &
     Spectrum, Susp, Grpd, $\Omega^n(X)$, \\
  & \texttt{ku, diff, diffku} &
     $KU^{\tau}_G$, $d$, DiffKU \\
 \hline
-\textbf{III. Urs.Quantum} & \texttt{conf, braid, qubit, linear} &
+\textbf{III. Urs} & \texttt{conf, braid, qubit, linear} &
     Config$^n$, Braid$_n$, Qubit, $!A$ \\
 \hline
 \end{tabular}%
@@ -261,21 +260,21 @@ layered sublanguages where each layer builds on top of the syntax, modalities, a
 The sublanguages represent a progressive structure for formalizing mathematical and
 physical concepts:
 \begin{enumerate}
-  \item \textbf{Urs.SupSmth}: Graded universes and tensors, group
+  \item \textbf{Felix}: Graded universes and tensors, group
     actions, and super-modality operators for geometric cohesion and
     differential structure---bosonic/fermionic grades, flat/sharp modalities.
-  \item \textbf{Urs.DiffK}: Homotopical foundations via
+  \item \textbf{Jack}: Homotopical foundations via
     spectra and groupoids, supporting differential K-theory with differential
     forms, connections, and refined cohomology structures.
-  \item \textbf{Urs.Quantum}: Configuration spaces and braids for quantum
-    statistics, supporting quantum systems and linear types ($!A$) for
-    resource-sensitive quantum programming.
+  \item \textbf{Urs}: Configuration spaces and braids for Urs
+    statistics, supporting Urs systems and linear types ($!A$) for
+    resource-sensitive Urs programming.
 \end{enumerate}
 Each sublanguage culminates in a system tailored to formalize superpoints
 ($\mathbb{R}^{m|n}$), supersymmetry, and equivariant structures.
 \end{remark}
 
-\subsubsection{Urs.SupSmth (Layer I)}
+\subsubsection{Felix (Layer I)}
 Extends the homotopy core with graded universes, tensors, group actions, and cohesive modalities ($\flat$, $\sharp$, $\Im$) for synthetic supergeometry.
 \begin{lstlisting}[language=Caml]
 type grade = Bose | Fermi
@@ -288,7 +287,7 @@ type exp_coh =
   | SupSmthSet
 \end{lstlisting}
 
-\subsubsection{Urs.DiffK (Layer II)}
+\subsubsection{Jack (Layer II)}
 Extends cohesion with stable homotopy (spectra, suspensions, wedges) and differential cohomology (forms, connections, and differential K-theory).
 \begin{lstlisting}[language=Caml]
 type exp_diff =
@@ -300,15 +299,15 @@ type exp_diff =
   | DiffKU_G of exp_diff * exp_diff * exp_diff * exp_diff
 \end{lstlisting}
 
-\subsubsection{Urs.Quantum (Layer III)}
-The top layer, adding configuration spaces, braids, and linear resource types ($!A$) for quantum programming.
+\subsubsection{Urs (Layer III)}
+The top layer, adding configuration spaces, braids, and linear resource types ($!A$) for Urs programming.
 \begin{lstlisting}[language=Caml]
-type exp_quantum =
+type exp_Urs =
   | DiffK of exp_diff
-  | Qubit of exp_quantum * exp_quantum | Linear of exp_quantum
-  | AppQubit of exp_quantum * exp_quantum * exp_quantum
-  | FuseQubit of exp_quantum * exp_quantum * exp_quantum
-  | Config of int * exp_quantum | Braid of int * exp_quantum
+  | Qubit of exp_Urs * exp_Urs | Linear of exp_Urs
+  | AppQubit of exp_Urs * exp_Urs * exp_Urs
+  | FuseQubit of exp_Urs * exp_Urs * exp_Urs
+  | Config of int * exp_Urs | Braid of int * exp_Urs
 \end{lstlisting}
 
 \begin{remark}[STT $\to$ Urs: The Simplicial Connection]
@@ -319,7 +318,7 @@ $\Pi$ in STT supply the $\infty$-categorical framework that Urs's Layer I
 \end{remark}
 
 \newpage
-\section{Branch III: Operational and Directed Category Theory}
+\section{Branch III: Infinity Category Theory}
 This branch encompasses operational algebra and directed category theories, dealing with presentations of algebraic shapes and directed categorical structures.
 
 \subsection{Dan: Operational Algebra}
@@ -511,9 +510,9 @@ E_1^{p,q} = H^q(\mathcal{O}_p) \implies H^{p+q}(\mathcal{L})
 2a & Christine & CTT & + $\Sigma$, Id & 14 \\
 2b & Per & CTT & + $\Sigma$, Id, W, 0, 1, 2 & 26 \\
 3 & Anders & CTT & + Path, I, Glue, HComp, HIT & 40+ \\
-4a & Urs.SupSmth & CTT/Modal & + $\flat$, $\sharp$, $\Im$, $\otimes$, Plot & 10 \\
-4b & Urs.DiffK & CTT/Modal & + Spectra, Susp, Grpd, Forms, DiffKU & 12 \\
-4c & Urs.Quantum & CTT/Modal & + Qubit, Linear, Config, Braid & 7 \\
+4a & Felix & CTT/Modal & + $\flat$, $\sharp$, $\Im$, $\otimes$, Plot & 10 \\
+4b & Jack & CTT/Modal & + Spectra, Susp, Grpd, Forms, DiffKU & 12 \\
+4c & Urs & CTT/Modal & + Qubit, Linear, Config, Braid & 7 \\
 \hline
 --- & Dan & Algebra & Groups, Simplices, Chains, Boundaries & 20 \\
 --- & Mike & Directed & Hom, $\otimes$, $\int$, $\prod$, $\multimap$ & 13 \\
@@ -522,7 +521,7 @@ E_1^{p,q} = H^q(\mathcal{O}_p) \implies H^{p+q}(\mathcal{L})
 \end{tabular}%
 }
 \caption{The language lattice: filtration indices and constructor counts.
-Note the split at $p=2$ (Christine/Per), the four sublanguages of Urs at $p=4$ (Homotopy, SupSmth, DiffK, Quantum), and the separate branch indices
+Note the split at $p=2$ (Christine/Per), the four sublanguages of Urs at $p=4$ (Homotopy, SupSmth, DiffK, Urs), and the separate branch indices
 for Dan, Mike, and Ulrik.}
 \end{table}
 
@@ -572,11 +571,11 @@ The language category $\mathcal{L}$ is not merely a set of objects; the relation
 \hline
 \textbf{Forget} & Anders & Dan & No & Undirected spaces cannot be functorially mapped to discrete presentation equations. \\
 \hline
-\textbf{Modal} & Anders & Urs.SupSmth & Yes & Extends cubical HoTT with cohesive modalities ($\flat$, $\sharp$, $\Im$) and super-grades. \\
+\textbf{Modal} & Anders & Felix & Yes & Extends cubical HoTT with cohesive modalities ($\flat$, $\sharp$, $\Im$) and super-grades. \\
 \hline
-\textbf{Diff} & Urs.SupSmth & Urs.DiffK & Yes & Stable extension to spectra, suspensions, forms, and differential K-theory. \\
+\textbf{Diff} & Felix & Jack & Yes & Stable extension to spectra, suspensions, forms, and differential K-theory. \\
 \hline
-\textbf{Quantum} & Urs.DiffK & Urs.Quantum & Yes & Extends differential K-theory with configuration spaces, braids, and linear types. \\
+\textbf{Urs} & Jack & Urs & Yes & Extends differential K-theory with configuration spaces, braids, and linear types. \\
 \hline
 \end{tabular}%
 }

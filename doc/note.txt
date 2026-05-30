@@ -1,0 +1,635 @@
+================================================================================
+ GROUPOID INFINITY: INTERNAL LANGUAGES, CATEGORICAL MODELS,
+ AND THE SPECTRAL LATTICE OF FORMAL SYSTEMS
+================================================================================
+Groupoid Infinity
+
+Abstract:
+We analyze the Groupoid Infinity stack of formal languages as a LATTICE of
+internal languages, not a linear tower. The languages fall into three distinct
+branches: a constructive type theory spine (Henk–Frank–Christine/Per–Anders–Urs),
+an operational algebra branch (Dan), and a directed category theory branch
+(Mike–Ulrik). These branches are connected by functorial relationships but their
+syntactic term structures are fundamentally incompatible and cannot be unified
+into a single AST. We construct syntactic CW-complexes and chain complexes for
+each language individually, define their cohomology groups, and assemble a
+spectral sequence over the full lattice of language categories.
+
+================================================================================
+1. Categorical Foundations
+================================================================================
+* Categories with Families (CwF):
+  A CwF consists of a category C of contexts and substitutions with a terminal 
+  object, equipped with a functor Ty : C^op → Set, a presheaf of terms 
+  Tm : (∫ Ty)^op → Set, and a context comprehension operation with projection morphisms.
+
+* Natural Models (Awodey):
+  A category C with terminal object 1 and a representable natural transformation
+  p : Tm → Ty between presheaves. Pullbacks of p along Yoneda provide context extension.
+
+* Grothendieck Fibration:
+  A functor p : E → B is a fibration when for every X ∈ E and u : J → p(X)
+  in B there exists a Cartesian lift f : Y → X in E.
+
+The category of languages L has formal languages as objects and syntactic
+functors (compilers, type checkers, normalizers, extractors) as morphisms.
+
+================================================================================
+2. The Three Branches of the Language Lattice
+================================================================================
+The Groupoid Infinity stack does NOT form a linear tower. It decomposes into
+three vertical columns: a constructive/inductive spine on the left
+(Frank--Christine--Laurent), a homotopical/cohesive spine in the center
+(Henk--Per--Anders--Urs), and an operational/directed branch on the right
+(Dan--Mike--Ulrik).
+
+                    Constructive          Homotopical /        Directed /
+                    Spine (Left)        Cohesive (Center)  Operational (Right)
+                    ────────────        ─────────────────  ───────────────────
+                                         [Lambda Cube]
+                                               │
+                                               v
+                                             [Henk]
+                                             Π, U^n
+                             extract           │           extract
+                           .───────────────────┼──────────────────────────────.
+                           │                   │ +Σ,Id,W                      │
+                           v                   v                              v
+                        [Frank] <───────────── [Per] ──────(extract)─────> [Dan]
+                        + Ind        +Ind      │                     Groups, Simplices
+                          │              /     │                     Chains, Boundaries
+                  +Σ,Id   │             / ≃    │                             │
+                          ▼            v       ▼                             │ Lift (dashed)
+                     [Christine] ───────────> [Anders] ──(Forget)────────> [Mike]
+                          │                    ^  │                         │ Hom, ⊗, ∫, ∏
+                Analysis  │            Core   /   │ Modal                   │
+                          ▼          (dashed)/    v                         v Free (dashed)
+                      [Laurent] ────────────> [Urs.SupSmth] <──(STT)────── [Ulrik]
+                    Real/Func Analysis Smooth     │                         I→, Ext, Tw
+                                  \               │ (Diff)                /
+                            Forms  \              v                      / STT
+                                    '───────> [Urs.DiffK] <─────────────'
+                                                  │
+                                                  v (Quantum)
+                                            [Urs.Quantum] (Cosmic Cube)
+
+  Christine ≃ Per: Both at comparable expressiveness. CIC path (Ind) vs
+  MLTT-80 path (W-types) is a design choice, not a strict ordering.
+
+2.1 The Fine-Grained Primitive Lattice
+To analyze the gradual expansion of language primitives, we establish the central classification theorem of our framework, showing that the gradual addition of syntactic constructors corresponds to a coherent, planar lattice of standard mathematical categories.
+
+Theorem 2.1 (Universal Primitive Lattice).
+The categories of models for the Groupoid Infinity language stack form a planar, coherent lattice of categories radiating from the category of dependent products Pi-Cat (Henk), extending in three cardinal directions (dependent sums, inductive types, and bicartesian closed structures), and completing in cohesive and directed higher categories:
+
+                            [LCCC + W (Per)] <────────────(dashed)───────────── [LCCC]                      [Pres (Dan)]
+                                                                                  ▲                            │
+                                                                                 /                             │ (dashed, Lift)
+[oo-Grpd (Anders)] <──────────────(dashed)─────────────── [Pi-Cat (Henk)] ────> [BiCCC (IPL)] ───(dashed)────> [1-Cat (Mike)]
+   ▲                                                                             \                             │
+   │ (Modal)                                                                      v                            │ (dashed, Free)
+[Cohesive oo-Topos (Urs.SupSmth)]                [LCCC + Ind (Christine)] <─── [Pi-Cat + Ind (Frank)]          ▼
+   ▲                                                                                                    [(oo,1)-Cat (Ulrik)]
+   │ (Diff)
+[Diff oo-Topos (Urs.DiffK)]
+   ▲
+   │ (Quantum)
+[Quantum oo-Topos (Urs.Quantum)]
+
+
+Table 2.2: Categorical Models and Primitives of the Internal Languages
+
+| Language / Primitive | Semantic Category / Model          | Application & Physical/Mathematical Domain                |
+|----------------------|-----------------------------------|-----------------------------------------------------------|
+| O_λ                  | Cartesian Closed Category (CCC)   | Untyped λ-calculus (evaluation and interpretation)        |
+| O_π                  | Symmetric Monoidal Category       | Process calculi (CCS, CSP, Milner's π-calculus)           |
+| O_μ                  | Tensor Category                   | Tensor calculus (vectorization)                           |
+|----------------------|-----------------------------------|-----------------------------------------------------------|
+| Henk (O_Π)           | Pi-Cat (C-systems / CwF)          | PTS Calculus of Constructions (functional completeness)   |
+| Frank                | Pi-Cat + Ind                      | Minimal CIC (strictly positive inductive schemes)          |
+| Christine (O_Σ)      | LCCC + Ind                        | Full CIC (MLTT-72 contextual completeness, sums)          |
+| Laurent              | Top / Met                         | Calculus & Functional Analysis (topological/metric spaces)|
+| Per (O_W)            | LCCC + W                          | Martin-Löf Type Theory MLTT-80 (inductive W-types)        |
+| Anders (O_I)         | oo-Cat                            | Cubical Type Theory with Path types, no HITs              |
+| Anders+              | oo-Topos                          | Cubical Type Theory with HITs (lightweight core)          |
+|----------------------|-----------------------------------|-----------------------------------------------------------|
+| Felix (O_⊣)          | Cohesive oo-Topos                 | Modal HoTT (synthetic differential supergeometry)         |
+| Jack                 | Diff oo-Topos                     | Stable homotopy (spectra, differential forms, K-theory)   |
+| Urs (O_H)            | Urs oo-Topos (Linear Types)       | Quantum linear types (Hadamard operator, qubits, braids)  |
+|----------------------|-----------------------------------|-----------------------------------------------------------|
+| Dan (O_▷)            | Pres (Simplicial Sets / Chains)   | Guarded recursion, operational algebra (face/degeneracy)  |
+| Mike                 | 1-Cat                             | Directed 1-Category theory (directed paths/hom-sets)      |
+| Ulrik                | (oo,1)-Cat (Riehl-Shulman STT)    | Simplicial (oo,1)-categories (Segal, directed interval)   |
+|----------------------|-----------------------------------|-----------------------------------------------------------|
+
+
+2.2 The Semantic Foundations: Structural, Cohesive, and Directed Modalities
+The lattice stratifies into structural, cohesive, linear, and directed semantics. The foundational correspondences between semantic models and their internal syntaxes progressively build up structure:
+
+* Structural Core: At the base, Locally Cartesian Closed Categories (LCCC) provide the semantics for MLTT, the pure structural type theory. Upgrading the semantics to oo-categories adds globular path equality, yielding Cubical Type Theory with Path types but without Higher Inductive Types (HITs). Finally, a full oo-topos models Cubical Type Theory with HITs, which maintains a very lightweight core and syntax.
+* Cohesive Modalities: Cohesive Type Theory (Felix) is developed specifically to model modalities such as connectedness, compactness, and infinitesimal shapes. Differential Cohesive Type Theory acts as the internal language for Differential Cohesive oo-topoi, adding extra structure to oo-topoi just as oo-categories add path equality to LCCCs. These are typically modeled in the base library via undefined axioms (see cohesivett).
+* Linear/Tensor Modalities: Symmetric Monoidal Categories (SMC) supply the semantics for resource-sensitive and directed computations. Here, Process Calculus and Interaction Nets (Lafont) act as the internal language, representing modality types with special comonadic spawn arrows that hide the underlying run-time implementation.
+* Directed and Simplicial Topoi: Moving toward spatial and temporal operational algebras, presheaf categories (Pres) provide the semantics for Guarded Type Theory (Dan). Incorporating strict directional structures leads to 1-Cat, acting as the semantics for Directed Type Theory (Mike). Finally, scaling to higher dimensions, (oo, 1)-Cat serves as the model for Simplicial Type Theory (Ulrik / Riehl-Shulman STT), extending directed paths with a Segal-like directed interval.
+
+This establishes a rich hierarchy of correspondences:
+
+     [LCCC]               <──────(Internal Language)──────> [MLTT]
+     [oo-Cat]             <──────(Internal Language)──────> [Cubical (Paths, no HITs)]
+     [oo-Topos]           <──────(Internal Language)──────> [Cubical (with HITs)]
+     [Cohesive oo-Topos]  <──────(Internal Language)──────> [Cohesive HoTT]
+     [SMC]                <──────(Internal Language)──────> [Process Calculus / Interaction Nets]
+     [Pres]               <──────(Internal Language)──────> [Guarded Type Theory (Dan)]
+     [1-Cat]              <──────(Internal Language)──────> [Directed Type Theory (Mike)]
+     [(oo, 1)-Cat]        <──────(Internal Language)──────> [Simplicial Type Theory (Ulrik)]
+
+================================================================================
+3. Branch I: Inductive Type Theory and Analysis (Frank, Christine, Laurent)
+================================================================================
+This branch represents the constructive/inductive spine of type theories and
+functional analysis. It is characterized by inductive algebraic constructions and
+real/functional analysis foundations.
+
+3.1 Frank: Minimal CIC
+Extends Henk with strictly positive inductive schemes.
+
+type term =
+    | Var of string | Universe of int
+    | Pi of string * term * term | Lam of string * term * term | App of term * term
+    | Inductive of inductive | Constr of int * inductive * term list
+    | Ind of inductive * term * term list * term
+and inductive = { name : string; params : (string * term * term) list;
+    level : int; constrs : (int * term) list }
+
+3.2 Christine: Full CIC (CwF/CwA)
+Complete Calculus of Inductive Constructions with Σ, Id, and Ind.
+
+type term =
+    | Var of name | Universe of level
+    | Pi of name * term * term | Lam of name * term * term | App of term * term
+    | Sigma of name * term * term | Pair of term * term | Fst of term | Snd of term
+    | Id of term * term * term | Refl of term
+    | J of term * term * term * term * term * term
+    | Inductive of inductive | Constr of int * inductive * term list
+    | Ind of inductive * term * term list * term
+and inductive = { name : string; params : (name * term * term) list;
+    level : level; constrs : (int * term) list }
+
+3.3 Laurent: Calculus and Functional Analysis
+Laurent formalizes classical real and functional analysis, distribution theory, and measure theory. It provides first-class support for reals, complex numbers, measures, limits, and integration.
+
+type exp_laurent =
+  | Real | Complex | Nat | Bool
+  | ConstReal of float | ConstComplex of float * float
+  | Forall of string * exp_laurent * exp_laurent
+  | Exists of string * exp_laurent * exp_laurent
+  | Set of exp_laurent | Member of exp_laurent * exp_laurent
+  | Measure of exp_laurent | Integral of exp_laurent * exp_laurent * exp_laurent
+  | Seq of (int -> exp_laurent) | Lim of exp_laurent | Inf of exp_laurent | Sup of exp_laurent
+
+================================================================================
+4. Branch II: Homotopical and Cohesive Spine (Henk, Per, Anders, Urs)
+================================================================================
+This branch represents the central path of homotopical, cubical, and cohesive
+type systems, transitioning from pure dependent products to higher-dimensional
+geometry.
+
+4.1 Henk: Pure Type Systems (PTS)
+Initial object in LCC categories. Contains only Π and universes.
+
+type term =
+    | Var of string
+    | Universe of int
+    | Pi of string * term * term
+    | Lam of string * term * term
+    | App of term * term
+
+4.2 Per: Martin-Löf Type Theory (MLTT-80)
+MLTT-80 with W-types, and base types 0, 1, 2.
+
+type exp =
+  | EVar of ident | EHole
+  | EPi of exp * (ident * exp) | ELam of exp * (ident * exp) | EApp of exp * exp
+  | ESig of exp * (ident * exp) | EPair of tag * exp * exp
+  | EFst of exp | ESnd of exp | EField of exp * string
+  | EId of exp | ERef of exp | EJ of exp
+  | EEmpty | EIndEmpty of exp
+  | EUnit | EStar | EIndUnit of exp
+  | EBool | EFalse | ETrue | EIndBool of exp
+  | EW of exp * (ident * exp) | ESup of exp * exp | EIndW of exp * exp * exp
+
+4.3 Anders: Cubical HoTT
+CCHM cubical structure with Path, Glue, and HITs (Coequ, Disc).
+
+type value =
+  | VKan of Z.t | VPre of Z.t | Var of ident * value | VHole
+  | VPi of value * clos | VLam of value * clos | VApp of value * value
+  | VSig of value * clos | VPair of tag * value * value | VFst of value | VSnd of value
+  | VId of value | VRef of value | VJ of value
+  | VPathP of value | VPLam of value | VAppFormula of value * value
+  | VI | VDir of dir | VAnd of value * value | VOr of value * value | VNeg of value
+  | VTransp of value * value | VHComp of value * value * value * value
+  | VGlue of value | VGlueElem of value * value * value | VUnglue of value * value * value
+  | VEmpty | VIndEmpty of value | VUnit | VStar | VIndUnit of value
+  | VBool | VFalse | VTrue | VIndBool of value
+  | W of value * clos | VSup of value * value | VIndW of value * value * value
+  | VNat | VZero | VSucc of value | VIndNat of value * value * value
+  | VCoequ of value * value * value * value
+  ...
+and clos = ident * (value -> value)
+
+4.4 Urs: The Family of Layered Sublanguages
+Urs is not a single monolithic type system, but rather a family of four layered sublanguages where each layer builds on top of the syntax, modalities, and constructors of the previous one:
+
++------------------+-----------------------------------------+----------------------------+
+| Sublanguage      | Modules                                 | Primitives                 |
++------------------+-----------------------------------------+----------------------------+
+| I. Urs.Homotopy  | universe, forall, sigma, exists, real,  | U^n_g, Π, Σ, ∃, ℝ,         |
+|                  | path, glue, em                          | Path, Glue, EM spaces      |
++------------------+-----------------------------------------+----------------------------+
+| II. Urs.SupSmth  | graded, flat, sharp, bose,              | Bose/Fermi grades, ♭, ♯,   |
+|                  | fermi, tensor, smth, supsmth            | A ⊗ B, SmthSet, SupSmthSet |
++------------------+-----------------------------------------+----------------------------+
+| III. Urs.DiffK   | spectra, grpd, form,                    | Spectrum, Susp, Grpd,      |
+|                  | ku, diff, diffku                        | Ω^n(X), KU^\tau_G, d,       |
+|                  |                                         | DiffKU                     |
++------------------+-----------------------------------------+----------------------------+
+| IV. Urs.Quantum  | conf, braid, qubit, linear              | Config^n, Braid_n, Qubit, !A|
++------------------+-----------------------------------------+----------------------------+
+
+* The 4-Layer Architecture:
+  The sublanguages represent a progressive structure for formalizing mathematical and physical concepts:
+  1. Urs.Homotopy: Foundation for homotopical properties of spaces, path types, glue types, and Eilenberg-MacLane spaces.
+  2. Urs.SupSmth: Graded universes and tensors, group actions, and super-modality operators for geometric cohesion and differential structure—bosonic/fermionic grades, flat/sharp modalities.
+  3. Urs.DiffK: Homotopical foundations via spectra and groupoids, supporting differential K-theory with differential forms, connections, and refined cohomology structures.
+  4. Urs.Quantum: Configuration spaces and braids for quantum statistics, supporting quantum systems and linear types (!A) for resource-sensitive quantum programming.
+  Each sublanguage culminates in a system tailored to formalize superpoints (ℝ^{m|n}), supersymmetry, and equivariant structures.
+
+Remark [STT -> Urs: The Simplicial Connection]
+Simplicial type theory (Ulrik/STT) provides a direct connection to Urs. The directed interval 𝕀→, extension types, and modal Π in STT supply the ∞-categorical framework that Urs's Layer I (Homotopy) builds upon. By isolating the category of categories Cat as a reflective subuniverse in simplicial type theory, STT provides the required directed homotopy structures. Concretely, STT's directed interval becomes the path/homotopy backbone, while its modal/shape operations inform Urs's cohesive modalities (♭, ♯, ℑ) in Layer II. This is represented by the STT arrow from Ulrik to Urs in the lattice diagram, which is not simply a factoring through Anders.
+
+type exp_hom =
+  | Universe of int
+  | Var of string
+  | Forall of string * exp_hom * exp_hom
+  | Lam of string * exp_hom * exp_hom
+  | App of exp_hom * exp_hom
+  | Path of exp_hom * exp_hom * exp_hom
+  | Transport of exp_hom * exp_hom * exp_hom
+
+type grade = Bose | Fermi
+type exp_coh =
+  | Core of exp_hom
+  | UniverseCoh of int * grade
+  | SmthSet | Plot of int * exp_coh * exp_coh
+  | Flat of exp_coh | Sharp of exp_coh | Shape of exp_coh
+  | Bosonic of exp_coh | Tensor of exp_coh * exp_coh
+  | SupSmthSet
+
+type exp_diff =
+  | Coh of exp_coh
+  | Grpd of int | Comp of int * exp_diff * exp_diff * exp_diff
+  | Spectrum | Susp of exp_diff | Wedge of exp_diff * exp_diff
+  | HomSpec of exp_diff * exp_diff | KU_G of exp_diff * exp_diff * exp_diff
+  | Forms of int * exp_diff | Diff of int * exp_diff
+  | DiffKU_G of exp_diff * exp_diff * exp_diff * exp_diff
+
+type exp_quantum =
+  | DiffK of exp_diff
+  | Qubit of exp_quantum * exp_quantum | Linear of exp_quantum
+  | AppQubit of exp_quantum * exp_quantum * exp_quantum
+  | FuseQubit of exp_quantum * exp_quantum * exp_quantum
+  | Config of int * exp_quantum | Braid of int * exp_quantum
+
+================================================================================
+5. Branch III: Operational and Directed Category Theory (Dan, Mike, Ulrik)
+================================================================================
+This branch encompasses operational algebra and directed category theories,
+dealing with presentations of algebraic shapes and directed categorical structures.
+
+5.1 Dan: Operational Algebra
+Dan operates on a completely different level: it manipulates algebraic
+presentations (groups, simplicial sets, chain complexes) operationally. Its
+term language has no dependent types, no universes, and no Π/Σ. Instead it
+works with group words, permutations, matrices, face/degeneracy maps, and
+boundary operators.
+
+type type_name =
+  | Simplex | Group | Simplicial | Chain | Category | Monoid | Ring | Field
+  | PermGroup | MatGroup | FpGroup | PcGroup | Module | Set | GSet
+type term =
+  | Id of string | Comp of term * term | Inv of term | Pow of term * superscript
+  | E | Matrix of int list list | Add of term * term | Mul of term * term
+  | Perm of int list | Cycle of int list list
+  | PermGroup of term list | MatGroup of term list * int * int
+  | FpGroup of string list * term list | PcGroup of string list * term list
+  | Face of superscript * term | Deg of superscript * term | Boundary of term
+  | Act of term * term | Hom of term * term | RelEq of term * term
+type hypothesis =
+  | Decl of string list * type_name
+  | Equality of string * term * term
+  | Presentation of string * term | Relation of term
+  | Action of string * term * term
+  | Orbit of term * term * term list | Stabilizer of term * term * term
+
+5.2 Mike: Directed 1-Category Type Theory
+A LINEAR type theory with a bidirectional type checker enforcing
+quadraticality (each category variable occurs exactly once covariantly
+and once contravariantly).
+
+type cat = CVar of name | COp of cat | CProd of cat * cat
+type m_type =
+  | MHom of cat * cat_term * cat_term | MTensor of m_type * m_type
+  | MCoend of cat * name * m_type | MEnd of cat * name * m_type
+  | MFunc of m_type * m_type | MApp of name * cat_term list
+type m_term =
+  | MTId of cat_term
+  | MTJ of m_type * name * name * name * m_term * cat_term * cat_term * m_term
+  | MTJCov of m_type * name * m_term * cat_term * m_term
+  | MTJContra of m_type * name * m_term * cat_term * m_term
+  | MTTensorIntro of m_term * m_term | MTTensorElim of name * name * m_term * m_term
+  | MTCoendIntro of name * name * name * m_term
+  | MTCoendElim of name * name * m_term * m_term
+  | MTEndIntro of name * m_term
+  | MTEndElim of name * name * name * m_term * m_term
+  | MTFuncIntro of name * m_type * m_term | MTFuncElim of m_term * m_term
+  | MTVar of name
+
+5.3 Ulrik: Simplicial ∞-Categories
+Extends Mike with directed interval 𝕀, shape inclusions (φ ⊆ ψ),
+extension types, modal Π, and twisted arrow categories (A^tw).
+
+To construct a type theory for synthetic category theory, one might hope to interpret type theory in the category of categories (∞-categories or otherwise) to ensure that types realize categories. However, the category of small categories is too poorly behaved to form a model of Martin-Löf Type Theory (MLTT). Instead, Riehl and Shulman (2017) use the category of bisimplicial sets (simplicial spaces) to model synthetic (∞, 1)-categories via Rezk spaces. Simplicial Type Theory (STT) axiomatizes this framework using a directed interval and shapes, allowing one to isolate (∞, 1)-categories as a reflective subuniverse of types within the theory.
+
+type exp =
+  | EUniv | EVar of name | EPi of exp * (name * exp) | ELam of (name * exp option) * exp
+  | EApp of exp * exp | ESig of exp * (name * exp) | EPair of exp * exp
+  | EFst of exp | ESnd of exp | EId of exp * exp * exp | ERef of exp
+  | EIDir | EZeroDir | EOneDir | ELeq of exp * exp | EShapeInc of exp * exp
+  | ESystem of (exp * exp) list | EExt of exp * exp * exp
+  | EModalPi of exp * (name * exp) | EModalLam of (name * exp) * exp
+  | EModalApp of exp * exp | ETw of exp | ETwPi0 of exp | ETwPi1 of exp
+  | EJoin of exp * exp | EMeet of exp * exp | ENeg of exp
+  | EJ of exp * name * name * name * exp * exp * exp * exp
+  | EJCov of exp * name * exp * exp * exp | EJContra of exp * name * exp * exp * exp
+
+================================================================================
+6. Cohomology of Programming Languages
+================================================================================
+Each language's syntax is analyzed INDIVIDUALLY as a CW-complex.
+
+For a formal language O_x, we associate a chain complex of abelian groups (free Z-modules) C_*(O_x) constructed from the syntax and reduction/conversion semantics. This construction models the syntactic space as a cell complex (CW-complex) where paths and higher homotopies encode the computational rules.
+
+* Syntactic CW-Complex:
+  For a language O_x with term syntax T generated by a signature Σ, the syntactic cell complex C_*(O_x) is defined in low dimensions by:
+  - 0-cells (C_0(O_x)): The free Z-module generated by the set of basic syntactic constructors c ∈ Σ (e.g., Var, Pi, Lam, App for Henk). Any term t ∈ T has an associated constructor-occurrence representation:
+    [t] = ∑_{c ∈ Σ} count(c, t) · c  ∈ C_0(O_x)
+    where count(c, t) is the number of times the constructor c appears in the syntax tree of t.
+    
+  - 1-cells (C_1(O_x)): The free Z-module generated by the rewriting and reduction rules r ∈ R of the language (e.g., β-reductions, evaluation steps). Each 1-cell r : t → t' represents a directed rewrite path from a redex term t to a contractum term t'.
+    
+  - 2-cells (C_2(O_x)): The free Z-module generated by equivalence relations, critical pairs, confluence diagrams, and conversion equations (e.g., η-conversions, commuting conversions). A 2-cell e represents a coherence condition or a closed loop of rewrite steps.
+    
+  - Higher cells (C_k(O_x) for k ≥ 3): Coherence relations between equations, such as Mac Lane pentagon relations, path-type univalence coherences (in Anders), or quadraticality constraints (in Mike).
+
+* Boundary Operators:
+  The boundary operators ∂_k : C_k(O_x) → C_{k-1}(O_x) are defined as follows:
+  1. The 1-boundary operator ∂_1 : C_1(O_x) → C_0(O_x) is the linear map determined by the net change in constructor counts caused by a rewrite rule r : t → t':
+     ∂_1(r) = [t'] - [t]
+     
+  2. The 2-boundary operator ∂_2 : C_2(O_x) → C_1(O_x) is determined by the boundary of confluence diagrams or conversion loops. If a 2-cell e represents a confluence diagram from a term s reducing to s' via two different paths of rewrites p_1 = (r_{1,1}, ..., r_{1,m}) and p_2 = (r_{2,1}, ..., r_{2,n}), the boundary is:
+     ∂_2(e) = ∑_{j=1..m} r_{1,j} - ∑_{k=1..n} r_{2,k}
+     Since both paths p_1 and p_2 start at s and end at s', the net constructor changes must match:
+     ∂_1(p_1) = [s'] - [s] = ∂_1(p_2)
+     Thus:
+     ∂_1(∂_2(e)) = ∂_1(p_1) - ∂_1(p_2) = 0
+     This proves that ∂_1 ∘ ∂_2 = 0, establishing a valid chain complex.
+
+* Syntactic Cohomology:
+  Let C_*(O_x) be the syntactic chain complex of O_x and let G be an abelian group of coefficients. The cochain complex C^*(O_x; G) = Hom(C_*(O_x), G) has coboundary operators δ^k : C^k(O_x; G) → C^{k+1}(O_x; G) defined by δ^k(φ) = φ ∘ ∂_{k+1}.
+  The syntactic cohomology groups are:
+  H^k(O_x; G) = ker(δ^k) / im(δ^{k-1})
+
+* Physical Interpretations of Cohomology Groups:
+  The cohomology groups H^k(O_x; G) measure fundamental properties of the syntax and semantics of O_x:
+  - H^0(O_x; G): Measures the syntactic dimension or independent constructor classes. A class in H^0 is a function f : C_0 → G such that for any rewrite r : t → t', f([t]) = f([t']). Thus, H^0 captures invariants preserved under computation (such as type preservation or conserved weights of terms).
+  
+  - H^1(O_x; G): Measures normalization obstructions. An element in H^1 is represented by a 1-cocycle (an assignment of weights to rewrites that sums to zero on closed loops) modulo those coming from constructor valuations. Non-trivial H^1 classes indicate non-confluent rewrites, cycles of reductions (non-termination), or irreversible compilation steps.
+  
+  - H^2(O_x; G): Measures coherence obstructions. It captures the obstructions to filling confluence diagrams with higher-dimensional conversion cells. A non-trivial class in H^2 represents a critical pair (or confluence loop) that cannot be closed by conversions or equivalence cells, pointing to deep semantic mismatches or failures of univalence/coherence.
+
+* Examples across the Branches:
+
+  - Branch I/II: Constructive & Homotopical Spine
+    * Henk (O_Π): The core type theory.
+      C_0 = { Var, Universe, Pi, Lam, App }
+      The 1-cells are generated by β-reduction:
+      r_β : App(Lam(x, A, t), u) → t[u/x]
+      ∂_1(r_β) = [t[u/x]] - ( App + Lam + [t] + [u] )
+      The 2-cells consist of η-conversions:
+      e_η : Lam(x, A, App(t, x)) ≡_η t
+      Since Henk is strongly normalizing and confluent (Church-Rosser), the higher cohomology H^k(O_Π; Z) for k ≥ 1 is trivial, reflecting a contractible syntactic space.
+      
+    * Anders (O_Anders): Adds univalence and Glue types. The univalence axiom represents a path-space equivalence between isomorphic types. This introduces higher-dimensional coherences (Glue cells) acting as 3-cells, preventing non-trivial 2-dimensional obstructions.
+    
+    * Urs (O_Urs): Adds modalities (flat, sharp) and differential structures (forms, connections). The syntactic CW-complex of O_Urs is enriched with topological and differential cells, yielding non-trivial H^k corresponding to de Rham cohomology and Chern-Weil invariants of smooth/differential type structures.
+
+  - Branch III: Operational & Directed Branch
+    * Dan (O_Dan): Operational algebra. Here, term syntax encodes algebraic operations (e.g., face maps ∂_i, degeneracies s_i). The cell complex C_*(O_Dan) is isomorphic to the standard simplicial chain complex of the underlying category/algebraic presentation.
+    
+    * Mike (O_Mike): Directed category theory. 1-cells are non-reversible functors/morphisms, meaning paths are directed. The boundary operator ∂_1 tracks directed change. Quadraticality constraints act as 2-cells that model the non-commutative relation profiles of monoidal/directed types.
+    
+    * Ulrik (O_Ulrik): Simplicial ∞-categories. Generalizes Mike's 1-categories to directed simplicial spaces. The higher cells (C_k for k ≥ 2) represent the Segal completeness conditions and Rezk completeness conditions, ensuring that the directed paths compose coherently up to higher homotopies.
+
+================================================================================
+7. Spectral Sequence of Language Categories
+================================================================================
+Unlike a simple linear filtration, the language category L is organized as a 
+LATTICE (a partially ordered set I) with multiple join-paths. To compute the 
+cohomology of the total language L from its sublanguages, we can employ the 
+Bousfield-Kan spectral sequence for the homotopy colimit over the poset category I:
+
+    E₂^{p,q} = H^p(I; H^q)  ===>  H^{p+q}(L)
+
+where H^q : I -> Ab is the functor mapping each language O to its cohomology H^q(O).
+
+Alternatively, one can impose an integer rank filtration on the syntactic complex 
+C^*(L) by defining the depth p of a language in the lattice (see table below). 
+Let F_p C^*(L) be the subcomplex generated by all languages of depth <= p. The 
+associated spectral sequence is:
+
+    E₁^{p,q} = H^{p+q}(F_p / F_{p-1})  ===>  H^{p+q}(L)
+
++------+--------------+-----------+-----------------------------+-------+
+|  p   | Language     | Branch    | Primitives added            | |C₀|  |
++------+--------------+-----------+-----------------------------+-------+
+|  0   | Henk         | CTT       | Π, U^n                      |   5   |
+|  1   | Frank        | CTT       | + Ind                       |   8   |
+|  2a  | Christine    | CTT       | + Σ, Id                     |  14   |
+|  2b  | Per          | CTT       | + Σ, Id, W, 0, 1, 2         |  26   |
+|  3   | Anders       | CTT       | + Path, I, Glue, HComp, HIT |  40+  |
+|  4a  | Urs.Homotopy | CTT/Modal | + Eilenberg--MacLane, Reals |   7   |
+|  4b  | Urs.SupSmth  | CTT/Modal | + ♭, ♯, ℑ, ⊗, Plot          |  10   |
+|  4c  | Urs.DiffK    | CTT/Modal | + Spectra, Susp, Grpd, Diff |  12   |
+|  4d  | Urs.Quantum  | CTT/Modal | + Qubit, Linear, Conf, Braid|   7   |
++------+--------------+-----------+-----------------------------+-------+
+| ---  | Dan          | Algebra   | Groups, Simplices, Chains   |  20   |
+| ---  | Mike         | Directed  | Hom, ⊗, ∫, ∏, ⊸             |  13   |
+| ---  | Ulrik        | Directed  | + 𝕀→, Ext, Tw, ≤            |  25   |
++------+--------------+-----------+-----------------------------+-------+
+
+Note: split at p=2 (Christine/Per interchangeable); the four sublanguages of Urs at p=4 (Homotopy, SupSmth, DiffK, Quantum); separate indices for Dan, Mike, Ulrik (different branches, not filtration steps).
+
+* Morphisms in L:
+  1. F_enrich:  Enrichment (type inference, elaboration)
+  2. F_simp:    Simplification (type erasure, extraction)
+  3. F_trans:   Translation (compilation across branches)
+  4. F_eval:    Evaluation (normalization to values)
+  5. F_norm:    Normalization (βη-reduction)
+  6. F_certify: Certification (proof checking)
+
+  Cross-branch morphisms flow:
+
+                         [Dan]
+                           │
+                           │ (Lift)
+                           v
+    [Mike] ─────────────(Free)────────────> [Ulrik]
+      ^                                       │
+      │ (Forget)                              │ (Core)
+      │                                       v
+    [Anders] <─── [Christine] ≃ [Per] <─── [Frank] <─── [Henk]
+      │
+      │ (Modal)
+      v
+[Urs.Homotopy] <───────(STT)──────── [Ulrik]
+      │
+      v (Cohesive)
+ [Urs.SupSmth] <───────(STT)──────── [Ulrik]
+      │
+      v (Diff)
+  [Urs.DiffK]
+      │
+      v (Quantum)
+[Urs.Quantum]
+
+  Cross-branch morphisms (Lift, Core, Forget) are structure-changing and
+  do NOT preserve the term type.
+
+================================================================================
+7.1 Functorial Conversions and Cross-Branch Morphisms
+================================================================================
+The language category L is not merely a set of objects; the relationships between
+the branches are mediated by structured functorial conversions. The primary
+conversions, their statuses, and associated information losses are detailed below:
+
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Functor / Conversion | Source   | Target        | Status   | Semantics & Information Loss                                 |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Lift                 | Dan      | Mike          | Yes      | Semantical lifting of presentation generators/equations to 1- |
+|                      |          |               |          | categorical structures.                                      |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Forget               | Mike     | Dan           | Partial  | Truncates categories back to operation-based presentation   |
+|                      |          |               |          | generators.                                                  |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Free                 | Mike     | Ulrik         | Yes      | Fully faithful embedding of directed 1-categories into       |
+|                      |          |               |          | directed infinity-categories.                                |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Trunc                | Ulrik    | Mike          | No       | Cannot be done functorially without losing higher-dimensional|
+|                      |          |               |          | coherence.                                                   |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Core                 | Ulrik    | Anders        | Yes      | Discards directed path structure, retaining only the sub-    |
+|                      |          |               |          | groupoid of isomorphisms.                                    |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Disc                 | Anders   | Ulrik         | Yes      | Discrete embedding: interprets infinity-groupoids as discrete|
+|                      |          |               |          | infinity-categories via discrete modality.                   |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Forget               | Anders   | Mike          | Partial  | 1-category approximation: projects higher paths onto 1-      |
+|                      |          |               |          | category hom-sets.                                           |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Groupoid             | Mike     | Anders        | Yes      | Forgetful functor from directed 1-categories to spaces of    |
+|                      |          |               |          | isomorphism paths.                                           |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Lift (Composite)     | Dan      | Ulrik         | Yes      | Composition of Lift and Free: maps operations to Rezk        |
+|                      |          |               |          | infinity-categories.                                         |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Forget               | Ulrik    | Dan           | No       | Directed simplicial spaces are too rich to map back to       |
+|                      |          |               |          | discrete operations directly.                                |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Forget               | Anders   | Dan           | No       | Undirected spaces cannot be functorially mapped to discrete  |
+|                      |          |               |          | presentation equations.                                      |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Modal                | Anders   | Urs.SupSmth   | Yes      | Extends cubical HoTT with cohesive modalities (flat, sharp,  |
+|                      |          |               |          | shape) and super-grades.                                     |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Diff                 | SupSmth  | Urs.DiffK     | Yes      | Stable extension to spectra, suspensions, forms, and         |
+|                      |          |               |          | differential K-theory.                                       |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| Quantum              | DiffK    | Urs.Quantum   | Yes      | Extends differential K-theory with configuration spaces,     |
+|                      |          |               |          | braids, and linear types.                                    |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| +Ind                 | Henk     | Frank         | Yes      | Adds strictly positive inductive families.                   |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| +Sig,Id              | Frank    | Christine     | Yes      | Adds dependent products/sums and identity types.             |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+| +Sig,Id,W            | Frank    | Per           | Yes      | Adds W-types, universes, and base types 0, 1, 2.             |
++----------------------+----------+---------------+----------+--------------------------------------------------------------+
+
+* Deep Dive: The Lift Functor (Dan -> Mike / Ulrik)
+  The Lift functor acts as a semantical compilation bridge that transports
+  combinatorial presentations from the operational layer Dan to the directed
+  synthetic type theories of Mike and Ulrik. Rather than a simple syntax
+  translator, it elaborates discrete presentations into rich categorical models
+  in four distinct phases:
+  1. Signature Ingestion: Reads the generator set, face maps, degeneracy maps,
+     and algebraic presentation relations directly from the Dan syntax.
+  2. Semantical Lifting: Maps the ingested signature into category-theoretic
+     structures, translating generator equations into functors, categories,
+     and sheaves.
+  3. Elaboration to STT: Translates composition equations to identity paths
+     (EId) in Ulrik. The directed interval I-> is employed to model the
+     domains and boundary conditions.
+  4. Metatheory Absorption: Automatically equips the lifted object with the
+     abstract category-theoretic library of Ulrik (including Yoneda lemmas,
+     limits, adjunctions, and Kan extensions).
+
+* Deep Dive: The Groupoid Core (Ulrik -> Anders)
+  The translation from Ulrik to Anders is a structural forgetful conversion
+  that extracts the underlying homotopy type (the infinity-groupoid of
+  isomorphisms) from a directed infinity-category. Since the simplicial
+  directed interval I-> and directed hom-types (x -> y) of Ulrik do not exist
+  in the cubical undirected world of Anders, the functor operates as follows:
+  - Discards directed arrows, keeping only the sub-groupoid containing
+    morphisms with valid inverses (isomorphisms).
+  - Discards the Segal and Rezk completeness conditions, transforming directed
+    category composition into symmetric path composition.
+  - Replaces the directed interval I-> with the cubical symmetric interval I
+    (with connection and reversal operations).
+
+* Case Study: Mobius Strip Representation
+  To illustrate the conversions, the table below compares the representation of
+  a Mobius Strip across the three primary layers: Dan, Ulrik, and Anders.
+
++------------------+--------------------------------+--------------------------------+--------------------------------+
+| Aspect           | Dan (Operational)              | Ulrik (Simplicial STT)         | Anders (Cubical HoTT)          |
++------------------+--------------------------------+--------------------------------+--------------------------------+
+| Framework        | Computer algebra presentations | Simplicial Type Theory with I->| Cubical HoTT with modal ops    |
++------------------+--------------------------------+--------------------------------+--------------------------------+
+| Math Type        | Combinatorial simplex complex  | Rezk infinity-category built   | Univalent fiber bundle:        |
+|                  | with boundary relations        | from simplicial diagrams       | sum_(x:S^1) Moebius(x)         |
++------------------+--------------------------------+--------------------------------+--------------------------------+
+| Twist Encoding   | Equations on face maps         | Directed paths over I->        | Univalent path transport (ua)  |
+|                  | (boundary compositions)        | satisfying Segal conditions    | using bool negation true=false |
++------------------+--------------------------------+--------------------------------+--------------------------------+
+| Homotopy Type    | Contractible local complex (*) | infinity-category whose core   | Homotopy equivalence to the    |
+|                  |                                | homotopy type is S^1           | circle S^1                     |
++------------------+--------------------------------+--------------------------------+--------------------------------+
+| Abstraction      | Combinatorial building blocks  | Global synthetic               | Global synthetic univalent     |
+|                  |                                | infinity-category              | bundle                         |
++------------------+--------------------------------+--------------------------------+--------------------------------+
+| Functor Action   | Ingested by Lift               | Lifted to directed             | Extracted via Core as          |
+|                  |                                | infinity-category              | undirected infinity-groupoid   |
++------------------+--------------------------------+--------------------------------+--------------------------------+
+| Info Kept        | Full combinatorial generators  | Full directed structure        | Homotopy skeleton; directed    |
+|                  |                                |                                | composition is lost            |
++------------------+--------------------------------+--------------------------------+--------------------------------+
+================================================================================

@@ -19,7 +19,7 @@
 \newtheorem{theorem}[definition]{Theorem}
 
 \lstset{
-  basicstyle=\small\ttfamily,
+  basicstyle=\tiny\ttfamily,
   breaklines=true,
   columns=fullflexible,
   frame=single,
@@ -231,7 +231,8 @@ and clos = ident * (value -> value)
 \end{lstlisting}
 
 \subsection{Urs: The Family of Layered Sublanguages}
-Urs is not a single monolithic type system, but rather a family of four layered sublanguages where each layer builds on top of the syntax, modalities, and constructors of the previous one:
+Urs is not a single monolithic type system, but rather a family of three
+layered sublanguages where each layer builds on top of the syntax, modalities, and constructors of the previous one:
 
 \begin{center}
 \resizebox{0.95\textwidth}{!}{%
@@ -239,34 +240,27 @@ Urs is not a single monolithic type system, but rather a family of four layered 
 \hline
 \textbf{Sublanguage} & \textbf{Modules} & \textbf{Primitives} \\
 \hline
-\textbf{I. Urs.Homotopy} & \texttt{universe, forall, sigma, exists, real,} &
-    $U^n_g$, $\Pi$, $\Sigma$, $\exists$, $\mathbb{R}$, \\
- & \texttt{path, glue, em} &
-    Path, Glue, Eilenberg--MacLane \\
-\hline
-\textbf{II. Urs.SupSmth} & \texttt{graded, flat, sharp, bose,} &
+\textbf{I. Urs.SupSmth} & \texttt{graded, flat, sharp, bose,} &
     Bose/Fermi grades, $\flat$, $\sharp$, \\
  & \texttt{fermi, tensor, smth, supsmth} &
     $A \otimes B$, SmthSet, SupSmthSet \\
 \hline
-\textbf{III. Urs.DiffK} & \texttt{spectra, grpd, form,} &
+\textbf{II. Urs.DiffK} & \texttt{spectra, grpd, form,} &
     Spectrum, Susp, Grpd, $\Omega^n(X)$, \\
  & \texttt{ku, diff, diffku} &
     $KU^{\tau}_G$, $d$, DiffKU \\
 \hline
-\textbf{IV. Urs.Quantum} & \texttt{conf, braid, qubit, linear} &
+\textbf{III. Urs.Quantum} & \texttt{conf, braid, qubit, linear} &
     Config$^n$, Braid$_n$, Qubit, $!A$ \\
 \hline
 \end{tabular}%
 }
 \end{center}
 
-\begin{remark}[The 4-Layer Architecture]
+\begin{remark}[The 3-Layer Architecture]
 The sublanguages represent a progressive structure for formalizing mathematical and
 physical concepts:
 \begin{enumerate}
-  \item \textbf{Urs.Homotopy}: Foundation for homotopical properties of spaces,
-    path types, glue types, and Eilenberg--MacLane spaces.
   \item \textbf{Urs.SupSmth}: Graded universes and tensors, group
     actions, and super-modality operators for geometric cohesion and
     differential structure---bosonic/fermionic grades, flat/sharp modalities.
@@ -460,15 +454,14 @@ H^k(\mathcal{O}_x; G) = \ker(\delta^k) / \mathrm{im}(\delta^{k-1})
 The cohomology groups $H^k(\mathcal{O}_x; G)$ measure fundamental properties of the syntax and semantics of $\mathcal{O}_x$:
 \begin{itemize}
     \item $H^0(\mathcal{O}_x; G)$: Measures the \emph{syntactic dimension} or independent constructor classes. A class in $H^0$ is a function $f : C_0 \to G$ such that for any rewrite $r : t \to t'$, $f([t]) = f([t'])$. Thus, $H^0$ captures invariants preserved under computation (such as type preservation or conserved weights of terms).
-    
     \item $H^1(\mathcal{O}_x; G)$: Measures \emph{normalization obstructions}. An element in $H^1$ is represented by a 1-cocycle (an assignment of weights to rewrites that sums to zero on closed loops) modulo those coming from constructor valuations. Non-trivial $H^1$ classes indicate non-confluent rewrites, cycles of reductions (non-termination), or irreversible compilation steps.
-    
     \item $H^2(\mathcal{O}_x; G)$: Measures \emph{coherence obstructions}. It captures the obstructions to filling confluence diagrams with higher-dimensional conversion cells. A non-trivial class in $H^2$ represents a critical pair (or confluence loop) that cannot be closed by conversions or equivalence cells, pointing to deep semantic mismatches or failures of univalence/coherence.
 \end{itemize}
 
 \subsection{Examples across the Branches}
 
 \begin{example}[Branch I/II: Constructive \& Homotopical Spine]
+\end{example}
 \begin{itemize}
     \item \textbf{Henk ($\mathcal{O}_\Pi$)}: The core type theory.
     \[
@@ -484,22 +477,17 @@ The cohomology groups $H^k(\mathcal{O}_x; G)$ measure fundamental properties of 
     e_\eta : \mathtt{Lam}(x, A, \mathtt{App}(t, x)) \equiv_\eta t
     \]
     Since Henk is strongly normalizing and confluent (Church-Rosser), the higher cohomology $H^k(\mathcal{O}_\Pi; \mathbb{Z})$ for $k \geq 1$ is trivial, reflecting a contractible syntactic space.
-    
     \item \textbf{Anders ($\mathcal{O}_{\mathrm{Anders}}$)}: Adds univalence and Glue types. The univalence axiom represents a path-space equivalence between isomorphic types. This introduces higher-dimensional coherences (Glue cells) acting as 3-cells, preventing non-trivial 2-dimensional obstructions.
-    
     \item \textbf{Urs ($\mathcal{O}_{\mathrm{Urs}}$)}: Adds modalities ($\flat, \sharp$) and differential structures (forms, connections). The syntactic CW-complex of $\mathcal{O}_{\mathrm{Urs}}$ is enriched with topological and differential cells, yielding non-trivial $H^k$ corresponding to de Rham cohomology and Chern-Weil invariants of smooth/differential type structures.
 \end{itemize}
-\end{example}
 
 \begin{example}[Branch III: Operational \& Directed Branch]
+\end{example}
 \begin{itemize}
     \item \textbf{Dan ($\mathcal{O}_{\mathrm{Dan}}$)}: Operational algebra. Here, term syntax encodes algebraic operations (e.g., face maps $\partial_i$, degeneracies $s_i$). The cell complex $C_*(\mathcal{O}_{\mathrm{Dan}})$ is isomorphic to the standard simplicial chain complex of the underlying category/algebraic presentation.
-    
     \item \textbf{Mike ($\mathcal{O}_{\mathrm{Mike}}$)}: Directed category theory. 1-cells are non-reversible functors/morphisms, meaning paths are directed. The boundary operator $\partial_1$ tracks directed change. Quadraticality constraints act as 2-cells that model the non-commutative relation profiles of monoidal/directed types.
-    
     \item \textbf{Ulrik ($\mathcal{O}_{\mathrm{Ulrik}}$)}: Simplicial $\infty$-categories. Generalizes Mike's 1-categories to directed simplicial spaces. The higher cells ($C_k$ for $k \geq 2$) represent the Segal completeness conditions and Rezk completeness conditions, ensuring that the directed paths compose coherently up to higher homotopies.
 \end{itemize}
-\end{example}
 
 \newpage
 \section{Spectral Sequence of Language Categories}
@@ -523,10 +511,9 @@ E_1^{p,q} = H^q(\mathcal{O}_p) \implies H^{p+q}(\mathcal{L})
 2a & Christine & CTT & + $\Sigma$, Id & 14 \\
 2b & Per & CTT & + $\Sigma$, Id, W, 0, 1, 2 & 26 \\
 3 & Anders & CTT & + Path, I, Glue, HComp, HIT & 40+ \\
-4a & Urs.Homotopy & CTT/Modal & + Eilenberg--MacLane, Reals & 7 \\
-4b & Urs.SupSmth & CTT/Modal & + $\flat$, $\sharp$, $\Im$, $\otimes$, Plot & 10 \\
-4c & Urs.DiffK & CTT/Modal & + Spectra, Susp, Grpd, Forms, DiffKU & 12 \\
-4d & Urs.Quantum & CTT/Modal & + Qubit, Linear, Config, Braid & 7 \\
+4a & Urs.SupSmth & CTT/Modal & + $\flat$, $\sharp$, $\Im$, $\otimes$, Plot & 10 \\
+4b & Urs.DiffK & CTT/Modal & + Spectra, Susp, Grpd, Forms, DiffKU & 12 \\
+4c & Urs.Quantum & CTT/Modal & + Qubit, Linear, Config, Braid & 7 \\
 \hline
 --- & Dan & Algebra & Groups, Simplices, Chains, Boundaries & 20 \\
 --- & Mike & Directed & Hom, $\otimes$, $\int$, $\prod$, $\multimap$ & 13 \\
@@ -597,7 +584,7 @@ The language category $\mathcal{L}$ is not merely a set of objects; the relation
 \label{tab:functors}
 \end{table}
 
-\subsubsection{Deep Dive: The Lift Functor ($\mathbf{Dan} \to \mathbf{Mike} / \mathbf{Ulrik}$)}
+\subsubsection{Deep Dive: The Lift Functor (\texorpdfstring{$\mathbf{Dan} \to \mathbf{Mike} / \mathbf{Ulrik}$}{Dan -> Mike / Ulrik})}
 The \textbf{Lift} functor acts as a semantical compilation bridge that transports combinatorial presentations from the operational layer $\mathbf{Dan}$ to the directed synthetic type theories of $\mathbf{Mike}$ and $\mathbf{Ulrik}$. Rather than a simple syntax translator, it elaborates discrete presentations into rich categorical models in four distinct phases:
 \begin{enumerate}
     \item \textbf{Signature Ingestion}: Reads the generator set, face maps ($\partial_i$), degeneracy maps, and algebraic presentation relations directly from the $\mathbf{Dan}$ syntax.
@@ -606,7 +593,7 @@ The \textbf{Lift} functor acts as a semantical compilation bridge that transport
     \item \textbf{Metatheory Absorption}: Automatically equips the lifted object with the abstract category-theoretic library of $\mathbf{Ulrik}$ (including Yoneda lemmas, limits, adjunctions, and Kan extensions).
 \end{enumerate}
 
-\subsubsection{Deep Dive: The Groupoid Core ($\mathbf{Ulrik} \to \mathbf{Anders}$)}
+\subsubsection{Deep Dive: The Groupoid Core (\texorpdfstring{$\mathbf{Ulrik} \to \mathbf{Anders}$}{Ulrik -> Anders})}
 The translation from $\mathbf{Ulrik}$ to $\mathbf{Anders}$ is a structural forgetful conversion that extracts the underlying homotopy type (the $\infty$-groupoid of isomorphisms) from a directed $\infty$-category. Since the simplicial directed interval $\mathbb{I}^{\to}$ and directed hom-types ($x \to y$) of $\mathbf{Ulrik}$ do not exist in the cubical undirected world of $\mathbf{Anders}$, the functor operates as follows:
 \begin{itemize}
     \item Discards directed arrows, keeping only the sub-groupoid $A^{\mathrm{core}}$ containing morphisms with valid inverses.
@@ -643,20 +630,5 @@ To illustrate the conversions, Table~\ref{tab:mobius} compares the representatio
 \caption{Comparison of the M\"obius Strip representation across the layers.}
 \label{tab:mobius}
 \end{table}
-
-\begin{equation}
-\begin{array}{cccccccc}
-\mathbf{Dan} & \xrightarrow{\text{Lift}} & \mathbf{Mike} &
-\xrightarrow{\text{Free}} & \mathbf{Ulrik} &
-\xleftarrow[\text{Core}]{} & \mathbf{Anders} & \\
-& & & & \downarrow\text{STT} & & \downarrow\text{Modal} & \\
-& & & & \mathbf{Urs.Homotopy} & \xrightarrow{\text{Cohesive}} & \mathbf{Urs.SupSmth} & \\
-& & & & \uparrow & & \downarrow\text{Diff} & \\
-& & & & \mathbf{Urs.Quantum} & \xleftarrow{\text{Quantum}} & \mathbf{Urs.DiffK} & \\
-& & & & \uparrow & & & \\
-& & & & \mathbf{Christine} \simeq \mathbf{Per}
-\xleftarrow{} \mathbf{Frank} \xleftarrow{} \mathbf{Henk}
-\end{array}
-\end{equation}
 
 \end{document}

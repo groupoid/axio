@@ -39,7 +39,20 @@ and the Spectral Lattice of Formal Systems}
 \maketitle
 
 \begin{abstract}
-In this article, we investigate the conjecture that no single formal language can serve as a universal foundation for the entirety of mathematics, proposing instead that mathematics is best served by a system of specialized languages connected by functorial transports. We analyze the Groupoid Infinity stack of formal languages as a \emph{lattice} of internal languages, rather than a linear tower. The languages fall into three distinct branches: a \emph{constructive type theory and set analysis} spine (Henk--Frank--Christine), a \emph{super homotopy} spine extending to differential cohesion and quantum spectra (Henk--Per--Anders--Urs), and an \emph{infinity category theory} spine (Dan--Mike--Ulrik). Because their semantic and syntactic structures are fundamentally incompatible, they cannot be unified into a single abstract syntax tree (AST). We demonstrate how these separate domains interact functorially---for instance, simplicial type theory (Ulrik/STT) provides the directed-homotopy backbone for Urs's 3-layer architecture. Finally, we construct syntactic CW-complexes and chain complexes for each language individually, define their cohomology groups, and assemble a spectral sequence over the full lattice of language categories, providing a rigorous mathematical framework for this multi-language foundation.
+In this article, we investigate the conjecture that no single formal language can serve as a universal
+foundation for the entirety of mathematics, proposing instead that mathematics is best served by a
+system of specialized languages connected by functorial transports. We analyze the Groupoid Infinity
+stack of formal languages as a \emph{lattice} of internal languages, rather than a linear tower.
+The languages fall into three distinct branches: a \emph{constructive type theory and set analysis}
+spine (Henk--Frank--Christine), a \emph{super homotopy} spine extending to differential cohesion
+and quantum spectra (Henk--Per--Anders--Urs), and an \emph{infinity category theory} spine (Dan--Mike--Ulrik).
+Due to their divergent semantic and syntactic structures, attempting to unify them into a single monolithic
+abstract syntax tree (AST) is often impractical and conceptually strained. We demonstrate how these separate
+domains interact functorially --- for instance, simplicial type theory (Ulrik/STT) provides the
+directed-homotopy backbone for Urs's 3-layer architecture. Finally, we construct syntactic CW-complexes
+and chain complexes for each language individually, define their cohomology groups,
+and assemble a spectral sequence over the full lattice of language categories, providing
+a rigorous mathematical framework for this multi-language foundation.
 \end{abstract}
 
 \newpage
@@ -85,7 +98,7 @@ Henk ($O_\Pi$) & $\mathbf{\Pi}\text{-}\mathbf{Cat}$ (C-systems / CwF) & PTS Calc
 Frank & $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}$ & Minimal Calculus of Inductive Constructions (strictly positive schemes) \\
 Christine ($O_\Sigma$) & $\mathbf{LCCC} + \mathbf{Ind}$ & Full CIC (MLTT-72 contextual completeness, dependent sums) \\
 Laurent & $\mathbf{Top} / \mathbf{Met}$ & Calculus and Functional Analysis (topological and metric spaces) \\
-Per ($O_W$) & $\mathbf{LCCC} + \mathbf{W}$ & Martin-L\"{o}f Type Theory MLTT-80 (inductive W-types) \\
+Per ($O_W$) & $\mathbf{\Pi W}\text{-}\mathbf{Pretopos}$ & Martin-L\"{o}f Type Theory MLTT-80 (inductive W-types) \\
 Anders ($O_I$) & $\infty\text{-}\mathbf{Cat}$ & Cubical Type Theory with Path types, no HITs ($\infty$-categories) \\
 Anders\text{+} & $\infty\text{-}\mathbf{Topos}$ & Cubical Type Theory with HITs (lightweight core, univalence) \\
 \hline
@@ -133,7 +146,7 @@ W-types (Per path) is a design decision, not a strict ordering.
 
 \newpage
 \subsection{The Topoi Structure}
-To analyze the gradual expansion of language primitives, we construct a fine-grained lattice of semantic categories radiating from the category of dependent products ($\mathbf{\Pi}\text{-}\mathbf{Cat}$ (Henk)). The system expands in three cardinal directions (adding dependent sums to yield locally cartesian closed categories $\mathbf{LCCC}$, inductive algebras $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}$ (Frank), and bicartesian closed structures $\mathbf{BiCCC}$ (IPL)) before merging into rich categories of models such as $\mathbf{LCCC} + \mathbf{Ind}$ (Christine), $\mathbf{LCCC} + \mathbf{W}$ (Per), $\infty\text{-}\mathbf{Grpd}$ (Anders), and cohesive $\infty$-topoi. On the right, the lattice incorporates the operational algebra branch ($\mathbf{Pres}$ (Dan)), the directed 1-category branch ($\mathbf{1\text{-}Cat}$ (Mike)), and the simplicial $(\infty, 1)$-category branch ($\mathbf{(\infty, 1)\text{-}Cat}$ (Ulrik)). All cross-branch connections are detailed in the global map in Section 2.
+To analyze the gradual expansion of language primitives, we construct a fine-grained lattice of semantic categories radiating from the category of dependent products ($\mathbf{\Pi}\text{-}\mathbf{Cat}$ (Henk)). The system expands in three cardinal directions (adding dependent sums to yield locally cartesian closed categories $\mathbf{LCCC}$, inductive algebras $\mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}$ (Frank), and bicartesian closed structures $\mathbf{BiCCC}$ (IPL)) before merging into rich categories of models such as $\mathbf{LCCC} + \mathbf{Ind}$ (Christine), $\mathbf{\Pi W}\text{-}\mathbf{Pretopos}$ (Per), $\infty\text{-}\mathbf{Grpd}$ (Anders), and cohesive $\infty$-topoi. On the right, the lattice incorporates the operational algebra branch ($\mathbf{Pres}$ (Dan)), the directed 1-category branch ($\mathbf{1\text{-}Cat}$ (Mike)), and the simplicial $(\infty, 1)$-category branch ($\mathbf{(\infty, 1)\text{-}Cat}$ (Ulrik)). All cross-branch connections are detailed in the global map in Section 2.
 
 \begin{theorem}[Universal Primitive Lattice]
 The formal internal languages form a connected lattice structure across three spines, linked by the modal, synthetic, and directed structural morphisms shown below:
@@ -142,7 +155,7 @@ The formal internal languages form a connected lattice structure across three sp
 \begin{lrbox}{\diagbox}
 \scriptsize
 \begin{tikzcd}[row sep=large, column sep=0.0em]
-& \mathbf{LCCC} + \mathbf{W}\ \text{(Per)} & \mathbf{LCCC} \ar[l, dashed] & \mathbf{Pres}\ \text{(Dan)} \ar[d, dashed, "\text{Lift}"] \\
+& \mathbf{\Pi W}\text{-}\mathbf{Pretopos}\ \text{(Per)} & \mathbf{LCCC} \ar[l, dashed] & \mathbf{Pres}\ \text{(Dan)} \ar[d, dashed, "\text{Lift}"] \\
 \infty\text{-}\mathbf{Grpd}\ \text{(Anders)} & \mathbf{\Pi}\text{-}\mathbf{Cat}\ \text{(Henk)} \ar[ur] \ar[dr] \ar[l, dashed] \ar[r] & \mathbf{BiCCC}\ \text{(IPL)} \ar[r, dashed] & \mathbf{1\text{-}Cat}\ \text{(Mike)} \ar[d, dashed, "\text{Free}"] \\
 \mathbf{Cohesive}\ \infty\text{-}\mathbf{Topos}\ \text{(Felix)} \ar[u, leftarrow, "\text{Modal}"'] & \mathbf{LCCC} + \mathbf{Ind}\ \text{(Christine)} & \mathbf{\Pi}\text{-}\mathbf{Cat} + \mathbf{Ind}\ \text{(Frank)} \ar[l, dashed] & \mathbf{(\infty, 1)\text{-}Cat}\ \text{(Ulrik)} \\
 \mathbf{Diff}\ \infty\text{-}\mathbf{Topos}\ \text{(Jack)} \ar[u, leftarrow, "\text{Diff}"'] & & & \\
@@ -167,6 +180,7 @@ This establishes a rich hierarchy of correspondences:
 \begin{center}
 \begin{tikzcd}[row sep=large, column sep=huge]
 \mathbf{LCCC} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{MLTT} \\
+\mathbf{\Pi W}\text{-}\mathbf{Pretopos} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{MLTT\ (W-types)} \\
 \infty\text{-}\mathbf{Cat} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Cubical\ (Paths,\ no\ HITs)} \\
 \infty\text{-}\mathbf{Topos} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Cubical\ (with\ HITs)} \\
 \mathbf{Cohesive}\ \infty\text{-}\mathbf{Topos} \ar[r, leftrightarrow, "\text{Internal Language}"] & \mathbf{Cohesive\ HoTT} \\
@@ -645,29 +659,23 @@ To illustrate the conversions, Table~\ref{tab:mobius} compares the representatio
 
 \begin{table}[ht]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|p{3cm}|p{4.5cm}|p{4.5cm}|p{4.5cm}|}
+\caption{Comparison of the M\"obius Strip representation across the layers.}
+\label{tab:mobius}
+\noindent\makebox[\textwidth][c]{%
+\begin{tabular}{llll}
 \hline
 \textbf{Aspect} & \textbf{Dan (Operational)} & \textbf{Ulrik (Simplicial STT)} & \textbf{Anders (Cubical HoTT)} \\
 \hline
-\textbf{Framework} & Computer algebra presentations & Simplicial Type Theory with $\mathbb{I}^{\to}$ & Cubical HoTT with modal operators \\
-\hline
-\textbf{Mathematical Type} & Combinatorial simplex complex with boundary relations & Rezk $\infty$-category built from simplicial diagrams & Univalent fiber bundle: $\sum_{x: S^1} \mathrm{Moebius}(x)$ \\
-\hline
-\textbf{Twist Encoding} & Equations on face maps ($\partial_i$) & Directed paths over $\mathbb{I}^{\to}$ satisfying Segal conditions & Univalent path transport ($\mathtt{ua}$) using boolean negation ($\mathtt{true} \equiv \mathtt{false}$) \\
-\hline
-\textbf{Homotopy Type} & Contractible local complex ($\ast$) & $\infty$-category whose core homotopy type is $S^1$ & Homotopy equivalence to the circle $S^1$ \\
-\hline
-\textbf{Abstraction Level} & Combinatorial building blocks & Global synthetic $\infty$-category & Global synthetic univalent bundle \\
-\hline
-\textbf{Functor Action} & Ingested by \textbf{Lift} & Lifted to directed $\infty$-category & Extracted via \textbf{Core} as undirected $\infty$-groupoid \\
-\hline
-\textbf{Information Kept} & Full combinatorial generators & Full directed structure & Homotopy skeleton; directed composition is lost \\
+\textbf{Framework} & Algebra presentations & STT with directed interval $\mathbb{I}^{\to}$ & Cubical HoTT with modalities \\
+\textbf{Math Type} & Simplicial complex with boundaries & Rezk $\infty$-category from simplices & Bundle $\sum_{x: S^1} \mathrm{Moebius}(x)$ \\
+\textbf{Twist Encoding} & Equations on face maps ($\partial_i$) & Directed paths satisfying Segal & Path transport ($\mathtt{ua}$) via $\mathtt{not}$ \\
+\textbf{Homotopy Type} & Contractible local complex ($\ast$) & $\infty$-category with core $\simeq S^1$ & Homotopy equivalence to $S^1$ \\
+\textbf{Abstraction} & Combinatorial building blocks & Synthetic directed $\infty$-category & Synthetic univalent bundle \\
+\textbf{Functor Action} & Ingested by \textbf{Lift} & Lifted to directed $\infty$-category & Extracted via \textbf{Core} \\
+\textbf{Information} & Combinatorial generators & Full directed structure & Undirected homotopy skeleton \\
 \hline
 \end{tabular}%
 }
-\caption{Comparison of the M\"obius Strip representation across the layers.}
-\label{tab:mobius}
 \end{table}
 
 \end{document}

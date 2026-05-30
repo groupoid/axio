@@ -13,13 +13,13 @@ as a LATTICE of internal languages, rather than a linear tower. The languages fa
 into three distinct branches: a constructive type theory and set analysis spine
 (Henk–Frank–Christine), a super homotopy spine extending to differential cohesion
 and quantum spectra (Henk–Per–Anders–Urs), and an infinity category theory spine
-(Dan–Mike–Ulrik). Because their semantic and syntactic structures are fundamentally
-incompatible, they cannot be unified into a single abstract syntax tree (AST).
-We demonstrate how these separate domains interact functorially, construct syntactic
-CW-complexes and chain complexes for each language individually, define their
-cohomology groups, and assemble a spectral sequence over the full lattice of
-language categories, providing a rigorous mathematical framework for this
-multi-language foundation.
+(Dan–Mike–Ulrik). Due to their divergent semantic and syntactic structures,
+attempting to unify them into a single monolithic abstract syntax tree (AST) is
+often impractical and conceptually strained. We demonstrate how these separate
+domains interact functorially, construct syntactic CW-complexes and chain complexes
+for each language individually, define their cohomology groups, and assemble a
+spectral sequence over the full lattice of language categories, providing a
+rigorous mathematical framework for this multi-language foundation.
 
 ================================================================================
 1. Categorical Foundations
@@ -88,7 +88,7 @@ To analyze the gradual expansion of language primitives, we establish the centra
 Theorem 2.1 (Universal Primitive Lattice).
 The categories of models for the Groupoid Infinity language stack form a planar, coherent lattice of categories radiating from the category of dependent products Pi-Cat (Henk), extending in three cardinal directions (dependent sums, inductive types, and bicartesian closed structures), and completing in cohesive and directed higher categories:
 
-                            [LCCC + W (Per)] <────────────(dashed)───────────── [LCCC]                      [Pres (Dan)]
+                        [PiW-Pretopos (Per)] <────────────(dashed)───────────── [LCCC]                      [Pres (Dan)]
                                                                                   ▲                            │
                                                                                  /                             │ (dashed, Lift)
 [oo-Grpd (Anders)] <──────────────(dashed)─────────────── [Pi-Cat (Henk)] ────> [BiCCC (IPL)] ───(dashed)────> [1-Cat (Mike)]
@@ -115,7 +115,7 @@ Table 2.2: Categorical Models and Primitives of the Internal Languages
 | Frank                | Pi-Cat + Ind                      | Minimal CIC (strictly positive inductive schemes)          |
 | Christine (O_Σ)      | LCCC + Ind                        | Full CIC (MLTT-72 contextual completeness, sums)          |
 | Laurent              | Top / Met                         | Calculus & Functional Analysis (topological/metric spaces)|
-| Per (O_W)            | LCCC + W                          | Martin-Löf Type Theory MLTT-80 (inductive W-types)        |
+| Per (O_W)            | PiW-Pretopos                      | Martin-Löf Type Theory MLTT-80 (inductive W-types)        |
 | Anders (O_I)         | oo-Cat                            | Cubical Type Theory with Path types, no HITs              |
 | Anders+              | oo-Topos                          | Cubical Type Theory with HITs (lightweight core)          |
 |----------------------|-----------------------------------|-----------------------------------------------------------|
@@ -140,6 +140,7 @@ The lattice stratifies into structural, cohesive, linear, and directed semantics
 This establishes a rich hierarchy of correspondences:
 
      [LCCC]               <──────(Internal Language)──────> [MLTT]
+     [PiW-Pretopos]        <──────(Internal Language)──────> [MLTT-80 (W-types)]
      [oo-Cat]             <──────(Internal Language)──────> [Cubical (Paths, no HITs)]
      [oo-Topos]           <──────(Internal Language)──────> [Cubical (with HITs)]
      [Cohesive oo-Topos]  <──────(Internal Language)──────> [Cohesive HoTT]

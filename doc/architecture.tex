@@ -526,7 +526,7 @@ The cohomology groups $H^k(\mathcal{O}_x; G)$ measure fundamental properties of 
 \newpage
 \section{Spectral Sequence of Language Categories}
 Unlike a simple linear filtration, the language category $\mathcal{L}$ is
-organized as a \emph{lattice} (a partially ordered set $\mathcal{I}$) with multiple join-paths. 
+organized as a \emph{lattice} (a partially ordered set $\mathcal{I}$) with multiple join-paths.
 To compute the cohomology of the total language $\mathcal{L}$ from its sublanguages, we can employ the Bousfield-Kan spectral sequence for the homotopy colimit over the poset category $\mathcal{I}$:
 \[ E_2^{p,q} = H^p(\mathcal{I}; \mathcal{H}^q) \implies H^{p+q}(\mathcal{L}) \]
 where $\mathcal{H}^q : \mathcal{I} \to \mathbf{Ab}$ is the functor mapping each language $\mathcal{O}$ to its cohomology $H^q(\mathcal{O})$, and $H^p(\mathcal{I}; -)$ denotes the cohomology of the category $\mathcal{I}$.
@@ -588,37 +588,24 @@ The primary conversions, their statuses, and associated information losses are d
 \begin{table}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|c|c|l|p{8cm}|}
+\begin{tabular}{|l|c|c|l|p{9cm}|}
 \hline
-\textbf{Functor / Conversion} & \textbf{Source} & \textbf{Target} & \textbf{Status} & \textbf{Semantics \& Information Loss} \\
+\textbf{Functor} & \textbf{Source} & \textbf{Target} & \textbf{Status} & \textbf{Semantics \& Information Loss} \\
 \hline
 \textbf{Lift} & Dan & Mike & Yes & Semantical lifting of presentation generators and equations to 1-categorical structures. \\
-\hline
 \textbf{Forget} & Mike & Dan & Partial & Truncates categories back to operation-based presentation generators. \\
-\hline
 \textbf{Free} & Mike & Ulrik & Yes & Fully faithful embedding of directed 1-categories into directed $\infty$-categories. \\
-\hline
 \textbf{Trunc} & Ulrik & Mike & No & Cannot be done functorially without losing higher-dimensional coherence. \\
-\hline
 \textbf{Core} & Ulrik & Anders & Yes & Groupoid Core: discards directed path structure, retaining only the sub-groupoid of isomorphisms. \\
-\hline
 \textbf{Disc} & Anders & Ulrik & Yes & Discrete embedding: interprets $\infty$-groupoids as discrete $\infty$-categories via disc modality. \\
-\hline
 \textbf{Forget} & Anders & Mike & Partial & 1-category approximation: projects higher paths onto 1-category hom-sets. \\
-\hline
 \textbf{Groupoid} & Mike & Anders & Yes & Forgetful functor from directed 1-categories to spaces of isomorphism paths. \\
-\hline
 \textbf{Lift} (Composite) & Dan & Ulrik & Yes & Composition of \textbf{Lift} and \textbf{Free}: maps operations to Rezk $\infty$-categories. \\
-\hline
 \textbf{Forget} & Ulrik & Dan & No & Directed simplicial spaces are too rich to map back to discrete operations directly. \\
-\hline
 \textbf{Forget} & Anders & Dan & No & Undirected spaces cannot be functorially mapped to discrete presentation equations. \\
-\hline
 \textbf{Modal} & Anders & Felix & Yes & Extends cubical HoTT with cohesive modalities ($\flat$, $\sharp$, $\Im$) and super-grades. \\
-\hline
 \textbf{Diff} & Felix & Jack & Yes & Stable extension to spectra, suspensions, forms, and differential K-theory. \\
-\hline
-\textbf{Urs} & Jack & Urs & Yes & Extends differential K-theory with configuration spaces, braids, and linear types. \\
+\textbf{Quantum} & Jack & Urs & Yes & Extends differential K-theory with configuration spaces, braids, and linear types. \\
 \hline
 \end{tabular}%
 }
@@ -722,22 +709,18 @@ Benedikt Ahrens, Krzysztof Kapulkin, and Michael Shulman.
 \bibitem[Bar92]{Henk93}
 H.~P. Barendregt.
 \newblock Lambda calculi with types.
-\newblock In S.~Abramsky, Dov~M. Gabbay, and S.~E. Maibaum, editors, {\em
-  Handbook of Logic in Computer Science (Vol. 2)}, pages 117--309, New York,
-  NY, USA, 1992. Oxford University Press, Inc.
+\newblock In S.~Abramsky, Dov~M. Gabbay, and S.~E. Maibaum, editors, {
+  \em Handbook of Logic in Computer Science (Vol. 2)}, pages 117--309,
+  New York, NY, USA, 1992. Oxford University Press, Inc.
 
 \bibitem[BMSS11]{birkedal2011first}
-Lars Birkedal, Rasmus~Ejlers Mogelberg, Jan Schwinghammer, and Kristian
-  Stovring.
-\newblock First steps in synthetic guarded domain theory: step-indexing in the
-  topos of trees.
-\newblock In {\em 2011 IEEE 26th Annual Symposium on Logic in Computer
-  Science}, pages 55--64. IEEE, 2011.
+Lars Birkedal, Rasmus~Ejlers Mogelberg, Jan Schwinghammer, and Kristian Stovring.
+\newblock First steps in synthetic guarded domain theory: step-indexing in the topos of trees.
+\newblock In {\em 2011 IEEE 26th Annual Symposium on Logic in Computer Science}, pages 55--64. IEEE, 2011.
 
 \bibitem[CCHM17]{cchm}
 Cyril Cohen, Thierry Coquand, Simon Huber, and Anders M{\"{o}}rtberg.
-\newblock Cubical type theory: {A} constructive interpretation of the
-  univalence axiom.
+\newblock Cubical type theory: {A} constructive interpretation of the univalence axiom.
 \newblock {\em {FLAP}}, 4(10):3127--3170, 2017.
 
 \bibitem[CHS26]{Coq88}

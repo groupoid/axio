@@ -249,11 +249,12 @@ Complete Calculus of Inductive Constructions with $\Sigma$, Id, and Ind.
 \begin{table}[ht!]
 \centering
 \begin{tabular}{rl}
- cosmos :=&$\textbf{U}_j\ \| \textbf{Prop}$ \\
+ cosmos :=&$\textbf{Prop}\ :\ \textbf{U}_j$ \\
     var :=&$\textbf{var}\ name$ \\
      pi :=&$\Pi\ name\ E\ E\ |\ \lambda\ name\ E\ E\ |\ E\ E$ \\
      id :=&$\textbf{Id}\ E\ |\ \textbf{ref}\ E\ |\ \textbf{id$_J$}\ E$ \\
     ind :=&$\textbf{inductive}\ name\ \textrm{params}\ \textrm{constrs}\ |\ \textbf{constr}\ i\ \textrm{name}\ \textrm{args}\ |\ \textbf{ind}\ \textrm{name}\ E\ \textrm{args}\ E$ \\
+    fix :=&$\textbf{Fix}$ \\
 \end{tabular}
 \end{table}
 
@@ -290,7 +291,7 @@ The initial object in LCC categories. Contains only $\Pi$ and universes.
 \end{table}
 
 \subsection{Per: Martin-L\"of Type Theory (MLTT-80) \cite{Lof84}}\footnote{\url{https://per.groupoid.space}}
-MLTT-80 with W-types, base types 0, 1, 2, and cubical primitives.
+MLTT-80 with W-types, base types 0, 1, 2, and strict equality.
 \begin{table}[ht!]
 \centering
 \begin{tabular}{rl}

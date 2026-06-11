@@ -228,6 +228,51 @@ This establishes a rich hierarchy of correspondences:
 \end{tikzcd}
 \end{center}
 
+To contextualize the development and syntactic choices of the internal languages in our stack (such as Henk, Per, Anders, Frank, and Christine), Table~\ref{tab:type_theories_comparison} compares the constructor support of historical and contemporary type systems. This comparison maps the evolution of dependent products ($\Pi$), dependent sums ($\Sigma$), identity types ($\text{Id}$), cubical paths ($\Xi$), universe structures ($U^n$), and various approaches to inductive definitions ($\mathbb{N}$, finite types $0/1/2$, $W$-types, general inductive definitions $\mathrm{Ind}$, and general recursion/fixpoints $\mathrm{Fix}$).
+
+% Historical and contemporary comparison of type theories by support for primitive language constructs.
+% Originally imported from ./books/vol1/mltt.tex.
+\begin{table}[ht!]
+  \centering
+  \caption{Feature comparison of historical and contemporary type theories.}
+  \label{tab:type_theories_comparison}
+  \noindent\makebox[\textwidth][c]{%
+  \begin{tabular}{lcccccccccc}
+    \hline
+       Language             & $U^n$
+                                & $\Pi$
+                                    & $\Sigma$
+                                        & Id
+                                            & $\Xi$
+                                                & $\mathbb{N}$
+                                                    & 0/1/2
+                                                        & $W$
+                                                            & Ind
+                                                                & Fix \\
+    \hline
+System P$_\omega$ (CoC-88)  &   & x &   &   &   &   &   &   &   &   \\
+       MLTT-72              &   & x & x &   &   &   &   &   &   &   \\
+       Henk (ECC)           & x & x &   &   &   &   &   &   &   &   \\
+       Errett (LCCC/IPL)    & x & x & x &   &   &   & x &   &   &   \\
+       MLTT-73              & x & x & x & x &   &   &   &   &   &   \\
+       Per                  & x & x & x & x & x &   & x & x &   &   \\
+       MLTT-75              & x & x & x & x &   & x & x &   &   &   \\
+       MLTT-80              & x & x & x & x &   &   &   & x &   &   \\
+       Anders (HTS)         & x & x & x & x & x & x & x & x &   &   \\
+       Frank (CoC+CIC)      & x & x &   &   &   &   &   &   & x &   \\
+       Christine (Coq)      & x & x &   &   &   &   &   &   & x & x \\
+    \hline
+       cubicaltt            &   & x & x &   & x &   &   &   & x & x \\
+       Agda                 & x & x & x & x & x &   &   &   & x & x \\
+       Lean                 & x & x & x & x &   &   &   &   & x & x \\
+       NuPRL                &   & x & x & x &   &   &   &   & x &   \\
+    \hline
+  \end{tabular}%
+  }
+\end{table}
+
+This breakdown highlights the design trade-offs: for instance, the Groupoid spine languages start from the minimal ECC-like core of Henk (possessing only $\Pi$ and universes $U^n$), adding inductive types ($\mathrm{Ind}$) and general fixpoints ($\mathrm{Fix}$) to build Frank and Christine (CIC). In contrast, the univalent spine (Per) models MLTT-80 extended with cubical path spaces ($\Xi$), whereas Anders (HTS) unifies these features with full cubical primitives, set-theoretic universes, and higher inductive types. Contemporary systems like Agda, Lean, and NuPRL similarly occupy different positions in this design space depending on their choice of equality (strict vs. path-based) and inductive scheme representations (general inductive types vs. W-types).
+
 \newpage
 \section{Spine I: Set Analysis}
 This spine represents the constructive/inductive spine of type theories and functional analysis. It is characterized by inductive algebraic constructions and real/functional analysis foundations.
